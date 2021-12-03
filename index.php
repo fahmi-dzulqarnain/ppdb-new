@@ -189,26 +189,86 @@
             <h1 class="title">Timeline PPDB</h1>
             <div class="container left">
                 <div class="content">
-                    <h4>Pembukaan Pendaftaran PPDB 2022/2023</h4>
-                    <p><i class='bx bxs-calendar'></i> 13 Des - 9 Jan</p>
+                    <h4>Pendaftaran PPDB 2022/2023</h4>
+                    <p><i class='bx bxs-calendar'></i> 18 Des - 22 Jan</p>
                 </div>
             </div>
             <div class="container right">
                 <div class="content">
-                    <h4>2016</h4>
-                    <p><i class='bx bxs-calendar'></i></p>
+                    <h4>Tes TKIT</h4>
+                    <p><i class='bx bxs-calendar'></i> 8 Jan 2022</p>
                 </div>
             </div>
             <div class="container left">
                 <div class="content">
-                    <h4>2015</h4>
-                    <p><i class='bx bxs-calendar'></i></p>
+                    <h4>Tes SDIT</h4>
+                    <p><i class='bx bxs-calendar'></i> 15 Jan 2022</p>
                 </div>
             </div>
             <div class="container right">
                 <div class="content">
-                    <h4>2014</h4>
-                    <p><i class='bx bxs-calendar'></i></p>
+                    <h4>Tes SMPIT</h4>
+                    <p><i class='bx bxs-calendar'></i> 22 Jan 2022</p>
+                </div>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <h4>Tes SMAIT & Khadijah</h4>
+                    <p><i class='bx bxs-calendar'></i> 29 Jan 2022</p>
+                </div>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <h4>Pengumuman, Daftar Ulang dan Ukur Seragam (TKIT)</h4>
+                    <p><i class='bx bxs-calendar'></i> 22 Jan 2022</p>
+                </div>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <h4>Pengumuman, Daftar Ulang dan Ukur Seragam (SDIT)</h4>
+                    <p><i class='bx bxs-calendar'></i> 29 Jan 2022</p>
+                </div>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <h4>Pengumuman, Daftar Ulang dan Ukur Seragam (SMPIT)</h4>
+                    <p><i class='bx bxs-calendar'></i> 05 Feb 2022</p>
+                </div>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <h4>Pengumuman, Daftar Ulang dan Ukur Seragam (SMAIT/Khadijah)</h4>
+                    <p><i class='bx bxs-calendar'></i> 12 Feb 2022</p>
+                </div>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <h4>Cicilan 2 TKIT & Cicilan 3 TKIT</h4>
+                    <p><i class='bx bxs-calendar'></i> 19 Feb 2022 & 19 Mar 2022</p>
+                </div>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <h4>Cicilan 2 SDIT & Cicilan 3 SDIT</h4>
+                    <p><i class='bx bxs-calendar'></i> 26 Feb 2022 & 26 Mar 2022</p>
+                </div>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <h4>Cicilan 2 SMPIT & Cicilan 3 SMPIT</h4>
+                    <p><i class='bx bxs-calendar'></i> 05 Mar 2022 & 02 Apr 2022</p>
+                </div>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <h4>Cicilan 2 SMAIT/Khadijah & Cicilan 3</h4>
+                    <p><i class='bx bxs-calendar'></i> 12 Mar 2022 & 9 Apr 2022</p>
+                </div>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <h4>Pembagian Buku & Seragam</h4>
+                    <p><i class='bx bxs-calendar'></i> 02 Jul 2022</p>
                 </div>
             </div>
         </div>
@@ -218,7 +278,7 @@
     <section class="jadwal2" id="uangmasuk">
         <div class="max-width">
 
-            <h1 class="title">Biaya Daftar Ulang</h1>
+            <h1 class="title">Biaya Masuk</h1>
             <div>
                 <table class="jadwal">
                     <tr>
