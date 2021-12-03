@@ -40,7 +40,7 @@
 
     <?php
     $mysqli = new mysqli('localhost', 'root', '', 'ppdb_db') or die(mysqli_error($mysqli));
-    $getSchool = $mysqli->query("SELECT school_name, type, logo_unit, alamat, sisa_kuota, kuota, kapasitas FROM tbl_school") or die($mysqli->error);
+    $getSchool = $mysqli->query("SELECT school_name, type, logo_unit, alamat, sisa_kuota, kuota, kapasitas, kontak FROM tbl_school") or die($mysqli->error);
     $showModal = false;
     ?>
 
@@ -61,6 +61,7 @@
                     if (isset($arrayUnit[$schoolName]) == false) {
                         $arrayUnit[$schoolName] = array();
                         $arrayUnit[$schoolName]['logo_unit'] = $item[2];
+                        $arrayUnit[$schoolName]['kontak'] = $item[7];
                     }
 
                     $type = str_replace(' ', '_', $item[1]);
@@ -76,6 +77,7 @@
                     $schoolName = str_replace('-', ' ', key($arrayUnit));
 
                     $logoUnit = $school['logo_unit'];
+                    $kontak = $school['kontak'];
                 ?>
                     <div class="daftar-item">
                         <img src="logo/<?php echo $logoUnit; ?>" style="width: 100px;" alt="<?php echo $schoolName; ?>" class="icon">
@@ -83,10 +85,11 @@
                         <?php
 
                         unset($school['logo_unit']);
+                        unset($school['kontak']);
                         foreach ($school as $alamat => $value) {
                             $js_array = str_replace('"', '@', json_encode($value));
                         ?>
-                            <button class="button modal__button" onclick="openModal('<?php echo $schoolName; ?>', '<?php echo $logoUnit; ?>', '<?php echo $alamat; ?>', '<?php print_r($js_array); ?>')">
+                            <button class="button modal__button" onclick="openModal('<?php echo $schoolName; ?>', '<?php echo $logoUnit; ?>', '<?php echo $kontak; ?>', '<?php echo $alamat; ?>', '<?php print_r($js_array); ?>')">
                                 <?php echo $alamat; ?>
                             </button>
                         <?php
@@ -108,6 +111,7 @@
             <img src="logo/FI TK.png" alt="TKIT" class="modal__img icon" id="modal-img">
 
             <h3 class="modal__title" id="modal-title">TKIT Fajar Ilahi</h3>
+            <p class="modal__description" id="modal-contact">Click the button to close</p>
             <p class="modal__description" id="modal-description">Click the button to close</p>
             <div class="flex-row modal__description">
                 <div class="flex-column col-2" id="first">
@@ -155,7 +159,7 @@
                     <div class="box">
                         <div class="text"><i class='bx bx-money'></i> Biaya Pendaftaran </div>
                         <br>
-                        <p>Biaya Pendaftaran Semua Jenjang dan Unit Yayasan Islam Al Kahfi Adalah Rp220.000,-<br>Biaya Masuk Klik <a href="#uangmasuk" style="color: #DCE775; font-weight:600;">Disini</a> </p><br>
+                        <p>Biaya Pendaftaran Adalah Rp220.000,- Kecuali untuk SDIT FI (1, 2, 3), dan SMPIT FI 1<br>Biaya Masuk Klik <a href="#uangmasuk" style="color: #DCE775; font-weight:600;">Disini</a> </p><br>
                     </div>
                 </div>
                 <div class="card">

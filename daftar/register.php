@@ -164,7 +164,7 @@ if (isset($_POST['send']) && isset($_POST['tgl-lahir'])) {
               $mysqli->query("INSERT INTO tbl_reg (no_pendaftaran, waktu_daftar, nama_calon_siswa, tempat_lahir, tanggal_lahir, sekolah_daftar,
                                           type, id_ortu, nominal_trf, status_pendaf)
                                           VALUES ('$no_pendf', '$timestamp', '$nSiswa', '$tmptLhr', '$tglLhr', '$unit',
-                                            '$type', '$id', '$nominalTrf', 'menunggu_pembayaran')") or die($mysqli->error);
+                                            '$type', '$id', '$nominalTrf', 'dibayar')") or die($mysqli->error);
 
               $mysqli->query("INSERT INTO tbl_akun (username, sandi, tipe_akun, no_pendaftaran, school) VALUES ('$nSiswa', '$pass', 'calon_siswa', '$no_pendf', '$unit')") or die($mysqli->error);
               $mysqli->query("UPDATE tbl_school SET no_pend_terakhir = '$no_pendf', sisa_kuota = '$kuota' WHERE school_name = '$unit' AND type = '$type'") or die($mysqli->error);
@@ -211,6 +211,12 @@ if (isset($_POST['send']) && isset($_POST['tgl-lahir'])) {
             $nominalTrf = number_format(strval(219000 + $no_pendf), 0, ",", ".");
             $timestamp = time();
 
+            if ($unit == 'SMPIT-Fajar-Ilahi-1') {
+              $statusPendaftaran = 'dibayar';
+            } else {
+              $statusPendaftaran = 'menunggu_pembayaran';
+            }
+
             $mysqli->query("INSERT INTO tbl_ortu (nama_ayah, nama_ibu, no_hp_ayah, no_hp_ibu, alamat, kelurahan, kecamatan)
                                       VALUES ('$nAyah', '$nIbu', '$hpAyah', '$hpIbu', '$alamat', '$kelurahan', '$kecamatan')") or die($mysqli->error);
             $id_ortu = $mysqli->query("SELECT * FROM tbl_ortu WHERE nama_ayah='$nAyah' AND nama_ibu='$nIbu'") or die($mysqli->error);
@@ -222,7 +228,7 @@ if (isset($_POST['send']) && isset($_POST['tgl-lahir'])) {
                                       type, id_ortu, nominal_trf, status_pendaf)
                                       VALUES ('$no_pendf', '$timestamp', '$nSiswa', '$tmptLhr', '$tglLhr', '$unit',
                                         '$rataRapor1', '$rataRapor2', '$rataRapor3', '$rataRapor4', '$rataRapor5', '$asalSekolah',
-                                        '$type', '$id', '$nominalTrf', 'menunggu_pembayaran')") or die($mysqli->error);
+                                        '$type', '$id', '$nominalTrf', '$statusPendaftaran')") or die($mysqli->error);
             $mysqli->query("INSERT INTO tbl_akun (username, sandi, tipe_akun, no_pendaftaran, school) VALUES ('$nSiswa', '$pass', 'calon_siswa', '$no_pendf', '$unit')") or die($mysqli->error);
 
             $mysqli->query("UPDATE tbl_school SET no_pend_terakhir = '$no_pendf', sisa_kuota = '$kuota' WHERE school_name = '$unit' AND type = '$type'") or die($mysqli->error);

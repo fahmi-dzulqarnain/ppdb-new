@@ -70,7 +70,7 @@ $(document).ready(function () {
     closeBtn.forEach(close => close.addEventListener('click', closeModal))
 });
 
-function openModal(schoolName, logo, address, array) {
+function openModal(schoolName, logo, kontak, address, array) {
     const modalContainer = document.getElementById('modal-container')
     modalContainer.classList.add('show-modal')
 
@@ -109,7 +109,8 @@ function openModal(schoolName, logo, address, array) {
     }
 
     $("#modal-img").attr("src", 'logo/' + logo)
-    $("#modal-title").text(schoolName)
+    $("#modal-title").text(schoolName + ' ' + address)
+    $("#modal-contact").text('Kontak : ' + kontak);
 
     if (schoolName.includes('TK')) {
         $("#modal-capacity").text(data.TK_A.kapasitas + ' Siswa')
@@ -119,14 +120,14 @@ function openModal(schoolName, logo, address, array) {
         $("#first").attr("style", 'width: 50%;')
         $("#second").attr("style", 'display: block;')
 
-        $("#modal-description").text(address + '. Min. Umur: \nTK A (4 thn 1 bln), dan TK B (5 thn 1 bln) pada 01 Jul');
+        $("#modal-description").text('Min. Umur: TK A (4 thn 1 bln), dan TK B (5 thn 1 bln) pada 01 Jul');
     } else if (schoolName.includes('Khadijah')) {
         $("#modal-capacity").text(data.Mukim_Non_Mukim.kapasitas + ' Peserta')
         $("#modal-kuota").text(data.Mukim_Non_Mukim.sisa_kuota + ' / ' + data.Mukim_Non_Mukim.kuota)
         $("#first").attr("style", 'width: 100%;')
         $("#second").attr("style", 'display: none;')
 
-        $("#modal-description").text(address);
+        $("#modal-description").text('Kontak :' + kontak)
     } else if (schoolName.includes('SD')) {
         $("#modal-capacity").text(data.LK.kapasitas + ' Siswa')
         $("#modal-kuota").text(data.LK.sisa_kuota + ' / ' + data.LK.kuota)
@@ -135,7 +136,7 @@ function openModal(schoolName, logo, address, array) {
         $("#first").attr("style", 'width: 50%;')
         $("#second").attr("style", 'display: block;')
 
-        $("#modal-description").text(address + '. Min. Umur: SD (6 thn 1 bln) pada 01 Jul');
+        $("#modal-description").text('Min. Umur: SD (6 thn 1 bln) pada 01 Jul');
     } else {
         $("#modal-capacity").text(data.LK.kapasitas + ' Siswa')
         $("#modal-kuota").text(data.LK.sisa_kuota + ' / ' + data.LK.kuota)
@@ -144,6 +145,6 @@ function openModal(schoolName, logo, address, array) {
         $("#first").attr("style", 'width: 50%;')
         $("#second").attr("style", 'display: block;')
 
-        $("#modal-description").text(address);
+        $("#modal-description").text('')
     }
 }
