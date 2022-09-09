@@ -54,10 +54,10 @@
 
                         <h4 class="quicksand" style="margin-top: 1.5em;">Rerata Nilai Rapor</h4>
                         <div class="flex-row-wrap-fixed">
-                            <input name="rataRapor1" type="tel" placeholder="Kelas 4 Sem 1 *" class="input-text" style="width: 48%;" maxlength="5">
-                            <input name="rataRapor2" type="tel" placeholder="Kelas 4 Sem 2 *" class="input-text" style="width: 48%; margin-left: 4%" maxlength="5">
-                            <input name="rataRapor3" type="tel" placeholder="Kelas 5 Sem 1 *" class="input-text" style="width: 48%;" maxlength="5">
-                            <input name="rataRapor4" type="tel" placeholder="Kelas 5 Sem 2 *" class="input-text" style="width: 48%; margin-left: 4%" maxlength="5">
+                            <!--<input name="rataRapor1" type="tel" placeholder="Kelas 4 Sem 1 *" class="input-text" style="width: 48%;" maxlength="5">-->
+                            <!--<input name="rataRapor2" type="tel" placeholder="Kelas 4 Sem 2 *" class="input-text" style="width: 48%; margin-left: 4%" maxlength="5">-->
+                            <!--<input name="rataRapor3" type="tel" placeholder="Kelas 5 Sem 1 *" class="input-text" style="width: 48%;" maxlength="5">-->
+                            <!--<input name="rataRapor4" type="tel" placeholder="Kelas 5 Sem 2 *" class="input-text" style="width: 48%; margin-left: 4%" maxlength="5">-->
                             <input name="rataRapor5" type="tel" placeholder="Kelas 6 Sem 1 *" class="input-text" style="width: 48%;" maxlength="5">
                             <input name="prestasi" type="tel" placeholder="Prestasi" class="input-text" style="width: 48%; margin-left: 4%">
                         </div>

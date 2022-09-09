@@ -4,7 +4,7 @@ session_start();
 include_once '../includes/config.php';
 
 if (isset($_POST['login'])){
-    $username = strtoupper($_POST['username']);
+    $username = str_replace("'", "\'", strtoupper($_POST['username']));
     $rawPass = $_POST['password'];
     $password = md5($rawPass);
 

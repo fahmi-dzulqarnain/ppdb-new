@@ -68,40 +68,57 @@ $(document).ready(function () {
     }
 
     closeBtn.forEach(close => close.addEventListener('click', closeModal))
+    
+    const closeModalButton = document.querySelectorAll('.close-modal-btn')
+
+    function closeModalBtn() {
+        const modalContainer = document.getElementById('modal-announcement-container')
+        modalContainer.classList.remove('show-modal')
+    }
+
+    closeModalButton.forEach(close => close.addEventListener('click', closeModalBtn))
 });
 
-function openModal(schoolName, logo, kontak, address, array) {
+function openModal(schoolName, logo, address, array) {
     const modalContainer = document.getElementById('modal-container')
     modalContainer.classList.add('show-modal')
-
     var data = array.replace(/@/g, '"')
     data = $.parseJSON(data)
     let keys = Object.keys(data)
+    var kontak = ''
 
     for (let i = 0; i < keys.length; i++) {
         var s = i + 1
-
-        $(document).on('click', '#modal-btn-' + s, function () {
-            var querySchool = ''
-
-            switch (keys[i].replace(/_/g, ' ')) {
-                case 'TK A':
-                    querySchool = data.TK_A.query_name;
-                    break
-                case 'TK B':
-                    querySchool = data.TK_B.query_name;
-                    break
-                case 'LK':
-                    querySchool = data.LK.query_name;
-                    break
-                case 'PR':
-                    querySchool = data.PR.query_name;
-                    break
-                default:
-                    querySchool = data.Mukim_Non_Mukim.query_name;
-                    break
+        var querySchool = ''
+        
+        switch (keys[i].replace(/_/g, ' ')) {
+            case 'TK A':
+                querySchool = data.TK_A.query_name;
+                kontak = data.TK_A.kontak;
+                break
+            case 'TK B':
+                querySchool = data.TK_B.query_name;
+                kontak = data.TK_B.kontak;
+                break
+            case 'LK':
+                querySchool = data.LK.query_name;
+                kontak = data.LK.kontak;
+                break
+            case 'PR':
+                querySchool = data.PR.query_name;
+                kontak = data.PR.kontak;
+                break
+            case 'Idad':
+                querySchool = data.Idad.query_name;
+                kontak = data.Idad.kontak;
+                break
+            default:
+                querySchool = data.Tarbiyah.query_name;
+                kontak = data.Tarbiyah.kontak;
+                break
             }
 
+        $(document).on('click', '#modal-btn-' + s, function () {
             window.location.href = "daftar/register.php?unit=" + querySchool + "&type=" + keys[i].replace('_', ' ')
         })
 
@@ -120,14 +137,18 @@ function openModal(schoolName, logo, kontak, address, array) {
         $("#first").attr("style", 'width: 50%;')
         $("#second").attr("style", 'display: block;')
 
-        $("#modal-description").text('Min. Umur: TK A (4 thn 1 bln), dan TK B (5 thn 1 bln) pada 01 Jul');
+        $("#modal-description").text('Min. Umur: TK A (4 thn 1 bln), dan TK B (5 thn 1 bln) pada Jul');
     } else if (schoolName.includes('Khadijah')) {
-        $("#modal-capacity").text(data.Mukim_Non_Mukim.kapasitas + ' Peserta')
-        $("#modal-kuota").text(data.Mukim_Non_Mukim.sisa_kuota + ' / ' + data.Mukim_Non_Mukim.kuota)
-        $("#first").attr("style", 'width: 100%;')
-        $("#second").attr("style", 'display: none;')
+        $("#modal-capacity").text(data.Idad.kapasitas + ' Peserta')
+        $("#modal-kuota").text(data.Idad.sisa_kuota + ' / ' + data.Idad.kuota)
+        $("#modal-capacity-2").text(data.Tarbiyah.kapasitas + ' Siswa')
+        $("#modal-kuota-2").text(data.Tarbiyah.sisa_kuota + ' / ' + data.Tarbiyah.kuota)
+        $("#first").attr("style", 'width: 50%;')
+        $("#second").attr("style", 'display: block;')
+        //$("#first").attr("style", 'width: 100%;')
+        //$("#second").attr("style", 'display: none;')
 
-        $("#modal-description").text('Kontak :' + kontak)
+        $("#modal-description").text('')
     } else if (schoolName.includes('SD')) {
         $("#modal-capacity").text(data.LK.kapasitas + ' Siswa')
         $("#modal-kuota").text(data.LK.sisa_kuota + ' / ' + data.LK.kuota)
@@ -136,7 +157,7 @@ function openModal(schoolName, logo, kontak, address, array) {
         $("#first").attr("style", 'width: 50%;')
         $("#second").attr("style", 'display: block;')
 
-        $("#modal-description").text('Min. Umur: SD (6 thn 1 bln) pada 01 Jul');
+        $("#modal-description").text('Min. Umur 6 thn 1 bln pada Jul');
     } else {
         $("#modal-capacity").text(data.LK.kapasitas + ' Siswa')
         $("#modal-kuota").text(data.LK.sisa_kuota + ' / ' + data.LK.kuota)

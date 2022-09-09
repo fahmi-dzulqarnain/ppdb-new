@@ -182,22 +182,32 @@
                 $mysqli->query("UPDATE tbl_school SET sisa_kuota = '$kuotaA' WHERE school_name = '$school' AND type = 'LK'") or die($mysqli->error);
                 $mysqli->query("UPDATE tbl_school SET sisa_kuota = '$kuotaB' WHERE school_name = '$school' AND type = 'PR'") or die($mysqli->error);
             } else if (strpos($school, 'Pondok') !== false) {
-                $getSchool = $mysqli->query("SELECT * FROM tbl_school WHERE school_name = '$school'");
+                $getTarbiyah = $mysqli->query("SELECT * FROM tbl_school WHERE school_name = '$school' AND type = 'Tarbiyah'");
+                $getIdad = $mysqli->query("SELECT * FROM tbl_school WHERE school_name = '$school' AND type = 'Idad'");
                 
-                $schoolData = $getSchool->fetch_array();
-                $kuota = $schoolData['sisa_kuota'];
+                $TarbiyahData = $getTarbiyah->fetch_array();
+                $IdadData = $getIdad->fetch_array();
+                $kuotaTarbiyah = $TarbiyahData['sisa_kuota'];
+                $kuotaIdad = $IdadData['sisa_kuota'];
                 $now = time();
     
                 while ($row = $restore->fetch_assoc()){
                     $waktuLimit = $row['waktu_daftar'] + 24 * 60 * 60;
                     if ($now > $waktuLimit){
-                        $kuota++;
-                        $id = $row['id'];
-                        $mysqli->query("UPDATE tbl_reg SET status_pendaf = 'pendaftaran_batal' WHERE id = $id") or die($mysqli->error);
+                        if ($row['type'] == 'Tarbiyah'){
+                            $kuotaTarbiyah++;
+                            $id = $row['id'];
+                            $mysqli->query("UPDATE tbl_reg SET status_pendaf = 'pendaftaran_batal' WHERE id = $id") or die($mysqli->error);
+                        } else if ($row['type'] == 'Idad'){
+                            $kuotaIdad++;
+                            $id = $row['id'];
+                            $mysqli->query("UPDATE tbl_reg SET status_pendaf = 'pendaftaran_batal' WHERE id = $id") or die($mysqli->error);
+                        }
                     }
                 }
     
-                $mysqli->query("UPDATE tbl_school SET sisa_kuota = '$kuota' WHERE school_name = '$school'") or die($mysqli->error);
+                $mysqli->query("UPDATE tbl_school SET sisa_kuota = '$kuotaTarbiyah' WHERE school_name = '$school' AND type = 'Tarbiyah'") or die($mysqli->error);
+                $mysqli->query("UPDATE tbl_school SET sisa_kuota = '$kuotaIdad' WHERE school_name = '$school' AND type = 'Idad'") or die($mysqli->error);
             }
             ?>
 

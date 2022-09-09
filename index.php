@@ -7,14 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PPDB Yayasan Al Kahfi Batam</title>
     <link rel="stylesheet" href="style.css?v=2">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-
 </head>
 
 <body>
@@ -39,14 +38,14 @@
     </section>
 
     <?php
-    $mysqli = new mysqli('localhost', 'root', '', 'ppdb_db') or die(mysqli_error($mysqli));
+    include_once 'includes/config.php';
     $getSchool = $mysqli->query("SELECT school_name, type, logo_unit, alamat, sisa_kuota, kuota, kapasitas, kontak FROM tbl_school") or die($mysqli->error);
     $showModal = false;
     ?>
 
     <section class="chooseUnit" id="daftar">
         <div class="max-width">
-            <h2 class="title">Silakan Pilih Jenjang</h2>
+            <h2 class="title">Silakan Pilih <br>Jenjang dan Alamat</h2>
 
             <div class="owl-carousel daftar-carousel">
                 <?php
@@ -61,11 +60,11 @@
                     if (isset($arrayUnit[$schoolName]) == false) {
                         $arrayUnit[$schoolName] = array();
                         $arrayUnit[$schoolName]['logo_unit'] = $item[2];
-                        $arrayUnit[$schoolName]['kontak'] = $item[7];
                     }
 
                     $type = str_replace(' ', '_', $item[1]);
                     if (isset($arrayUnit[$schoolName][$item[3]][$type]) == false) {
+                        $arrayUnit[$schoolName][$item[3]][$type]['kontak'] = $item[7];
                         $arrayUnit[$schoolName][$item[3]][$type]['query_name'] = $item[0];
                         $arrayUnit[$schoolName][$item[3]][$type]['sisa_kuota'] = $item[4];
                         $arrayUnit[$schoolName][$item[3]][$type]['kuota'] = $item[5];
@@ -77,7 +76,6 @@
                     $schoolName = str_replace('-', ' ', key($arrayUnit));
 
                     $logoUnit = $school['logo_unit'];
-                    $kontak = $school['kontak'];
                 ?>
                     <div class="daftar-item">
                         <img src="logo/<?php echo $logoUnit; ?>" style="width: 100px;" alt="<?php echo $schoolName; ?>" class="icon">
@@ -85,11 +83,10 @@
                         <?php
 
                         unset($school['logo_unit']);
-                        unset($school['kontak']);
                         foreach ($school as $alamat => $value) {
                             $js_array = str_replace('"', '@', json_encode($value));
                         ?>
-                            <button class="button modal__button" onclick="openModal('<?php echo $schoolName; ?>', '<?php echo $logoUnit; ?>', '<?php echo $kontak; ?>', '<?php echo $alamat; ?>', '<?php print_r($js_array); ?>')">
+                            <button class="button modal__button" onclick="openModal('<?php echo $schoolName; ?>', '<?php echo $logoUnit; ?>', '<?php echo $alamat; ?>', '<?php print_r($js_array); ?>')">
                                 <?php echo $alamat; ?>
                             </button>
                         <?php
@@ -145,7 +142,21 @@
             </div>
 
             <button class="modal__button-link close-modal">
-                Close
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <div class="modal__container show-modal" id="modal-announcement-container">
+        <div class="modal__content" title="Close">
+            <i class="bx bx-x modal__close close-modal-btn"></i>
+
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_i0zh5psb.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px; margin: 12px auto;"  loop autoplay></lottie-player>
+
+            <h4>Pendaftaran TA 2022/2023 Telah ditutup</h4>
+
+            <button class="modal__button-link close-modal-btn">
+                Tutup
             </button>
         </div>
     </div>
@@ -298,7 +309,7 @@
                     </tr>
                     <tr>
                         <td>SMPIT Fajar Ilahi Batu Aji</td>
-                        <td>6.675.000,-</td>
+                        <td>6.650.000,-</td>
                         <td>450.000,-</td>
                     </tr>
                     <tr>
@@ -308,17 +319,17 @@
                     </tr>
                     <tr>
                         <td>SMAIT Fajar Ilahi Sei Beduk</td>
-                        <td>8.050.000,-</td>
+                        <td>8.100.000,-</td>
                         <td>450.000,-</td>
                     </tr>
                     <tr>
-                        <td>Ma'had Khodijah (Mukim)</td>
-                        <td>2.250.000,-</td>
+                        <td>Ma'had Khodijah (I'dad)</td>
+                        <td>2.700.000,-</td>
                         <td>300.000,-</td>
                     </tr>
                     <tr>
-                        <td>Ma'had Khodijah (Non Mukim)</td>
-                        <td>2.050.000,-</td>
+                        <td>Ma'had Khodijah (Tarbiyah)</td>
+                        <td>1.500.000,-</td>
                         <td>300.000,-</td>
                     </tr>
                 </table>
@@ -347,7 +358,9 @@
 
     <?php include_once('includes/footer.php'); ?>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 </body>
 
 </html>

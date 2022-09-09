@@ -50,12 +50,12 @@
 
             if ($status == "menunggu_pembayaran") :
                 $nominalBayar = $row['nominal_trf'];
-                $message = "Ayah Bunda memiliki waktu 24 Jam untuk melakukan pembayaran. Silakan Transfer ke <br>Bank BSI Kode. Bank (422) No. Rek. <b>$noRek</b><br> a.n. $namaRek <br><br>Nominal Pembayaran adalah <b>$nominalBayar</b> <br>(Wajib Transfer Sesuai Nominal)<br><br>Unggah Bukti Pembayaran di Bawah Ini!";
+                $message = "Ayah Bunda memiliki waktu 24 Jam untuk melakukan pembayaran. Silakan Transfer ke <br>Bank BSI Kode. Bank (451) No. Rek. <b>$noRek</b><br> a.n. $namaRek <br><br>Nominal Pembayaran adalah <b>$nominalBayar</b> <br>(Wajib Transfer Sesuai Nominal)<br><br>Unggah Bukti Pembayaran di Bawah Ini!";
             elseif ($status == "menunggu_konfirmasi") :
                 $message = "Panitia akan meninjau bukti pembayaran dari Ayah Bunda. Apabila bukti tidak sesuai, akan diminta mengunggah bukti yang baru. <b>$noPendDisp</b>";
             elseif ($status == "bukti_bayar_ditolak") :
                 $nominalBayar = $row['nominal_trf'];
-                $message = "Bukti pembayaran tidak jelas atau tidak sesuai. Mohon mengunggah file yang benar. <br>Bank BSI Kode. Bank (422) <b>($noRek)</b><br> a.n. $namaRek <br><br>Nominal Pembayaran : <b>$nominalBayar</b><br><br>Unggah Bukti Pembayaran di Bawah Ini!";
+                $message = "Bukti pembayaran tidak jelas atau tidak sesuai. Mohon mengunggah file yang benar. <br>Bank BSI Kode. Bank (451) <b>($noRek)</b><br> a.n. $namaRek <br><br>Nominal Pembayaran : <b>$nominalBayar</b><br><br>Unggah Bukti Pembayaran di Bawah Ini!";
             elseif ($status == "pendaftaran_batal") :
                 $message = "Ayah Bunda tidak mengunggah pembayaran dalam waktu 24 jam. Pendaftaran dibatalkan. Silakan mengantri kuota formulir baru.";
             elseif ($status == "dibayar") :
@@ -98,7 +98,7 @@
 
                         <div class="content">
                             <?php if ($status == "menunggu_pembayaran" || $status == "bukti_bayar_ditolak") : ?>
-                                <form action="account_process.php?id=<?php echo $id; ?>&username=<?php echo $nSiswa; ?>&no_pendaftaran=<?php echo $no_pendf; ?>" method="POST" enctype="multipart/form-data">
+                                <form action="account_process_.php?id=<?php echo $id; ?>&username=<?php echo $nSiswa; ?>&no_pendaftaran=<?php echo $no_pendf; ?>" method="POST" enctype="multipart/form-data">
                                     <div class="img-container" style="margin-top: 1.5em">
                                         <div class="img-wrapper">
                                             <div class="image">

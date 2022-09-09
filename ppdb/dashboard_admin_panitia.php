@@ -50,8 +50,7 @@
 
     <div class="d-flex mb-3 bg-success" style="padding: 5px;">
         <?php
-            $mysqli = new mysqli('localhost', 'ppdbalka_fahmi', 'Al-K4hfi_Batam', 'ppdbalka_ppdb_db') or die(mysqli_error($mysqli));
-            // $mysqli = new mysqli('localhost', 'root', '', 'ppdb_db') or die(mysqli_error($mysqli)); 
+            include_once '../includes/config.php';
             $result = $mysqli->query("SELECT * FROM tbl_reg WHERE status_pendaf='dibayar' AND sekolah_daftar='$school' ORDER BY no_pendaftaran") or die($mysqli->error);
             ?>
         <div class="p-2 mr-auto bg-success" style="margin-top: 15px; margin-left: 10px; margin-right: 10px">
@@ -61,7 +60,7 @@
             <input class="form-control" id="searchBox" type="text" placeholder="Cari..">
         </div>
         <div class="p-2  bg-success">
-            <a href="https://ppdb-alkahfi.com/ppdb/dashboard_admin_panitia.php">
+            <a href="dashboard_admin_panitia.php">
                 <div>
                     <i class="fas fa-redo" style="color: white;"></i>
                     <p style="color: white; font-size: 12px">Refresh</p>
@@ -77,7 +76,7 @@
             </a>
         </div>
         <div class="p-2  bg-success">
-            <a href="https://ppdb-alkahfi.com/ppdb/dashboard_admin_return.php">
+            <a href="dashboard_admin_return.php">
                 <div>
                     <i class="fas fa-table" style="color: white;"></i>
                     <p style="color: white; font-size: 12px">Semua Data</p>
