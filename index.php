@@ -1,39 +1,52 @@
 <!DOCTYPE html>
-<!-- Created By Fahmi Dzulqarnain -->
+<!-- Created By Fahmi Dzulqarnain and Ahmad Fauzi -->
 <html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PPDB Yayasan Al Kahfi Batam</title>
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="main_css/root.css">
+    <link rel="stylesheet" href="main_css/style.css">    
+    <link rel="shortcut icon" href="assets/img/Yayasan Islam Al Kahfi Batam@2x.png" type="image/x-icon">
+
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 
 <body>
     <div class="header-bar">
-        <a href="#" class="header-text">
-            <h1>PPDB</h1>
-            <h3>Yayasan Islam Al Kahfi Batam</h3>
-        </a>
-        <img src="images/logo_alkahfi-300x300.png" alt="al-kahfi-batam.png" class="logo">
+        <div class="header-bar-container">
+            
+            <div class="header-bar-properti">
+                <img src="assets/img/PPIT SMP@2x.png" alt="al-kahfi-batam.png" class="side_logo">
+                <div>
+                    <h3 class="mobile-size-font-logo-h3">SMPIT Imam Syafii</h3>
+                    <p class="mobile-size-font-logo-p">Jl. Hang Lekiu, Sambau, Nongsa</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- home section start -->
 
     <section class="cover" id="home">
         <div class="cover-content">
-            <div class="text-2"><span class="typing-1"></span></div>
-            <div class="flex-column" style="margin-top: 12vh;">
-                <a href="#daftar">Daftar</a>
-                <a href="login/">Login</a>
+            <div class="lottie-size"><lottie-player src="https://assets6.lottiefiles.com/packages/lf20_9cyyl8i4.json" background="transparent" speed="1"  loop autoplay></lottie-player></div>
+            <div class="text-2">Penerimaan Peserta<br> Didik Baru</div>
+            <div class="flex-column" style="margin-top: 5vh;">
+                <div class="flex-column">
+                    <a class="button" href="#daftar">Daftar</a>
+                </div>
+                <p style="margin-top: 5vh;">Sudah Mendaftar?</p>
+                <div class="flex-column">
+                    <a class="button" href="login/">Masuk Akun</a>
+                </div>
             </div>
         </div>
     </section>
@@ -44,67 +57,8 @@
     $showModal = false;
     ?>
 
-    <section class="chooseUnit" id="daftar">
-        <div class="max-width">
-            <h2 class="title">Silakan Pilih Jenjang</h2>
 
-            <div class="owl-carousel daftar-carousel">
-                <?php
-
-                $arrayResult = $getSchool->fetch_all();
-                $arrayUnit = array();
-                $i = 0;
-
-                for ($i = 0; $i < count($arrayResult); $i++) :
-                    $item = $arrayResult[$i];
-                    $schoolName = str_replace(['-1', '-2', '-3'], '', $item[0]);
-                    if (isset($arrayUnit[$schoolName]) == false) {
-                        $arrayUnit[$schoolName] = array();
-                        $arrayUnit[$schoolName]['logo_unit'] = $item[2];
-                        $arrayUnit[$schoolName]['kontak'] = $item[7];
-                    }
-
-                    $type = str_replace(' ', '_', $item[1]);
-                    if (isset($arrayUnit[$schoolName][$item[3]][$type]) == false) {
-                        $arrayUnit[$schoolName][$item[3]][$type]['query_name'] = $item[0];
-                        $arrayUnit[$schoolName][$item[3]][$type]['sisa_kuota'] = $item[4];
-                        $arrayUnit[$schoolName][$item[3]][$type]['kuota'] = $item[5];
-                        $arrayUnit[$schoolName][$item[3]][$type]['kapasitas'] = $item[6];
-                    }
-                endfor;
-
-                while ($school = current($arrayUnit)) :
-                    $schoolName = str_replace('-', ' ', key($arrayUnit));
-
-                    $logoUnit = $school['logo_unit'];
-                    $kontak = $school['kontak'];
-                ?>
-                    <div class="daftar-item">
-                        <img src="logo/<?php echo $logoUnit; ?>" style="width: 100px;" alt="<?php echo $schoolName; ?>" class="icon">
-                        <h3><?php echo str_replace(['-1', '-2', '-3'], '', $schoolName); ?></h3>
-                        <?php
-
-                        unset($school['logo_unit']);
-                        unset($school['kontak']);
-                        foreach ($school as $alamat => $value) {
-                            $js_array = str_replace('"', '@', json_encode($value));
-                        ?>
-                            <button class="button modal__button" onclick="openModal('<?php echo $schoolName; ?>', '<?php echo $logoUnit; ?>', '<?php echo $kontak; ?>', '<?php echo $alamat; ?>', '<?php print_r($js_array); ?>')">
-                                <?php echo $alamat; ?>
-                            </button>
-                        <?php
-                        }
-                        ?>
-                    </div>
-                <?php
-                    next($arrayUnit);
-                endwhile;
-                ?>
-            </div>
-        </div>
-    </section>
-
-    <div class="modal__container <?php if ($showModal) echo 'show-modal'; ?>" id="modal-container">
+    <!--div class="modal__container <?php if ($showModal) echo 'show-modal'; ?>" id="modal-container">
         <div class="modal__content" title="Close">
             <i class="bx bx-x modal__close close-modal"></i>
 
@@ -148,18 +102,18 @@
                 Close
             </button>
         </div>
-    </div>
+    </div-->
 
     <!-- Informasi pendaftaran -->
     <section class="services" id="informasi">
         <div class="max-width">
-            <h2 class="title"><i class='bx bx-info-circle'></i> Informasi</h2>
+            <h2 class="title"><i class='info_logo'></i><br> Informasi</h2>
             <div class="serv-content">
                 <div class="card">
                     <div class="box">
                         <div class="text"><i class='bx bx-money'></i> Biaya Pendaftaran </div>
                         <br>
-                        <p>Biaya Pendaftaran Adalah Rp220.000,- Kecuali untuk SDIT FI (1, 2, 3), dan SMPIT FI 1<br>Biaya Masuk Klik <a href="#uangmasuk" style="color: #DCE775; font-weight:600;">Disini</a> </p><br>
+                        <p>Rp220.000,-</p>
                     </div>
                 </div>
                 <div class="card">
@@ -168,13 +122,11 @@
                         <br>
                         <ul>
                             <li>Alat tulis</li>
-                            <li>Fotocopy KK 2 lembar</li>
-                            <li>Fotocopy Akta Lahir 2 lembar</li>
-                            <li>Mengisi & menyerahkan surat pernyataan wali</li>
-                            <li>Quran untuk membaca dan menghafal (SMP/SMA)</li>
-                            <li>Fotocopy kartu NISN (SMP/SMA)</li>
-                            <li>Fotocopy rapor Sem ganjil kelas 6 (SMP) / kelas 9 (SMA) </li>
-                            <li>Alat tulis</li>
+                            <li>Fotocopy akta kelahiran</li>
+                            <li>Fotocopy kartu keluarga</li>
+                            <li>Mengisi dan menyerahkan surat pernyataan</li>
+                            <li>Surat hasil kesehatan (laboratorium)</li>
+                            <li>Dan lain-lain</li>
                         </ul><br>
                     </div>
                 </div>
@@ -186,7 +138,7 @@
     <!-- jadwal -->
     <section class="timeline" id="jadwal">
         <div class="max-width">
-            <h1 class="title">Timeline PPDB</h1>
+            <h1 class="title">Line Masa</h1>
             <div class="container left">
                 <div class="content">
                     <h4>Pendaftaran PPDB 2022/2023</h4>
@@ -274,59 +226,6 @@
         </div>
     </section>
 
-    <!-- uang masuk -->
-    <section class="jadwal2" id="uangmasuk">
-        <div class="max-width">
-
-            <h1 class="title">Biaya Masuk</h1>
-            <div>
-                <table class="jadwal">
-                    <tr>
-                        <th>UNIT</th>
-                        <th>BIAYA</th>
-                        <th>SPP</th>
-                    </tr>
-                    <tr>
-                        <td>TKIT Fajar Ilahi</td>
-                        <td>3.490.000,-</td>
-                        <td>350.000,-</td>
-                    </tr>
-                    <tr>
-                        <td>SDIT Fajar Ilahi</td>
-                        <td>5.120.000,-</td>
-                        <td>375.000,-</td>
-                    </tr>
-                    <tr>
-                        <td>SMPIT Fajar Ilahi Batu Aji</td>
-                        <td>6.675.000,-</td>
-                        <td>450.000,-</td>
-                    </tr>
-                    <tr>
-                        <td>SMPIT Fajar Ilahi Sei Beduk</td>
-                        <td>6.900.000,-</td>
-                        <td>400.000,-</td>
-                    </tr>
-                    <tr>
-                        <td>SMAIT Fajar Ilahi Sei Beduk</td>
-                        <td>8.050.000,-</td>
-                        <td>450.000,-</td>
-                    </tr>
-                    <tr>
-                        <td>Ma'had Khodijah (Mukim)</td>
-                        <td>2.250.000,-</td>
-                        <td>300.000,-</td>
-                    </tr>
-                    <tr>
-                        <td>Ma'had Khodijah (Non Mukim)</td>
-                        <td>2.050.000,-</td>
-                        <td>300.000,-</td>
-                    </tr>
-                </table>
-            </div>
-
-            <p style="text-align: center; margin-top: 35px;">* Termasuk SPP Juli, Buku, Kegiatan, Uang Pangkal, Seragam, dan Gedung</p>
-        </div>
-    </section>
 
     <!-- about section start -->
     <section class="about" id="about">
@@ -339,7 +238,9 @@
                 <div class="column right">
                     <div class="text">Al Kahfi Batam, Berkhidmat Untuk <span class="typing-2"></span></div>
                     <p>Yayasan Islam Al Kahfi Batam didirikan sebagai sarana untuk mengelola dan mengembangkan da’wah Islam berdasarkan Al Qur’an dan Assunnah dengan pemahaman Salaful Ummah di Kota Batam dan propinsi Kepulauan Riau.</p>
-                    <a href="https://alkahfi.or.id/">Lebih Lanjut</a>
+                    <div class="flex-column col-2">
+                        <a class="button" href="https://alkahfi.or.id/">Lebih Lanjut</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -347,7 +248,8 @@
 
     <?php include_once('includes/footer.php'); ?>
 
-    <script src="script.js"></script>
+    <script src="main_js/script.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 
 </html>

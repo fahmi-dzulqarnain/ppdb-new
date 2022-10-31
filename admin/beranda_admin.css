@@ -1,0 +1,921 @@
+/* #region Common */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/*
+    Img
+*/
+.yayasan_logo {
+    background-image: url('../assets/img/isi_logo.png');
+    width: 5rem;
+    height: 5rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+.tkit_fi_logo {
+    background-image: url('../assets/img/FI\ TK@2x.png');
+    width: 5rem;
+    height: 6rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+.sdit_fi_logo {
+    background-image: url('../assets/img/FI\ SD@2x.png');
+    width: 5rem;
+    height: 6rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+.smpit_fi_logo {
+    background-image: url('../assets/img/FI\ SMP@2x.png');
+    width: 5rem;
+    height: 6rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+.smait_fi_logo {
+    background-image: url('../assets/img/FI\ SMA@2x.png');
+    width: 5rem;
+    height: 6rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+.smp_imam_logo {
+    background-image: url('../assets/img/PPIT\ SMP@2x.png');
+    width: 5rem;
+    height: 6rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+.sma_imam_logo {
+    background-image: url('../assets/img/PPIT\ SMA@2x.png');
+    width: 5rem;
+    height: 6rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+.swtq_imam_logo {
+    background-image: url('../assets/img/SWTQ\ Imam\ Syafii.png');
+    width: 5rem;
+    height: 6rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+.sutq_imam_logo {
+    background-image: url('../assets/img/SUTQ\ Imam\ Syafii.png');
+    width: 5rem;
+    height: 6rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+.server-solid{
+    background-image: url('../assets/img/server-solid.svg');
+    width: 5rem;
+    height: 10rem;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
+    align-items: center;
+    display: inline-flex;
+    /*border: 1px solid red;*/
+}
+.akses_lewat_laptop {
+    background-image: url('../assets/img/undraw_online_test_re_kyfx.svg');
+    width: 10rem;
+    height: 10rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.keluar_logo {
+    background-image: url('../assets/img/right-from-bracket-solid.svg');
+    width: 5rem;
+    height: 5rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+:root{
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+body{
+    min-height: 100vh;
+    background-color: #F9FCF5;
+    transition: var(--tran-05);
+}
+
+::selection{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+body.dark{
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.padding-card-botton {
+    padding: 0 20px 0 20px;
+}
+
+.margin-h3-orangtua {
+    margin-bottom: 1rem;
+}
+
+#conten-right{
+    float: left;
+    width: 50%;
+}
+
+.kurung {
+    height: 100%;
+    /* background-color: var(--milk); */
+    border-radius: 30px;
+    margin: 20px 20px;
+}
+
+.card {
+    background: var(--Tea);
+    text-align: center;
+    border-radius: 15px;
+    padding: 1em;
+    width: 15rem;
+    cursor: pointer;
+    margin: 1rem;
+    transition: all 0.3s ease;
+    line-height: 1.5em;
+    margin-top: 1em;
+}
+
+.card-color-lulus {
+    background-color: var(--Gray);
+}
+
+.card-color-perlu-aksi {
+    background-color: var(--Dandelion);
+}
+
+.card .box {
+    transition: all 0.3s ease;
+}
+.card ul li {
+    text-align: left;
+    margin-left: 5em;
+}
+ .box p {
+    font-size: 1em;
+}
+
+ .box {
+    transform: scale(1.02);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: end;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.button{
+    text-decoration: none;
+    display: inline-block;
+    background-color: var(--leaf);
+    color: #fff;
+    padding: .6rem 1rem;
+    margin-top: .5rem;
+    border-radius: .5rem;
+    font-weight: var(--font-medium);
+    font-size: 1.4em;
+    transition: .3s;
+    width: 100%;
+    margin-top: .5rem;
+}
+
+.button:hover {
+    background-color: var(--Eggshell);
+    font-weight: var(--font-bold);
+    color: var(--leaf);
+    outline: solid .5px;
+    outline-color: var(--leaf);
+}
+
+.text-field-margin {
+    margin: 1rem 1rem 0;
+}
+
+
+/* ===== Sidebar ===== */
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 20px;
+    background: var(--first-color-alt);
+    transition: var(--tran-05);
+    z-index: 100;  
+}
+.sidebar.close{
+    width: 120px;
+}
+
+.fokus-sisi-tengah {
+    text-align: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vh;
+    display: table-cell;
+    vertical-align: middle;
+}
+/* ===== Reusable code - Here ===== */
+.sidebar li{
+    height: 80px;
+    width: 80px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+}
+
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.sidebar .text,
+.sidebar .icon{
+    color: var(--sidebar-color);
+    transition: var(--tran-03);
+}
+
+.sidebar .text{
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+.sidebar.close .text{
+    opacity: 0;
+}
+/* =========================== */
+
+.sidebar header{
+    position: relative;
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+.sidebar header .logo-text{
+    display: flex;
+    flex-direction: column;
+}
+header .image-text .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+header .image-text .profession{
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+.sidebar header .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img{
+    width: 40px;
+    border-radius: 6px;
+}
+
+.sidebar header .toggle{
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
+}
+
+.sidebar.close .toggle{
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu{
+    margin-top: .6rem;
+}
+
+.sidebar li.search-box{
+    border-radius: 24px;
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+.sidebar li.search-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: var(--tran-05);
+}
+
+.sidebar li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--Tea);
+}
+
+
+.disappeared {
+    display: none;
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    color: var(--text-color);
+}
+
+.side-bar-active {
+    color: var(--Tea);
+}
+
+
+.sidebar .menu-bar{
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+.menu-bar::-webkit-scrollbar{
+    display: none;
+}
+.sidebar .menu-bar .mode{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon{
+    height: 50px;
+    width: 60px;
+}
+
+.mode .sun-moon i{
+    position: absolute;
+}
+.mode .sun-moon i.sun{
+    opacity: 0;
+}
+body.dark .mode .sun-moon i.sun{
+    opacity: 1;
+}
+body.dark .mode .sun-moon i.moon{
+    opacity: 0;
+}
+
+.menu-bar .bottom-content .toggle-switch{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.toggle-switch .switch{
+    position: relative;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+body.dark .switch::before{
+    left: 20px;
+}
+
+.beranda{
+    position: absolute;
+    top: 0;
+    left: 250px;
+    width: calc(100% - 250px);
+    /* background-color: var(--first-color-alt); */
+    transition: var(--tran-05);
+}
+.beranda .text{
+    font-size: 24px;
+    font-weight: var(--font-semi-bold);
+    color: var(--text-color-admin);
+    padding: 40px 0 20px 0px;
+}
+
+.text-number{
+    font-size: 40px;
+    font-weight: var(--font-semi-bold);
+    color: var(--text-color-admin);
+}
+
+.text-card {
+    font-size: 20px;
+    font-weight: var(--font-semi-bold);
+    color: var(--text-color-admin);
+    padding: 10px 0;
+}
+
+.sidebar.close ~ .beranda{
+    left: 105px;
+    height: 100%;
+    width: calc(100% - 105px);
+}
+body.dark .beranda .text{
+    color: var(--text-color);
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--Milk);
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.col-2 {
+    width: 50%;
+}
+
+section {
+    padding: 10px 0 50px 0;
+}
+
+.max-width {
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+
+/*--------------------- Pendaftaran section -------------------*/
+.wrapper {
+    width: 95%;
+    margin: 0 auto;
+}
+
+#search-container {
+    margin: 1em 0;
+}
+
+#search-container input  {
+    background-color: transparent;
+    width: 40%;
+    border: none;
+    border-bottom: 2px solid var(--leaf);
+    padding: 1em .3em;
+}
+
+#search-container input:focus {
+    border-bottom-color: var(--first-color);
+    
+}
+
+#search-container button {
+    padding: 1em 2em;
+    margin-left: 1em;
+    background-color: var(--leaf);
+    color: var(--milk);
+    border-radius: 5px;
+    margin-top: .5em;
+}
+
+.buttons {
+    padding: 10px 2rem;
+}
+.button-value {
+    border: 1px solid var(--leaf);
+    font-size: 10px;
+    font-weight: var(--font-medium);
+    padding: 5px 10px;
+    border-radius: 3em;
+    background-color: transparent;
+    color: var(--leaf);
+    cursor: pointer;
+}
+
+.active {
+    background-color: var(--leaf);
+    color: var(--milk);
+}
+
+.box-header-pendaftar {
+    transform: scale(1.02);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-text-filter {
+    background: var(--Gray);
+    text-align: center;
+    border-radius: 15px;
+    padding: 0px 10px;
+    cursor: pointer;
+    margin: 1rem 4px;
+    transition: all 0.3s ease;
+    margin-top: 1em;
+}
+.box-menunggu-pembayaran {
+    transform: scale(1.02);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    display: flex;
+    text-align: end;
+}
+
+.text-card-filter {
+    font-size: 10px;
+    font-weight: var(--font-medium);
+    color: var(--text-color-admin);
+    padding: 4px 0;
+}
+
+.card-menunggu-pembayaran {
+    background: var(--white);
+    border-radius: 15px;
+    /* padding: 1em; */
+    cursor: pointer;
+    margin: 1rem;
+    transition: all 0.3s ease;
+    line-height: 1.5em;
+    margin-top: 1em;
+    box-shadow: 0px 3px 6px 0px #00000029;
+}
+
+.no-pembayaran {
+    font-size: 14px;
+    font-weight: var(--font-medium);
+    color: var(--text-color-admin);
+    flex-wrap: initial;
+    display: inherit;
+}
+
+.nama-pendaftaran {
+    font-size: 20px;
+    font-weight: var(--font-bold);
+    color: var(--text-color-admin);
+    flex-wrap: initial;
+    text-align: start;
+}
+
+.tempat-button {
+    font-size: 20px;
+    font-weight: var(--font-semi-bold);
+    color: var(--text-color-admin);
+    width: 30%;
+    justify-content: end;
+}
+
+.line-tempat-button {
+    border-top: 1px solid;
+    margin-top: 18px;
+    width: 30%;
+    position: absolute;
+    justify-content: center;
+}
+
+.tempat-button-konfirmasi {
+    font-size: 20px;
+    font-weight: var(--font-semi-bold);
+    color: var(--text-color-admin);
+    width: 30%;
+    justify-content: center;
+}
+
+.card-wa {
+    padding: 5px 8px;
+    background-color: var(--Eggshell);
+    border: 1px solid var(--first-color);
+    color: var(--first-color-alt);
+    border-radius: 5px;
+    position: relative;
+}
+
+.card-menunggu-konfirmasi {
+    background: var(--white);
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 1rem;
+    transition: all 0.3s ease;
+    line-height: 1.5em;
+    margin-top: 1em;
+    box-shadow: 0px 3px 6px 0px #00000029;
+}
+
+.box-menunggu-konfirmasi {
+    transform: scale(1.02);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: end;
+}
+
+.card-bukti-bayar{
+    padding: 5px 20px;
+    background-color: var(--Eggshell);
+    border: 1px solid var(--first-color);
+    color: var(--first-color-alt);
+    border-radius: 5px;
+    font-weight: var(--font-medium);
+    position: relative;
+    text-align: center;
+    right: 10px;
+}
+
+.card-wa-konfirmasi {
+    padding: 5px 8px;
+    background-color: var(--Eggshell);
+    border: 1px solid var(--first-color);
+    color: var(--first-color-alt);
+    border-radius: 5px;
+    position: relative;
+}
+
+.button-konfirmasi {
+    font-size: 14px;
+    font-weight: var(--font-medium);
+    color: var(--text-color-admin);
+    flex-wrap: initial;
+    display: inherit;
+}
+
+.button-setujui {
+    padding: 10px 36px;
+    border-radius: 6px;
+    background-color: var(--leaf);
+    color: var(--white);
+}
+
+.button-setujui:hover {
+    background-color: var(--Eggshell);
+    border: 1px solid var(--first-color);
+    color: var(--first-color-alt);
+    font-weight: var(--font-semi-bold);
+}
+
+.button-tolak {
+    padding: 10px 36px;
+    border-radius: 6px;
+    background-color: var(--Rose);
+    color: var(--white);
+    margin: 10px 0 0 0;
+}
+
+.button-tolak:hover {
+    background-color: var(--back-rose);
+    color: var(--Rose);
+    border: 1px solid var(--Rose);
+    font-weight: var(--font-semi-bold);
+}
+
+.card-dibayar {
+    padding: 5px 10px;
+    background-color: var(--Eggshell);
+    border: 1px solid var(--first-color);
+    color: var(--first-color-alt);
+    border-radius: 5px;
+    font-weight: var(--font-medium);
+    font-size: 14px;
+    position: relative;
+    text-align: center;
+    margin-right: 10px;
+    /* right: 10px; */
+}
+
+.card-color-rose {
+    background-color: var(--Rose);
+    color: var(--milk);
+    border: none;
+}
+
+.card-color-rose:hover {
+    background-color: var(--back-rose);
+    color: var(--Rose);
+    border: 1px solid var(--Rose);
+    font-weight: var(--font-semi-bold);
+}
+
+.card-color-leaf {
+    background-color: var(--leaf);
+    color: var(--milk);
+    border: none;
+}
+
+.card-color-leaf:hover {
+    background-color: var(--Eggshell);
+    border: 1px solid var(--first-color);
+    color: var(--first-color-alt);
+    font-weight: var(--font-semi-bold);
+}
+
+.card-color-Dandelion {
+    background-color: var(--Dandelion);
+    color: var(--text-color-admin);
+    border: none;
+}
+
+.card-color-Dandelion:hover {
+    background-color: var(--back-dandelion);
+    border: 1px solid var(--Dandelion);
+    font-weight: var(--font-semi-bold);
+}
+
+.tempat-button-dibayar {
+    font-size: 20px;
+    font-weight: var(--font-semi-bold);
+    color: var(--text-color-admin);
+    width: 60%;
+    justify-content: end;
+}
+
+.line-tempat-button-banyak {
+    border-top: 1px solid;
+    margin-top: 18px;
+    width: 60%;
+    position: absolute;
+    justify-content: center;
+}
+/* #endregion */
+
+/* #region Header */
+
+
+@media (max-width: 991px) {
+    .display-none {
+        display: none;
+    }
+    .display-mobile {
+        display: table-cell;
+    }
+
+    .sidebar .menu {
+        margin-top: 0px;
+    }
+    .sidebar .menu-bar {
+        flex-direction: row;
+        background-color: var(--first-color-alt);
+        align-items: center;
+        padding: 1rem 2rem
+    }
+
+    .beranda{
+        position: static;
+    }
+    .sidebar.close ~ .beranda {
+        width: 100%;
+        height: auto;
+    }
+    #conten-right {
+        float: none;
+        width: 100%;
+    }
+    .kurung {
+        border-radius: 30px 30px 0 0;
+        margin: 20px 0 0 0px;
+    }
+    section {
+        padding: 2rem 0 0px 0px;
+    }
+    .margin-mobile {
+        margin: 30px 30px 0 30px;
+        padding: 0 0px 30px 0;
+    }
+    .margin-h3-orangtua {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+}

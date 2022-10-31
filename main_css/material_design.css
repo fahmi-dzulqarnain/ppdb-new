@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand');
+
+:root{
+        --mdc-typography-font-family: unquote("Quicksand, sans-serif");
+        --mdc-theme-primary: var(--first-color);
+        --mdc-theme-on-primary: var(--text-color-light);
+        --mdc-theme-surface: var(--text-color-light);
+        --mdc-theme-on-surface: var(--first-color);
+}
+       
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+.mdc-button {
+    text-transform: capitalize;
+}
+.mdc-button--outlined:hover{
+    color: #fff;
+}
+.btn-lebih-lanjut:before{
+    content:'Lebih Lanjut';
+}
+.btn-lebih-lanjut:hover:before{
+    content:'Daftar';
+}
+.btn-batu-aji:before {
+    content:'Batu Aji';
+}
+.btn-batu-aji:hover:before {
+    content:'Daftar';
+}
+.btn-bengkong:before {
+    content:'Bengkong';
+}
+.btn-bengkong:hover:before {
+    content:'Daftar';
+}
+.btn-seibeduk:before {
+    content:'Sei Beduk';
+}
+.btn-seibeduk:hover:before {
+    content:'Daftar';
+}
+
+.mdc-text-field--disabled .mdc-text-field__input {
+    color: rgba(0, 0, 0, 1);
+}
