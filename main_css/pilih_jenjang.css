@@ -9,71 +9,8 @@
     background-size: 100%;
     background-position: center;
 }
-.tkit_fi_logo {
-    background-image: url('../assets/img/FI\ TK@2x.png');
-    width: 5rem;
-    height: 6rem;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-}
-.sdit_fi_logo {
-    background-image: url('../assets/img/FI\ SD@2x.png');
-    width: 5rem;
-    height: 6rem;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-}
-.smpit_fi_logo {
-    background-image: url('../assets/img/FI\ SMP@2x.png');
-    width: 5rem;
-    height: 6rem;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-}
-.smait_fi_logo {
-    background-image: url('../assets/img/FI\ SMA@2x.png');
-    width: 5rem;
-    height: 6rem;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-}
-.smp_imam_logo {
-    background-image: url('../assets/img/PPIT\ SMP@2x.png');
-    width: 5rem;
-    height: 6rem;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-}
-.sma_imam_logo {
-    background-image: url('../assets/img/PPIT\ SMA@2x.png');
-    width: 5rem;
-    height: 6rem;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-}
-.swtq_imam_logo {
-    background-image: url('../assets/img/SWTQ\ Imam\ Syafii.png');
-    width: 5rem;
-    height: 6rem;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-}
-.sutq_imam_logo {
-    background-image: url('../assets/img/SUTQ\ Imam\ Syafii.png');
-    width: 5rem;
-    height: 6rem;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-}
-.server-solid{
+
+.server-solid {
     background-image: url('../assets/img/server-solid.svg');
     width: 5rem;
     height: 10rem;
@@ -84,35 +21,36 @@
     display: inline-flex;
     /*border: 1px solid red;*/
 }
+
 /*
     Base
 */
 
-*  {
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-html  {
+html {
     scroll-behavior: smooth;
 }
 
 body,
 button,
 input,
-textarea  {
+textarea {
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
 }
 
-body  {
+body {
     background-color: var(--body-color);
     color: var(--text-color);
     transition: .4s;
 }
 
-button  {
+button {
     cursor: pointer;
     border: none;
     outline: none;
@@ -120,17 +58,18 @@ button  {
 
 h1,
 h2,
-h3  {
+h3 {
     color: var(--title-color);
     font-weight: var(--font-bold);
 }
 
-ul  {
+ul {
     list-style: none;
 }
 
-.hidden_underline  {
+.bordered-button {
     text-decoration: none;
+    border-radius: 1em;
 }
 
 .flex-column {
@@ -138,10 +77,16 @@ ul  {
     flex-direction: column;
 }
 
-img  {
+img {
     max-width: 100%;
     height: auto;
 }
+
+.sekolah-logo {
+    height: 6rem;
+    margin-bottom: 8px;
+}
+
 /*Theme*/
 /*Variables Dark Theme*/
 body.dark-theme {
@@ -171,7 +116,7 @@ Color changes in some parts of the website of
 the website, in dark theme  
 ----------*/
 
-.dark-theme .steps_bg,
+.dark-theme,
 .dark-theme .questions {
     background-color: var(--first-color-dark);
 }
@@ -186,7 +131,7 @@ the website, in dark theme
 }
 
 /*Reusable CSS Classes*/
-.section  {
+.section {
     padding: 0.8rem 0 0 0;
 }
 
@@ -198,30 +143,30 @@ the website, in dark theme
     text-align: center;
 }
 
-.section_title-center-color  {
+.section_title-center-color {
     text-align: center;
     color: var(--first-color);
 }
 
-.container  {
+.container {
     max-width: 968px;
     margin-left: var(--mb-1-5);
     margin-right: var(--mb-1-5);
 }
 
-.grid  {
+.grid {
     display: grid;
 }
 
-.main  {
-    background-color: var(--first-color-lighten-footer);
+.main {
+    background-color: var(--milk);
     overflow: hidden;
 }
 
 
 /*----HEADER----*/
 
-.header  {
+.header {
     width: 100%;
     background-color: var(--body-color);
     position: fixed;
@@ -233,7 +178,7 @@ the website, in dark theme
 
 /*-----NAV-----*/
 
-.nav  {
+.nav {
     height: var(--header-height);
     display: flex;
     justify-content: space-between;
@@ -249,7 +194,7 @@ the website, in dark theme
 .nav_logo {
     font-weight: 700;
     letter-spacing: -1px;
-    display: inline-flex;   
+    display: inline-flex;
     align-items: center;
     column-gap: .5rem;
     transition: .3s;
@@ -308,15 +253,17 @@ the website, in dark theme
 
 .nav_link:hover {
     color: var(--first-color);
-    
+
 }
+
 /*Footer_link*/
-.footer_link{
+.footer_link {
     color: var(--title-color);
     font-weight: var(--font-medium);
     transition: .3s;
     text-decoration: none;
 }
+
 .footer_link:hover {
     color: var(--first-color);
 }
@@ -394,15 +341,17 @@ the website, in dark theme
 }
 
 /*-----------About-----------*/
-.tentang_container  {
+.tentang_container {
     row-gap: 2rem;
     margin-top: 2.5rem;
 }
-.tentang_container-mg  {
+
+.tentang_container-mg {
     row-gap: 2rem;
     margin-top: 2.5rem;
 }
-.tentang_data{
+
+.tentang_data {
     display: inline-block;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
@@ -412,6 +361,7 @@ the website, in dark theme
     position: relative;
     align-items: center;
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 .tentang_img {
@@ -438,7 +388,7 @@ the website, in dark theme
 .tentang_details {
     display: grid;
     row-gap: 1rem;
-    margin-bottom:var(--mb-2-5)
+    margin-bottom: var(--mb-2-5)
 }
 
 .tentang_details-description {
@@ -454,11 +404,6 @@ the website, in dark theme
 }
 
 /*-----------Seteps-----------*/
-.steps_bg {
-    padding: 3rem 2rem 2rem;
-    border-radius: 1rem;
-    text-align: center;
-}
 
 .steps_container {
     gap: 2rem;
@@ -472,18 +417,20 @@ the website, in dark theme
 .steps_card {
     background-color: var(--container-color);
     padding: 2rem 1rem 2rem 1rem;
+    width: 13rem;
     border-radius: 1rem;
+    border: 2px solid var(--Gray);
 }
 
 .steps_card-number {
-    display: inline-block;
-    /*background-color: var(--first-color-alt);*/
-    color: #fff;
-    padding: .5rem .74rem;
-    border-radius: .25rem;
-    font-size: var(--h2-font-size);
-    margin-bottom: var(--mb-1-5);
-    transition: .3s;
+    /* display: inline-block; */
+    /* background-color: var(--first-color-alt); */
+    /* color: #fff; */
+    /* padding: .5rem .74rem; */
+    /* border-radius: .25rem; */
+    /* font-size: var(--h2-font-size); */
+    /* margin-bottom: var(--mb-1-5); */
+    /* transition: .3s; */
 }
 
 .steps_card-title {
@@ -495,24 +442,25 @@ the website, in dark theme
     font-size: var(--small-font-size);
     line-height: var(--line-height-1);
 }
-.steps_card:hover{
+
+.steps_card:hover {
     background-color: #EDEDED;
 }
 
 .steps_card:hover .steps_card-number {
     transform: translateY(-.25rem);
 }
-  
+
 /*=============== FOOTER ===============*/
 footer {
-    background-color: var(--first-color-lighten-footer);
+    background-color: var(--milk);
 }
 
 .footer_container {
     row-gap: 3rem;
-  }
-  
-  .footer_logo {
+}
+
+.footer_logo {
     display: inline-flex;
     align-items: center;
     column-gap: .5rem;
@@ -522,90 +470,93 @@ footer {
     margin-bottom: var(--mb-2-5);
     text-decoration: none;
     transition: .3s;
-  }
-  
-  .footer_logo-icon {
+}
+
+.footer_logo-icon {
     font-size: 1.15rem;
     color: var(--first-color);
-  }
-  
-  .footer_logo:hover {
+}
+
+.footer_logo:hover {
     color: var(--first-color);
-  }
-  
-  .footer_title {
+}
+
+.footer_title {
     font-size: var(--h3-font-size);
     margin-bottom: var(--mb-1-5);
-  }
-  
-  .footer-logo-title {
-    margin-top: .3rem;
-  }
+}
 
-  .footer_subscribe {
+.footer-logo-title {
+    margin-top: .3rem;
+}
+
+.footer_subscribe {
     background-color: var(--first-color-lighten);
     padding: .75rem;
     display: flex;
     justify-content: space-between;
     border-radius: .5rem;
-  }
-  
-  .footer_input {
+}
+
+.footer_input {
     width: 70%;
     padding: 0 .5rem;
     background: none;
     color: var(--text-color);
     border: none;
     outline: none;
-  }
-  
-  .footer_button {
+}
+
+.footer_button {
     padding: 1rem;
-  }
-  
-  .footer_data {
+}
+
+.footer_data {
     display: grid;
     row-gap: .75rem;
-  }
-  
-  .footer_information {
+}
+
+.footer_information {
     font-size: var(--small-font-size);
-  }
-  
-  .footer_social {
+}
+
+.footer_social {
     display: inline-flex;
     column-gap: .75rem;
-  }
-  
-  .footer_social-link {
+}
+
+.footer_social-link {
     font-size: 1rem;
     color: var(--text-color);
     transition: .3s;
     text-decoration: none;
-  }
-  
-  .footer_social-link:hover {
+}
+
+.footer_social-link:hover {
     transform: translateY(-.25rem);
-  }
-  
-  .footer_cards {
+}
+
+.footer_cards {
     display: inline-flex;
     align-items: center;
     column-gap: .5rem;
-  }
-  .footer_card {
+}
+
+.footer_card {
     width: 35px;
-  }
-  
-  .footer_copy {
+}
+
+.footer_copy {
     text-align: center;
     font-size: var(--smaller-font-size);
     color: var(--container-color);
-    margin: 5rem 0 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     padding: 1.5rem;
     border-radius: 20px 20px 0 0;
     background-color: var(--first-color-alt);
-  }
+}
 
 /*--------------- SCROLL UP ---------------*/
 .scrollup {
@@ -621,67 +572,70 @@ footer {
     transition: .4s;
 
     text-decoration: none;
-  }
-  
-  .scrollup_icon {
+}
+
+.scrollup_icon {
     font-size: 1rem;
     color: #FFF;
-  }
-  
-  .scrollup:hover {
+}
+
+.scrollup:hover {
     background-color: var(--first-color-alt);
     opacity: 1;
-  }
-  
-  /* Show Scroll Up*/
-  .show-scroll {
-    bottom: 3rem;
-  }
+}
 
-  /* Scroll Bar*/
-  ::-webkit-scrollbar {
+/* Show Scroll Up*/
+.show-scroll {
+    bottom: 3rem;
+}
+
+/* Scroll Bar*/
+::-webkit-scrollbar {
     width: .6rem;
     background: hsl(var(--hue), 4%, 53%);
-  }
+}
 
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: hsl(var(--hue), 4%, 29%);
     border-radius: .5rem;
-  }
+}
 
-  /*-----------------Breakpoins--------------*/
-  /*For small devices*/
-  @media screen and (max-width: 320px) {
+/*-----------------Breakpoins--------------*/
+/*For small devices*/
+@media screen and (max-width: 320px) {
     .container {
         margin-left: var(--mb-1);
         margin-right: var(--mb-1);
     }
+
     .beranda_title {
         font-size: var(--h1-font-size);
     }
-    .steps_bg {
-        padding: 2rem 1rem;
-    }
+
     .steps_card {
         padding: 1.5rem;
     }
+
     .product_container {
         grid-template-columns: .6fr;
         justify-content: center;
     }
-  }
-  /*For medium devices*/
-  @media screen and (min-width: 576px) {
-    
+}
+
+/*For medium devices*/
+@media screen and (min-width: 576px) {
+
     .steps_container {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .product_description {
         padding: 0 4rem;
     }
 
-    .questions {min-height: 0;}
+    .questions {
+        min-height: 0;
+    }
 
     .product_container {
         grid-template-columns: repeat(2, 170px);
@@ -692,10 +646,10 @@ footer {
     .footer_subscribe {
         width: 400px;
     }
-    
-  }
 
-  @media screen and (min-width: 767px) {
+}
+
+@media screen and (min-width: 767px) {
     body {
         margin: 0;
     }
@@ -704,18 +658,21 @@ footer {
         height: calc(var(--header-height) + 1.5rem);
         column-gap: 3rem;
     }
+
     .nav_toggle,
     .nav_close {
         display: none;
     }
+
     .nav_list {
         flex-direction: row;
         column-gap: 3rem;
     }
+
     .nav_menu {
         margin-left: auto;
     }
-    
+
     .beranda_container,
     .tentang_container,
     .tentang_container-mg,
@@ -724,21 +681,27 @@ footer {
     .footer_container {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .beranda {
         padding: 10rem 0 5rem;
     }
+
     .beranda_container {
         align-items: center;
     }
+
     .beranda_img {
         width: 380px;
         order: 1;
     }
+
     .bernada_social {
         top: 30%;
     }
 
-    .questions {min-height: 0;}
+    .questions {
+        min-height: 0;
+    }
 
     .questions_container {
         align-items: flex-start;
@@ -747,21 +710,23 @@ footer {
     .footer_container {
         column-gap: 3rem;
     }
+
     .footer_subscribe {
         width: initial;
     }
-  }
+}
 
-  /*For large devices*/
-  @media screen and (min-width: 992px) {
+/*For large devices*/
+@media screen and (min-width: 992px) {
     .container {
         margin-left: auto;
         margin-right: auto;
     }
 
     .section {
-        padding: 0.8rem 0 0 0
+        padding: 0.8rem 0 0 0;
     }
+
     .section_title-center {
         text-align: center;
     }
@@ -770,9 +735,11 @@ footer {
         padding: 13rem 0 5rem;
         min-height: 100vh;
     }
+
     .beranda_img {
         width: 450px;
     }
+
     .beranda_description {
         padding-right: 7rem;
     }
@@ -784,49 +751,57 @@ footer {
     .steps_container {
         grid-template-columns: repeat(4, 1fr);
     }
-    .steps_bg {
-        padding: 3.5rem 2.5rem;
-    }
+
     .steps_card-title {
         font-size: var(--normal-font-size);
     }
-    
+
 
     .product_description {
         padding: 0 16rem;
     }
+
     .product_container {
         padding: 4rem 0;
         grid-template-columns: repeat(3, 185px);
         gap: 4rem 6rem;
     }
+
     .product_img {
         width: 160px;
     }
+
     .product_circle {
         width: 110px;
         height: 110px;
     }
+
     .product_title,
     .product_price {
         font-size: var(--normal-font-size);
         text-align: center;
     }
 
-    .questions {min-height: 0;}
+    .questions {
+        min-height: 0;
+    }
 
     .questions_container {
         padding: 1rem 0 4rem;
     }
+
     .questions_title {
         margin-bottom: var(--mb-1-5);
     }
+
     .questions_group {
         row-gap: 2rem;
     }
+
     .questions_header {
         padding: 1rem;
     }
+
     .questions_description {
         padding: 0 3.5rem 2.25rem 2.75rem;
     }
@@ -834,18 +809,21 @@ footer {
     .footer_logo {
         font-size: var(--h3-font-size);
     }
+
     .footer_container {
         grid-template-columns: 1fr .5fr .5fr .5fr;
     }
+
     .footer_copy {
         margin: 7rem 0 0;
     }
-  }
+}
 
-  @media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
     .tentang_container {
         column-gap: 7rem;
     }
+
     .tentang_container-mg {
         column-gap: 7rem;
     }
@@ -853,4 +831,4 @@ footer {
     .scrollup {
         right: 3rem;
     }
-  }
+}

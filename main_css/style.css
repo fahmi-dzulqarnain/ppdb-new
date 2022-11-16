@@ -2,7 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-
 :root {
     --primary-color: #4834d4;
     --success-color: #6ab04c;
@@ -28,6 +27,7 @@
     --footer-bg-color: #1c1d1d;
     --z-modal: 1000;
 }
+
 .info_logo {
     background-image: url('../assets/img/ic_info.svg');
     width: 5rem;
@@ -36,6 +36,7 @@
     background-size: 100%;
     background-position: center;
 }
+
 .bxs-circle:before {
     color: var(--dark-oliver);
 }
@@ -87,6 +88,10 @@ section {
 
 /* #endregion */
 
+.bg-eggshell {
+    background: var(--Eggshell);
+}
+
 /* #region Header */
 
 .header-bar {
@@ -100,17 +105,17 @@ section {
 }
 
 .header-bar-container {
-    display: flex; 
-    flex-wrap: wrap; 
-    align-items: center; 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
 }
 
 .header-bar-properti {
-    display: flex; 
-    flex-wrap: wrap; 
-    align-items: center; 
-    justify-content: center; 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     padding: 1rem;
 }
 
@@ -120,11 +125,13 @@ section {
     text-decoration: none;
     text-align: center;
 }
-.side_logo{
+
+.side_logo {
     display: flex;
     width: 90px;
     margin: 1rem;
 }
+
 .logo {
     width: 120px;
     margin-bottom: 3rem;
@@ -208,9 +215,10 @@ section {
 .lottie-size {
     width: 50%;
     margin: auto;
-    width: 280px; 
+    width: 280px;
     height: 280px;
 }
+
 /* #endregion */
 
 /* #region Daftar Sekolah */
@@ -413,7 +421,7 @@ section {
     height: 100%;
     left: 50%;
     bottom: 0;
-    background: var(--dark-oliver);
+    background: var(--dark-green);
     margin-left: -3px;
     border-radius: 3px;
 }
@@ -592,7 +600,6 @@ section .title {
 
 .services {
     color: #fff;
-    background: var(--Eggshell);
 }
 
 .services .serv-content .card {
@@ -694,6 +701,7 @@ th {
     .cover .max-width {
         margin-left: 0px;
     }
+
     .card ul li {
         margin-left: 10em;
     }
@@ -704,6 +712,7 @@ th {
         height: 350px;
         width: 350px;
     }
+
     .card ul li {
         margin-left: 8em;
     }
@@ -713,6 +722,7 @@ th {
     .max-width {
         padding: 0 50px;
     }
+
     .card ul li {
         margin-left: 5em;
     }
@@ -793,10 +803,11 @@ th {
 }
 
 @media (max-width: 760px) {
-    
+
     .header-bar-properti {
         flex-wrap: initial;
     }
+
     .header-bar-container {
         flex-wrap: initial;
     }
@@ -812,7 +823,7 @@ th {
     }
 
     .cover .cover-content a {
-        font-size: 20px;
+        font-size: 1rem;
     }
 
     .services .serv-content .card {
@@ -834,7 +845,6 @@ th {
 
     .timeline::before {
         left: 25px;
-        top: 40px;
     }
 
     .timeline .container {
@@ -893,15 +903,15 @@ th {
 }
 
 @media (max-width: 500px) {
-    .display-none{
+    .display-none {
         display: none;
     }
 
-    .button{
+    .button {
         margin: 5px auto;
     }
 
-    .lottie-size{
+    .lottie-size {
         width: 200px;
         height: 200px;
         margin-top: 2.5rem;
@@ -910,6 +920,7 @@ th {
     .mobile-size-font-logo-h3 {
         text-align: center;
     }
+
     .mobile-size-font-logo-p {
         text-align: center;
     }
@@ -917,6 +928,7 @@ th {
     .header-bar-properti {
         flex-wrap: wrap;
     }
+
     .header-bar-container {
         flex-wrap: initial;
     }
@@ -925,7 +937,7 @@ th {
         width: 100%;
     }
 
-    .logo{
+    .logo {
         margin-top: 4rem;
     }
 
@@ -961,7 +973,8 @@ th {
     .max-width {
         padding: 0 23px;
     }
-    .cover { 
+
+    .cover {
         height: 130vh;
     }
 }

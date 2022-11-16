@@ -30,7 +30,7 @@
 }
 
 .text-field-margin {
-    margin: 1rem 0rem ;
+    margin: 1rem 1rem 0;
 }
 
 .info_logo {
@@ -41,6 +41,7 @@
     background-size: 100%;
     background-position: center;
 }
+
 .bxs-circle:before {
     color: var(--dark-oliver);
 }
@@ -62,14 +63,6 @@ button {
     cursor: pointer;
     border: none;
     outline: none;
-}
-
-.center-content {
-    height: 100%;
-    width: 100%;
-    vertical-align: middle;
-    position: fixed;
-    display: table;
 }
 
 .flex-row {
@@ -111,26 +104,17 @@ section {
 }
 
 .header-bar-container {
-    display: flex; 
-    flex-wrap: wrap; 
-    align-items: center; 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
 }
 
 .header-bar-properti {
-    display: flex; 
-    flex-wrap: wrap; 
-    align-items: center; 
-    justify-content: center; 
-    padding: 1rem;
-    text-align: start;
-}
-
-.footer-bar-properti {
-    margin: 2.5rem 0 0 0;
+    display: flex;
     flex-wrap: wrap;
-    align-items: center; 
-    justify-content: center; 
+    align-items: center;
+    justify-content: center;
     padding: 1rem;
 }
 
@@ -140,16 +124,13 @@ section {
     text-decoration: none;
     text-align: center;
 }
+
 .side_logo {
     display: flex;
     width: 90px;
     margin: 1rem;
 }
-.footer_logo {
-    width: 40px;
-    margin: 1rem;
-    align-items: center;
-}
+
 .logo {
     width: 120px;
     margin-bottom: 3rem;
@@ -190,18 +171,19 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 10vh;
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
 
-#conten-right{
-    width: 22rem;
-    display: inline-flex;
+#conten-right {
+    float: left;
+    width: 50%;
 }
 
-#conten-side{
+#conten-side {
     float: right;
     width: 50%;
     margin-top: 1rem;
@@ -267,9 +249,9 @@ section {
     margin-top: .5rem;
     border-radius: .5rem;
     font-weight: var(--font-medium);
-    font-size: 1.4em;
+    font-size: 1em;
     transition: .3s;
-    width: 100%;
+    width: 150px;
     margin-top: .5rem;
 }
 
@@ -491,6 +473,7 @@ th {
     .cover .max-width {
         margin-left: 0px;
     }
+
     .card ul li {
         margin-left: 10em;
     }
@@ -501,6 +484,7 @@ th {
         height: 350px;
         width: 350px;
     }
+
     .card ul li {
         margin-left: 8em;
     }
@@ -510,6 +494,7 @@ th {
     .max-width {
         padding: 0 50px;
     }
+
     .card ul li {
         margin-left: 5em;
     }
@@ -521,7 +506,7 @@ th {
         z-index: 999;
     }
 
-    .button{
+    .button {
         width: 100%;
     }
 
@@ -555,11 +540,11 @@ th {
         font-size: 25px;
     }
 
-    .hilang{
+    .hilang {
         display: none;
     }
 
-    #conten-right{
+    #conten-right {
         float: none;
         width: 100%;
     }
@@ -587,11 +572,11 @@ th {
         width: 80px;
     }
 
-    .mobile-size-font-logo-h3{
+    .mobile-size-font-logo-h3 {
         font-size: 1em;
     }
 
-    .mobile-size-font-logo-p{
+    .mobile-size-font-logo-p {
         font-size: .6em;
     }
 
@@ -629,9 +614,11 @@ th {
     .side_logo {
         width: 60px;
     }
+
     .header-bar-properti {
         flex-wrap: initial;
     }
+
     .header-bar-container {
         flex-wrap: initial;
     }
@@ -715,9 +702,11 @@ th {
     .mobile-size-font-logo-h3 {
         font-size: .8em;
     }
+
     .mobile-size-font-logo-p {
         font-size: .6em;
     }
+
     .cover-content {
         width: 80%;
     }
@@ -726,10 +715,10 @@ th {
 @media (max-width: 500px) {
     .cover .cover-content .text-2 {
         font-size: 2.5rem;
-        margin-top: 2rem;
+        margin-top: 5rem;
     }
 
-    .display-none{
+    .display-none {
         display: none;
     }
 
@@ -740,6 +729,7 @@ th {
     .mobile-size-font-logo-h3 {
         font-size: 1.2em;
     }
+
     .mobile-size-font-logo-p {
         font-size: 1em;
     }
@@ -747,22 +737,25 @@ th {
     .mobile-size-font-logo-h3 {
         text-align: center;
     }
+
     .mobile-size-font-logo-p {
         text-align: center;
     }
 
     .header-bar-properti {
         flex-wrap: wrap;
+        margin-top: 1rem;
     }
+
     .header-bar-container {
         flex-wrap: initial;
     }
 
-    .button{
+    .button {
         font-weight: var(--font-medium);
     }
 
-    .logo{
+    .logo {
         margin-top: 4rem;
     }
 
@@ -798,7 +791,8 @@ th {
     .max-width {
         padding: 0 23px;
     }
-    .cover { 
+
+    .cover {
         height: 130vh;
     }
 }

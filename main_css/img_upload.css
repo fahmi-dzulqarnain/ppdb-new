@@ -1,0 +1,96 @@
+/* #region Image Upload */
+
+.img-container {
+    height: 15rem;
+    place-items: center;
+    text-align: center;
+  }
+  
+  .img-container .img-wrapper {
+    position: relative;
+    height: 80%;
+    width: 100%;
+    border-radius: 10px;
+    background: var(--Eggshell);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .img-wrapper .image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .img-wrapper .image img,
+  #gambar {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    outline: none;
+    border: none;
+  }
+  
+  .img-wrapper .icon {
+    font-size: 2.5rem;
+    color: var(--leaf);
+  }
+  
+  .img-wrapper-text {
+    font-size: 1rem;
+    color: var(--leaf);
+  }
+  
+  .img-wrapper #cancel-btn {
+    position: absolute;
+    color: #fff;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .img-wrapper.active #cancel-btn {
+    display: block;
+    transition: height 0.5s;
+  }
+  
+  .img-wrapper .file-name {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    color: #fff;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    display: none;
+    background: var(--milk-choco);
+  }
+  
+  .img-wrapper.active .file-name {
+    display: block;
+    transition: height 0.5s;
+  }
+  
+  .img-container #custom-btn {
+    margin-top: 2rem;
+    width: 100%;
+    display: block;
+    border: none;
+    color: #fff;
+    font-size: 0.9rem;
+    background: var(--leaf);
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .hide-file-input {
+    display: none;
+  }
+  
+  /* #endregion */
+  

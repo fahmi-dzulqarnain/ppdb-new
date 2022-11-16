@@ -5,24 +5,20 @@
 /*
     Img
 */
-.yayasan_logo {
-    background-image: url('../assets/img/isi_logo.png');
-    width: 5rem;
-    height: 5rem;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-}
-
-#imgReceipt {
-    margin: 1rem auto;
-    border-radius: 2rem;
-    max-width: 80vw;
-    max-height: 60vh;
-}
-
 #imgLogo {
-    width: 5rem;
+    max-height: 4.5rem;
+    margin-top: .2rem;
+}
+
+.parent-dashboard-icon {
+    width: 2.5em;
+    text-align: center;
+    align-self: center;
+}
+
+.parent-dashboard-content {
+    margin: auto;
+    width: fit-content;
 }
 
 .server-solid {
@@ -63,7 +59,6 @@
     font-family: 'Quicksand', sans-serif;
 }
 
-
 :root {
     /* ===== Colors ===== */
     --body-color: #E4E9F7;
@@ -82,7 +77,7 @@
 
 body {
     min-height: 100vh;
-    background-color: #F9FCF5;
+    background-color: #F4FFF7;
     transition: var(--tran-05);
 }
 
@@ -113,9 +108,9 @@ body.dark {
     margin-bottom: 1rem;
 }
 
-#conten-right {
+.content-right {
     float: left;
-    width: 50%;
+    width: 40%;
 }
 
 .kurung {
@@ -124,27 +119,18 @@ body.dark {
     border-radius: 30px;
     margin: 20px 20px;
     overflow-x: auto;
+    padding: inherit;
 }
 
 .card {
-    background: var(--Tea);
+    background: var(--Eggshell);
     text-align: center;
-    border-radius: 15px;
+    border-radius: 6px;
     padding: 1em;
-    width: 15rem;
     cursor: pointer;
-    margin: 1rem;
     transition: all 0.3s ease;
     line-height: 1.5em;
     margin-top: 1em;
-}
-
-.card-color-lulus {
-    background-color: var(--Gray);
-}
-
-.card-color-perlu-aksi {
-    background-color: var(--Dandelion);
 }
 
 .card .box {
@@ -152,8 +138,7 @@ body.dark {
 }
 
 .card ul li {
-    text-align: left;
-    margin-left: 5em;
+    list-style: none;
 }
 
 .box p {
@@ -162,11 +147,6 @@ body.dark {
 
 .box {
     transform: scale(1.02);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    text-align: end;
 }
 
 button {
@@ -181,13 +161,11 @@ button {
     background-color: var(--leaf);
     color: #fff;
     padding: .6rem 1rem;
-    margin-top: .5rem;
     border-radius: .5rem;
     font-weight: var(--font-medium);
-    font-size: 1.4em;
+    font-size: 1em;
     transition: .3s;
     width: 100%;
-    margin-top: .5rem;
 }
 
 .button:hover {
@@ -342,14 +320,15 @@ body.dark .sidebar header .toggle {
     margin-top: .6rem;
 }
 
-.sidebar li.search-box {
+.sidebar .search-box {
     border-radius: 24px;
     background-color: var(--primary-color-light);
     cursor: pointer;
     transition: var(--tran-05);
+    height: 5rem;
 }
 
-.sidebar li.search-box input {
+.sidebar .search-box input {
     height: 100%;
     width: 100%;
     outline: none;
@@ -362,7 +341,7 @@ body.dark .sidebar header .toggle {
     transition: var(--tran-05);
 }
 
-.sidebar li a {
+.sidebar a {
     list-style: none;
     height: 100%;
     background-color: transparent;
@@ -377,23 +356,13 @@ body.dark .sidebar header .toggle {
 
 .sidebar li a:hover .icon,
 .sidebar li a:hover .text {
-    color: var(--Tea);
-}
-
-
-.disappeared {
-    display: none;
+    color: var(--sidebar-color);
 }
 
 body.dark .sidebar li a:hover .icon,
 body.dark .sidebar li a:hover .text {
     color: var(--text-color);
 }
-
-.side-bar-active {
-    color: var(--Tea);
-}
-
 
 .sidebar .menu-bar {
     height: calc(100% - 55px);
@@ -473,41 +442,28 @@ body.dark .switch::before {
     left: 20px;
 }
 
-.beranda {
+.home {
     position: absolute;
-    top: 0;
     left: 120px;
     width: calc(100% - 120px);
+    background-color: var(--first-color-alt);
     transition: var(--tran-05);
+    min-height: 100vh;
 }
 
-.beranda .text {
+.home .text {
     font-size: 24px;
     font-weight: var(--font-semi-bold);
-    color: var(--text-color-admin);
+    color: var(--text-color);
     padding: 40px 0 20px 0px;
 }
 
-.text-number {
-    font-size: 40px;
-    font-weight: var(--font-semi-bold);
-    color: var(--text-color-admin);
-}
-
-.text-card {
-    font-size: 20px;
-    font-weight: var(--font-semi-bold);
-    color: var(--text-color-admin);
-    padding: 10px 0;
-}
-
-.sidebar.close~.beranda {
+.sidebar.close~.home {
     left: 105px;
-    height: 100%;
     width: calc(100% - 105px);
 }
 
-body.dark .beranda .text {
+body.dark .home .text {
     color: var(--text-color);
 }
 
@@ -546,315 +502,21 @@ section {
     margin: auto;
 }
 
-/*--------------------- Pendaftaran section -------------------*/
-.wrapper {
-    width: 95%;
-    margin: 0 auto;
-}
-
-.filter-text {
-    font-weight: var(--font-medium);
-    margin-left: 2rem;
-}
-
-.filters {
-    margin-top: .8rem;
-    padding: 10px 2rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.filters .selection {
-    margin-bottom: 1.5rem;
-    margin-right: .5rem;
-}
-
-.filters .selection label {
-    border: 1px solid var(--leaf);
-    font-size: .8rem;
-    font-weight: var(--font-medium);
-    padding: .5rem 1rem;
-    border-radius: 3em;
-    background-color: transparent;
-    color: var(--leaf);
-    cursor: pointer;
-}
-
-.filters .selection label:hover {
-    background-color: var(--Eggshell);
-}
-
-.filters .selection input[type=radio] {
-    display: none;
-}
-
-.filters .selection input[type=radio]:checked~label {
-    background-color: var(--leaf);
-    color: var(--milk);
-}
-
-.box-header-pendaftar {
-    transform: scale(1.02);
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.card-text-filter {
-    background: var(--Gray);
-    text-align: center;
-    border-radius: 15px;
-    padding: 0px 10px;
-    cursor: pointer;
-    margin: 1rem 4px;
-    transition: all 0.3s ease;
-    margin-top: 1em;
-}
-
-.box-menunggu-pembayaran {
-    transform: scale(1.02);
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: start;
-    display: flex;
-    text-align: end;
-}
-
-.text-card-filter {
-    font-size: 10px;
-    font-weight: var(--font-medium);
-    color: var(--text-color-admin);
-    padding: 4px 0;
-}
-
-.card-menunggu-pembayaran {
-    background: var(--white);
-    border-radius: 15px;
-    cursor: pointer;
-    margin: 1rem;
-    transition: all 0.3s ease;
-    line-height: 1.5em;
-    margin-top: 1em;
-    box-shadow: 0px 3px 6px 0px #00000029;
-}
-
-.no-pembayaran {
-    font-size: 14px;
-    font-weight: var(--font-medium);
-    color: var(--text-color-admin);
-    flex-wrap: initial;
-    display: inherit;
-}
-
-.gravity-end {
-    position: absolute;
-    right: 2rem;
-}
-
-.nama-pendaftaran {
-    font-size: 20px;
-    font-weight: var(--font-bold);
-    color: var(--text-color-admin);
-    flex-wrap: initial;
-    text-align: start;
-}
-
-.tempat-button {
-    font-size: 20px;
-    font-weight: var(--font-semi-bold);
-    color: var(--text-color-admin);
-    justify-content: center;
-    margin-right: 12rem;
-}
-
-.line-tempat-button {
-    border-top: 1px solid;
-    margin-top: 18px;
-    width: 30%;
-    position: absolute;
-    justify-content: center;
-}
-
-.tempat-button-konfirmasi {
-    font-size: 20px;
-    font-weight: var(--font-semi-bold);
-    color: var(--text-color-admin);
-    width: 30%;
-    justify-content: center;
-}
-
-.card-wa {
-    padding: 5px 8px;
-    background-color: var(--Eggshell);
-    border: 1px solid var(--first-color);
-    color: var(--first-color-alt);
-    border-radius: 5px;
-    position: relative;
-}
-
-.card-menunggu-konfirmasi {
-    background: var(--white);
-    border-radius: 15px;
-    cursor: pointer;
-    margin: 1rem;
-    transition: all 0.3s ease;
-    line-height: 1.5em;
-    margin-top: 1em;
-    box-shadow: 0px 3px 6px 0px #00000029;
-}
-
-.box-menunggu-konfirmasi {
-    transform: scale(1.02);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    text-align: end;
-}
-
-.card-bukti-bayar {
-    padding: 5px 20px;
-    background-color: var(--Eggshell);
-    border: 1px solid var(--first-color);
-    color: var(--first-color-alt);
-    border-radius: 5px;
-    font-weight: var(--font-medium);
-    position: relative;
-    text-align: center;
-    right: 10px;
-}
-
-.card-bukti-bayar:hover {
-    background-color: var(--Gray);
-    border: 1px solid #18191a;
-    color: var(--first-color-alt);
-}
-
-.card-wa-konfirmasi {
-    padding: 5px 8px;
-    background-color: var(--Eggshell);
-    border: 1px solid var(--first-color);
-    color: var(--first-color-alt);
-    border-radius: 5px;
-    position: relative;
-}
-
-.button-konfirmasi {
-    font-size: 14px;
-    font-weight: var(--font-medium);
-    color: var(--text-color-admin);
-    flex-wrap: initial;
-    display: inherit;
-}
-
-.button-setujui {
-    padding: 10px 36px;
-    border-radius: 6px;
-    background-color: var(--leaf);
-    color: var(--white);
-}
-
-.button-setujui:hover {
-    background-color: var(--Eggshell);
-    border: 1px solid var(--first-color);
-    color: var(--first-color-alt);
-    font-weight: var(--font-semi-bold);
-}
-
-.button-tolak {
-    padding: 10px 36px;
-    border-radius: 6px;
-    background-color: var(--Rose);
-    color: var(--white);
-    margin: 10px 0 0 0;
-}
-
-.button-tolak:hover {
-    background-color: var(--back-rose);
-    color: var(--Rose);
-    border: 1px solid var(--Rose);
-    font-weight: var(--font-semi-bold);
-}
-
-.card-dibayar {
-    padding: 5px 10px;
-    background-color: var(--Eggshell);
-    border: 1px solid var(--first-color);
-    color: var(--first-color-alt);
-    border-radius: 5px;
-    font-weight: var(--font-medium);
-    font-size: 14px;
-    position: relative;
-    text-align: center;
-    margin-right: 10px;
-    /* right: 10px; */
-}
-
-.card-color-rose {
-    background-color: var(--Rose);
-    color: var(--milk);
-    border: none;
-}
-
-.card-color-rose:hover {
-    background-color: var(--back-rose);
-    color: var(--Rose);
-    border: 1px solid var(--Rose);
-    font-weight: var(--font-semi-bold);
-}
-
-.card-color-leaf {
-    background-color: var(--leaf);
-    color: var(--milk);
-    border: none;
-}
-
-.card-color-leaf:hover {
-    background-color: var(--Eggshell);
-    border: 1px solid var(--first-color);
-    color: var(--first-color-alt);
-    font-weight: var(--font-semi-bold);
-}
-
-.card-color-Dandelion {
-    background-color: var(--Dandelion);
-    color: var(--text-color-admin);
-    border: none;
-}
-
-.card-color-Dandelion:hover {
-    background-color: var(--back-dandelion);
-    border: 1px solid var(--Dandelion);
-    font-weight: var(--font-semi-bold);
-}
-
-.tempat-button-dibayar {
-    font-size: 20px;
-    font-weight: var(--font-semi-bold);
-    color: var(--text-color-admin);
-    width: 60%;
-    justify-content: end;
-}
-
-.line-tempat-button-banyak {
-    border-top: 1px solid;
-    margin-top: 18px;
-    width: 60%;
-    position: absolute;
-    justify-content: center;
+.left-align {
+    text-align: left;
 }
 
 /* #endregion */
 
 /* #region Header */
 
-
 @media (max-width: 991px) {
     .display-none {
         display: none;
     }
 
-    .display-mobile {
-        display: table-cell;
+    .display-none-laptop {
+        display: contents;
     }
 
     .sidebar .menu {
@@ -868,16 +530,16 @@ section {
         padding: 1rem 2rem
     }
 
-    .beranda {
+    .home {
         position: static;
     }
 
-    .sidebar.close~.beranda {
+    .sidebar.close~.home {
         width: 100%;
         height: auto;
     }
 
-    #conten-right {
+    .content-right {
         float: none;
         width: 100%;
     }
@@ -887,13 +549,9 @@ section {
         margin: 20px 0 0 0px;
     }
 
-    section {
-        padding: 2rem 0 0px 0px;
-    }
-
     .margin-mobile {
-        margin: 30px 30px 0 30px;
-        padding: 0 0px 30px 0;
+        margin: 30px 30px 0px 30px;
+        padding: 0 0px 100px 0;
     }
 
     .margin-h3-orangtua {

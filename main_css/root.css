@@ -1,29 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand');
-@import "../../node_modules/@material/button/mdc-button.scss";
 
-:root  {
+:root {
     /*
         Colors
     */
     --header-height: 3.5rem;
     --hue: 120;
-    --first-color:
-    hsla(var(--hue), 58%, 39%, 1); /*(var(--hue), 24%, 32%)*/
-    --first-color-alt:
-    hsl(var(--hue), 58%, 28%);
-    --first-color-lighten:
-    hsla(var(--hue), 64%, 95%, 1);
-    --first-color-lighten-footer:
-    hsla(var(--hue), 64%, 95%, 1);
-    --title-color:
-    hsl(var(--hue), 4%, 15%);
-    --text-color:
-    hsl(var(--hue), 4%, 35%);
-    --text-color-light:
-    hsl(var(--hue), 4%, 55%);
-    --body-color:
-    hsl(var(--hue), 0%, 100%);
+    --first-color: hsla(var(--hue), 58%, 39%, 1);
+    /*(var(--hue), 24%, 32%)*/
+    --first-color-alt: hsl(var(--hue), 58%, 28%);
+    --first-color-lighten: hsla(var(--hue), 64%, 95%, 1);
+    --first-color-lighten-footer: hsla(var(--hue), 64%, 95%, 1);
+    --title-color: hsl(var(--hue), 4%, 15%);
+    --text-color: hsl(var(--hue), 4%, 35%);
+    --text-color-light: hsl(var(--hue), 4%, 55%);
+    --body-color: hsl(var(--hue), 0%, 100%);
     --container-color: #fff;
     --white: #FFF;
     --leaf: #104908;
@@ -40,7 +31,7 @@
         Fonts
     */
     --body-font:
-    'Quicksand', sans-serif;
+        'Quicksand', sans-serif;
     --big-font-size: 2rem;
     --h1-font-size: 1.5rem;
     --h2-font-size: 1.25rem;
@@ -76,8 +67,8 @@
     --line-height-3: 2.1rem;
 }
 
-@media screen and (min-width: 968px)  {
-     :root  {
+@media screen and (min-width: 968px) {
+    :root {
         --big-font-size: 3.5rem;
         --h1-font-size: 2.25rem;
         --h2-font-size: 1.5rem;

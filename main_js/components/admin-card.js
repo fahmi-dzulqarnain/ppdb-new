@@ -1,0 +1,298 @@
+function generateCardMenungguPembayaran(viewID, data) {
+    const container = document.getElementById(viewID)
+
+    const request = new XMLHttpRequest();
+
+    request.onload = function () {
+        if (this.status == 200) {
+            const rowView = request.responseText;
+            const currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
+
+            const txtNoPendaftaran = document.getElementsByName("txtNoPendaftaran");
+            const txtNamaSiswa = document.getElementsByName("txtNamaSiswa");
+            const txtTipeSekolah = document.getElementsByName("txtTipeSekolah");
+            const txtNominalBayar = document.getElementsByName("txtNominalBayar")
+            const btnBukaBuktiBayar = document.getElementsByName("btnBukaBuktiBayar")
+            const btnDetail = document.getElementsByName("btnDetailSiswa")
+            const btnSendWA = document.getElementsByName("btnSendWA")
+            const btnSetujui = document.getElementsByName("btnSetujui")
+            const btnTolak = document.getElementsByName("btnTolak")
+            var indexRow = 0
+
+            for (let i = 0; i < data.length; i++) {
+                const siswaData = data[i].siswa
+    
+                for (let index = 0; index < siswaData.length; index++) {
+                    const siswa = siswaData[index]
+                    const registrasi = siswaData[index].idRegistrasi
+                    const status = registrasi.status
+    
+                    if (status == "Menunggu Konfirmasi") {
+                        container.innerHTML += rowView
+                        
+                        indexRow++
+                    }
+                }
+            }
+    
+            for (let i = 0; i < data.length; i++) {
+                const tipeSekolah = data[i].tipeSekolah
+                const siswaData = data[i].siswa
+    
+                for (let index = 0; index < siswaData.length; index++) {
+                    const siswa = siswaData[index]
+                    const registrasi = siswaData[index].idRegistrasi
+                    const orangTua = siswaData[index].idOrangTua
+                    const status = registrasi.status
+    
+                    if (status == "Menunggu Konfirmasi") {
+                        const noPendaftaran = `${registrasi.noPendaftaran}`.padStart(3, "0")
+                        const idRegistrasi = registrasi.id
+
+                        indexRow--
+    
+                        txtNoPendaftaran[indexRow].innerHTML = noPendaftaran
+                        txtNamaSiswa[indexRow].innerHTML = siswa.namaLengkap
+                        txtTipeSekolah[indexRow].innerHTML = `${tipeSekolah.namaTipe} - ${status}`
+                        txtNominalBayar[indexRow].innerHTML = currency.format(registrasi.nominalTransfer)
+                        
+                        btnBukaBuktiBayar[indexRow].addEventListener('click', function() {
+                            const noPendaftaran = `${registrasi.noPendaftaran}`.padStart(3, "0")
+                            const namaLengkap = siswa.namaLengkap
+        
+                            getUploadedImage(noPendaftaran, namaLengkap, idRegistrasi)
+                        })
+                        btnDetail[indexRow].onclick = function() {
+                            const idSiswa = siswa.id
+                            localStorage.setItem('idSiswa', idSiswa)
+                            
+                            open('detail.html')
+                        }
+                        btnSendWA[indexRow].onclick = function() {
+                            const noWA = orangTua.hpAyah.replace(/^0/, "62");
+                            open(`https://wa.me/${noWA}`)
+                        }
+                        btnSetujui[indexRow].onclick = function() {
+                            changeStatus('Dibayar', idRegistrasi)
+                        }
+                        btnTolak[indexRow].onclick = function() {
+                            changeStatus('Bukti Bayar Ditolak', idRegistrasi)
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    request.open("GET", '../assets/components/admin-card/confirmation-card.html');
+    request.send();
+}
+
+function generateInitialCard(viewID, data) {
+    const container = document.getElementById(viewID)
+    const request = new XMLHttpRequest();
+
+    request.onload = function () {
+    if (this.status == 200) {
+        const rowView = request.responseText;
+        const currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
+
+        const txtNoPendaftaran = document.getElementsByName("txtNoPendaftaranInitial");
+        const txtNamaSiswa = document.getElementsByName("txtNamaSiswaInitial");
+        const txtTipeSekolah = document.getElementsByName("txtTipeSekolahInitial");
+        const txtNominalBayar = document.getElementsByName("txtNominalBayarInitial")
+        const btnDetail = document.getElementsByName("btnDetailSiswaInitial")
+        const btnSendWA = document.getElementsByName("btnSendWAInitial")
+        var indexRow = 0
+        
+        for (let i = 0; i < data.length; i++) {
+            const siswaData = data[i].siswa
+
+            for (let index = 0; index < siswaData.length; index++) {
+                const siswa = siswaData[index]
+                const registrasi = siswaData[index].idRegistrasi
+                const status = registrasi.status
+
+                if (status != "Menunggu Konfirmasi") {
+                    container.innerHTML += rowView
+                    
+                    indexRow++
+                }
+            }
+        }
+
+        for (let i = 0; i < data.length; i++) {
+            const tipeSekolah = data[i].tipeSekolah
+            const siswaData = data[i].siswa
+
+            for (let index = 0; index < siswaData.length; index++) {
+                const siswa = siswaData[index]
+                const registrasi = siswaData[index].idRegistrasi
+                const orangTua = siswaData[index].idOrangTua
+                const status = registrasi.status
+
+                if (status != "Menunggu Konfirmasi") {
+                    const noPendaftaran = `${registrasi.noPendaftaran}`.padStart(3, "0")
+                    indexRow--
+
+                    txtNoPendaftaran[indexRow].innerHTML = noPendaftaran
+                    txtNamaSiswa[indexRow].innerHTML = siswa.namaLengkap
+                    txtTipeSekolah[indexRow].innerHTML = `${tipeSekolah.namaTipe} - ${status}`
+                    txtNominalBayar[indexRow].innerHTML = currency.format(registrasi.nominalTransfer)
+                    
+                    btnDetail[indexRow].onclick = function() {
+                        const idSiswa = siswa.id
+                        localStorage.setItem('idSiswa', idSiswa)
+
+                        open('detail.html')
+                    }
+                    btnSendWA[indexRow].onclick = function() {
+                        const noWA = orangTua.hpAyah.replace(/^0/, "62");
+                        open(`https://wa.me/${noWA}`)
+                    }
+                }
+            }
+        }
+    }
+  };
+
+  request.open("GET", '../assets/components/admin-card/common-card.html');
+  request.send();
+}
+
+function generateCardWithStatus(viewID, data, statusFilter) {
+    const container = document.getElementById(viewID)
+    const request = new XMLHttpRequest();
+
+    request.onload = function () {
+    if (this.status == 200) {
+        container.innerHTML = ''
+
+        const rowView = request.responseText;
+        const currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
+
+        const txtNoPendaftaran = document.getElementsByName("txtNoPendaftaranFiltered");
+        const txtNamaSiswa = document.getElementsByName("txtNamaSiswaFiltered");
+        const txtTipeSekolah = document.getElementsByName("txtTipeSekolahFiltered");
+        const txtNominalBayar = document.getElementsByName("txtNominalBayarFiltered")
+        const btnDetail = document.getElementsByName("btnDetailSiswaFiltered")
+        const btnSendWA = document.getElementsByName("btnSendWAFiltered")
+        var indexRow = 0
+        
+        for (let i = 0; i < data.length; i++) {
+            const siswaData = data[i].siswa
+
+            for (let index = 0; index < siswaData.length; index++) {
+                const siswa = siswaData[index]
+                const registrasi = siswaData[index].idRegistrasi
+                const status = registrasi.status
+
+                if (status == statusFilter) {
+                    container.innerHTML += rowView
+                    
+                    indexRow++
+                }
+            }
+        }
+
+        for (let i = 0; i < data.length; i++) {
+            const tipeSekolah = data[i].tipeSekolah
+            const siswaData = data[i].siswa
+
+            for (let index = 0; index < siswaData.length; index++) {
+                const siswa = siswaData[index]
+                const registrasi = siswaData[index].idRegistrasi
+                const orangTua = siswaData[index].idOrangTua
+                const status = registrasi.status
+
+                if (status == statusFilter) {
+                    const noPendaftaran = `${registrasi.noPendaftaran}`.padStart(3, "0")
+                    indexRow--
+
+                    txtNoPendaftaran[indexRow].innerHTML = noPendaftaran
+                    txtNamaSiswa[indexRow].innerHTML = siswa.namaLengkap
+                    txtTipeSekolah[indexRow].innerHTML = `${tipeSekolah.namaTipe} - ${status}`
+                    txtNominalBayar[indexRow].innerHTML = currency.format(registrasi.nominalTransfer)
+                    
+                    btnDetail[indexRow].onclick = function() {
+                        const idSiswa = siswa.id
+                        localStorage.setItem('idSiswa', idSiswa)
+
+                        open('detail.html')
+                    }
+                    btnSendWA[indexRow].onclick = function() {
+                        const noWA = orangTua.hpAyah.replace(/^0/, "62");
+                        open(`https://wa.me/${noWA}`)
+                    }
+                }
+            }
+        }
+    }
+  };
+
+  request.open("GET", '../assets/components/admin-card/filtered-card.html');
+  request.send();
+}
+
+function getUploadedImage(noPendaftaran, namaLengkap, idRegistrasi) {
+    const request = new XMLHttpRequest()
+    const accessToken = localStorage.getItem('accessToken')
+    const query = `?id=${idRegistrasi}`
+  
+    request.onload = function() {
+        try {
+            const response = JSON.parse(request.responseText)
+            const statusCode = response.statusCode
+    
+            if (statusCode == 401) {
+                signOut()
+            } else {
+                const title = response.error
+                const messages = response.message
+    
+                showView('titleDialog')
+                showView('lottieImage')
+                hideView('imgReceipt')
+
+                attachToView('titleDialog', title)
+                attachToView('descriptionDialog', messages)
+                openDialog()
+            }
+        } catch (error) {
+            hideView('titleDialog')
+            hideView('lottieImage')
+            showView('imgReceipt')
+
+            const urlCreator = window.URL || window.webkitURL
+            const imageUrl = urlCreator.createObjectURL(this.response)
+
+            setToImage('imgReceipt', imageUrl)
+            attachToView('descriptionDialog', `${noPendaftaran} - ${namaLengkap}`)
+
+            openDialog()
+        }
+    }
+  
+    request.open('GET', `${mainURL}registrasi/receipt${query}`)
+    request.responseType = "blob"
+    request.setRequestHeader('Authorization', `Bearer ${accessToken}`)
+    request.send();
+}
+ 
+function changeStatus(status, idRegistrasi) {
+    var request = new XMLHttpRequest();
+    var accessToken = localStorage.getItem("accessToken");
+    var jsonBody = JSON.stringify({
+        ids: [idRegistrasi],
+        statusRegistrasi: status
+    });
+
+    request.onload = function () {
+        location.reload()
+    };
+
+    request.open("PATCH", `${mainURL}registrasi/statusRegistrasi`);
+    request.setRequestHeader("Authorization", "Bearer " + accessToken);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(jsonBody);
+}

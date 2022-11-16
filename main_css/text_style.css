@@ -1,0 +1,11 @@
+.leftAlign {
+    text-align: left;
+}
+
+.centerAlign {
+    text-align: center;
+}
+
+.bold {
+    font-weight: var(--font-bold);
+}
