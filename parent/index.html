@@ -71,7 +71,7 @@
                                         <div class="flex-row small-margin-left">
                                             Bank BSI a.n. <p id="txtNamaRekening" class="tiny-margin-left">Memuat...</p>
                                         </div>
-                                        <p id="txtNoRekening" class="leftAlign small-margin-left">1002 3089 287</p>
+                                        <p id="txtNoRekening" class="leftAlign small-margin-left">0000 0000 00</p>
                                     </div>
                                 </div>
 
@@ -241,8 +241,8 @@
         </div>
 
         <div class="modal__container" id="modal-container">
-            <div class="modal__content" title="Close">
-                <i class="bx bx-x modal__close close-modal"></i>
+            <div class="modal__content" title="Close" style="margin-left: 120px;">
+                <i class="fa-solid fa-xmark modal__close close-modal"></i>
 
                 <div style="width: 100px; margin: 24px auto;" class="lottie-size">
                     <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_bdnjxekx.json"
@@ -260,7 +260,7 @@
     </section>
 
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <script src="../includes/public-function.js?v=2"></script>
+    <script src="../includes/public-function.js?v=4"></script>
     <script src="../main_js/script.js"></script>
     <script src="../main_js/countdown.js"></script>
     <script src="../main_js/status_checker.js"></script>
@@ -359,7 +359,8 @@
 
                 unggahReceipt.addEventListener('click', () => uploadImage(idRegistrasi));
 
-                if (statusPendaftaran == "Menunggu Konfirmasi") {
+                if (statusPendaftaran != "Menunggu Pembayaran" &&
+                    statusPendaftaran != "Bukti Bayar Ditolak") {
                     getUploadedImage(idRegistrasi)
                     hideView('containerCountdown')
                 }

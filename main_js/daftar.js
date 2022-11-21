@@ -41,14 +41,15 @@ function daftar() {
         if (statusCode != 200) {
             var title = response.error
             const messages = response.message
-            var message = ""
+            var message = messages
             
-            for (let i = 0; i < messages.length; i++) {
-                message += `${translate(messages[i])}. `
-            }
-
             if(title == "Bad Request") {
                 title = "Mohon Tinjau!"
+                
+                for (let i = 0; i < messages.length; i++) {
+                    message += `${translate(messages[i])}. `
+                }
+
             }
 
             attachToView('titleDialog', title)
