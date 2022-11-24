@@ -1,3 +1,5 @@
+var selectedCardArray = []
+
 function generateCardMenungguPembayaran(viewID, data) {
     const container = document.getElementById(viewID)
 
@@ -234,6 +236,105 @@ function generateCardWithStatus(viewID, data, statusFilter) {
   request.send();
 }
 
+function generateSelectableCard(viewID, data, statusFilter) {
+    const container = document.getElementById(viewID)
+    const request = new XMLHttpRequest();
+
+    request.onload = function () {
+    if (this.status == 200) {
+        container.innerHTML = ''
+
+        const rowView = request.responseText;
+        const currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
+
+        const checkBoxes = document.getElementsByName("paid-checkbox")
+        const selectableLabel = document.getElementsByName("selectable-label")
+        const selectableCard = document.getElementsByName("selectable-card")
+        const txtNoPendaftaran = document.getElementsByName("txtNoPendaftaranSelectable");
+        const txtNamaSiswa = document.getElementsByName("txtNamaSiswaSelectable");
+        const txtTipeSekolah = document.getElementsByName("txtTipeSekolahSelectable");
+        const txtNominalBayar = document.getElementsByName("txtNominalBayarSelectable")
+        const btnDetail = document.getElementsByName("btnDetailSiswaSelectable")
+        const btnSendWA = document.getElementsByName("btnSendWASelectable")
+        var indexRow = 0
+        
+        for (let i = 0; i < data.length; i++) {
+            const siswaData = data[i].siswa
+
+            for (let index = 0; index < siswaData.length; index++) {
+                const siswa = siswaData[index]
+                const registrasi = siswaData[index].idRegistrasi
+                const status = registrasi.status
+
+                if (status == statusFilter) {
+                    container.innerHTML += rowView
+                    
+                    indexRow++
+                }
+            }
+        }
+        
+        for (let i = 0; i < data.length; i++) {
+            const tipeSekolah = data[i].tipeSekolah
+            const siswaData = data[i].siswa
+
+            for (let index = 0; index < siswaData.length; index++) {
+                const siswa = siswaData[index]
+                const registrasi = siswaData[index].idRegistrasi
+                const orangTua = siswaData[index].idOrangTua
+                const status = registrasi.status
+
+                if (status == statusFilter) {
+                    const noPendaftaran = `${registrasi.noPendaftaran}`.padStart(3, "0")
+                    const idRegistrasi = registrasi.id
+                    const cardID = `card-${idRegistrasi}`
+                    indexRow--
+
+                    txtNoPendaftaran[indexRow].innerHTML = noPendaftaran
+                    txtNamaSiswa[indexRow].innerHTML = siswa.namaLengkap
+                    txtTipeSekolah[indexRow].innerHTML = `${tipeSekolah.namaTipe} - ${status}`
+                    txtNominalBayar[indexRow].innerHTML = currency.format(registrasi.nominalTransfer)
+                    checkBoxes[indexRow].value = idRegistrasi
+                    checkBoxes[indexRow].id = idRegistrasi
+                    selectableCard[indexRow].id = cardID
+                    selectableLabel[indexRow].setAttribute("for", idRegistrasi)
+                    
+                    btnDetail[indexRow].onclick = function() {
+                        const idSiswa = siswa.id
+                        localStorage.setItem('idSiswa', idSiswa)
+
+                        open('detail.html')
+                    }
+                    btnSendWA[indexRow].onclick = function() {
+                        const noWA = orangTua.hpAyah.replace(/^0/, "62");
+                        open(`https://wa.me/${noWA}`)
+                    }
+
+                    checkBoxes[indexRow].onclick = function() {
+                        const value = this.value
+
+                        if (this.checked) {
+                            selectedCardArray.push(value)
+                            document.getElementById(cardID).classList.add("selected")
+                        } else {
+                            const index = selectedCardArray.indexOf(value);
+
+                            if (index > -1) { 
+                                selectedCardArray.splice(index, 1);
+                                document.getElementById(cardID).classList.remove("selected")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  };
+
+  request.open("GET", '../assets/components/admin-card/selectable-card.html');
+  request.send();
+}
+
 function getUploadedImage(noPendaftaran, namaLengkap, idRegistrasi) {
     const request = new XMLHttpRequest()
     const accessToken = localStorage.getItem('accessToken')
@@ -284,6 +385,24 @@ function changeStatus(status, idRegistrasi) {
     var accessToken = localStorage.getItem("accessToken");
     var jsonBody = JSON.stringify({
         ids: [idRegistrasi],
+        statusRegistrasi: status
+    });
+
+    request.onload = function () {
+        location.reload()
+    };
+
+    request.open("PATCH", `${mainURL}registrasi/statusRegistrasi`);
+    request.setRequestHeader("Authorization", "Bearer " + accessToken);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(jsonBody);
+}
+
+function changeBulkStatus(status, idRegistrasiArray) {
+    var request = new XMLHttpRequest();
+    var accessToken = localStorage.getItem("accessToken");
+    var jsonBody = JSON.stringify({
+        ids: idRegistrasiArray,
         statusRegistrasi: status
     });
 

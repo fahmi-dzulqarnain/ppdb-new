@@ -28,15 +28,6 @@
     --z-modal: 1000;
 }
 
-.info_logo {
-    background-image: url('../assets/img/ic_info.svg');
-    width: 5rem;
-    height: 5rem;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-}
-
 .bxs-circle:before {
     color: var(--dark-oliver);
 }

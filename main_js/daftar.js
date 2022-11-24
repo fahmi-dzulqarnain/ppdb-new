@@ -3,12 +3,18 @@ function daftar() {
     const idTipeSekolah = localStorage.getItem('idTipeSekolah')
     const chkBoxNISN = document.getElementById('checkboxNISN')
     const nisn = getValueOfInput('txtNISN')
-    const isUseNISN = chkBoxNISN.checked && nisn != ""
+    const rerataRaporString = getValueOfInput('txtRerataRapor')
+    const isUseNISN = chkBoxNISN.checked && nisn !== ""
     const hpAyah = getValueOfInput('txtNoHPAyah')
+    var rerataRapor = 0
     var username = hpAyah
 
-    if(isUseNISN && nisn != null) {
+    if(isUseNISN && nisn !== null) {
         username = nisn
+    }
+    
+    if(!isNaN(rerataRaporString)) {
+        rerataRapor = parseInt(rerataRaporString)
     }
 
     const jsonBody = JSON.stringify({
@@ -27,7 +33,7 @@ function daftar() {
         tempatLahir: getValueOfInput('txtTempatLahir'),
         tanggalLahir: getValueOfInput('txtTanggalLahir'),
         asalSekolah: getValueOfInput('txtAsalSekolah'),
-        rerataRapor: getValueOfInput('txtRerataRapor'),
+        rerataRapor,
         prestasi: getValueOfInput('txtPrestasi'),
         nisn
     })
@@ -47,7 +53,7 @@ function daftar() {
                 title = "Mohon Tinjau!"
                 
                 for (let i = 0; i < messages.length; i++) {
-                    message += `${translate(messages[i])}. `
+                    message += `${messages[i]}. `
                 }
 
             }
@@ -68,45 +74,4 @@ function daftar() {
 function getValueOfInput(id) {
     const viewElement = document.getElementById(id)
     return viewElement.value
-}
-
-function translate(string) {
-    switch (string) {
-        case "username should not be empty":
-            return "No HP ayah / NISN perlu diisi untuk username"
-        case "sandi should not be empty":
-            return "Tanggal lahir Ananda perlu diisi"
-        case "namaAyah should not be empty":
-            return "Nama ayah perlu diisi"
-        case "hpAyah must be a phone number":
-            return "No HP ayah harus nomor telefon"
-        case "hpIbu must be a phone number":
-            return "No HP ibu harus nomor telefon"
-        case "namaIbu should not be empty":
-            return "Nama ibu perlu diisi"
-        case "alamat should not be empty":
-            return "Alamat perlu diisi"
-        case "kelurahan should not be empty":
-            return "Kelurahan perlu diisi"
-        case "kecamatan should not be empty":
-            return "Kecamatan perlu diisi"
-        case "namaLengkap should not be empty":
-            return "Nama lengkap Ananda perlu diisi"
-        case "tempatLahir should not be empty":
-            return "Tempat lahir perlu diisi"
-        case "tanggalLahir must be formatted as dd-MM-yyyy":
-            return "Tanggal lahir harus sesuai format tt-BB-TTTT"
-        case "rerataRapor must be a number string":
-            return "Rerata rapor harus dalam bentuk angka, masukkan 0 jika tidak ada"
-        case "namaAyah must be shorter than or equal to 48 characters":
-            return "Nama ayah maksimal 48 karakter"
-        case "namaIbu must be shorter than or equal to 48 characters":
-            return "Nama ibu maksimal 48 karakter"
-        case "namaLengkap must be shorter than or equal to 48 characters":
-            return "Nama lengkap Ananda maksimal 48 karakter"
-        case "alamat must be shorter than or equal to 64 characters":
-            return "Alamat maksimal 64 karakter"
-        default:
-            return string
-    }
 }

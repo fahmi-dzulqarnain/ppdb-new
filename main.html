@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="main_css/material_design.css">
     <link rel="stylesheet" href="main_css/root.css">
-    <link rel="stylesheet" href="main_css/style.css">
+    <link rel="stylesheet" href="main_css/style.css?v=2">
 </head>
 
 <body>
@@ -44,10 +44,10 @@
             </div>
             <div class="text-2">Penerimaan Peserta<br> Didik Baru</div>
             <div class="flex-column" style="margin-top: 5vh;">
-                <div class="flex-column">
+                <div class="flex-column" id="btnDaftar" style="display: none;">
                     <a class="button" href="#daftar" onclick="openDialog()">Daftar</a>
                 </div>
-                <p style="margin-top: 5vh;">Sudah Mendaftar?</p>
+                <p id="txtMessageDaftar" style="margin-top: 3.5vh;">Sudah Mendaftar?</p>
                 <div class="flex-column">
                     <a class="button" id="btnLogin" href="login/">Masuk Akun</a>
                 </div>
@@ -73,7 +73,10 @@
 
     <section class="services bg-eggshell" id="informasi">
         <div class="max-width">
-            <h2 class="title"><i class='info_logo'></i><br> Informasi</h2>
+            <h2 class="title">
+                <i class="fa-solid fa-circle-info"></i>
+                <br> Informasi
+            </h2>
             <div class="serv-content">
                 <div class="card">
                     <div class="box">
@@ -106,7 +109,10 @@
 
     <section class="timeline" id="jadwal">
         <div class="max-width">
-            <h1 class="title">Timeline</h1>
+            <h1 class="title">
+                <i class="fa-solid fa-timeline"></i>
+                <br>Timeline
+            </h1>
             <div class="container left">
                 <div class="content">
                     <h4>Pendaftaran PPDB 2023/2024</h4>
@@ -185,12 +191,15 @@
             const jsonSekolah = JSON.parse(request.responseText.toString())
             const currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
             const containerTipeSekolah = document.getElementById('containerTipeSekolah')
+            const btnDaftar = document.getElementById('btnDaftar')
             const btnLogin = document.getElementById('btnLogin')
+            const txtMessageDaftar = document.getElementById('txtMessageDaftar')
 
             const namaSekolah = jsonSekolah.namaSekolah
             const alamat = jsonSekolah.alamat
             const logo = jsonSekolah.logo
             const kontak = jsonSekolah.kontak
+            const isRegistrationOpen = jsonSekolah.isRegistrationOpen
 
             setToImage('logo', logo)
             setToImage('dialogLogo', logo)
@@ -208,6 +217,10 @@
             localStorage.setItem('alamat', alamat)
             localStorage.setItem('logoSekolah', logo)
             localStorage.setItem('linkWAGroup', jsonSekolah.linkWAGroup)
+
+            if (isRegistrationOpen) {
+                btnDaftar.style.display = 'flex'
+            }
 
             btnLogin.href = `${viewURL}login`
         }

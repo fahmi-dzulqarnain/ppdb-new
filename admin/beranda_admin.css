@@ -1,5 +1,4 @@
 /* #region Common */
-
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 /*
@@ -23,6 +22,21 @@
 
 #imgLogo {
     width: 5rem;
+    background-color: var(--Eggshell);
+    border-radius: 1rem;
+    padding: .3rem;
+}
+
+.loading-lottie {
+    position: fixed;
+    top: 45vh;
+    left: 125px;
+    overflow-y: scroll;
+    width: calc(100% - 125px);
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .server-solid {
@@ -34,7 +48,6 @@
     background-position: center;
     align-items: center;
     display: inline-flex;
-    /*border: 1px solid red;*/
 }
 
 .akses_lewat_laptop {
@@ -202,6 +215,9 @@ button {
     margin: 1rem 1rem 0;
 }
 
+.status-buttons-container {
+    margin: 1rem 1rem 2rem 2rem;
+}
 
 /* ===== Sidebar ===== */
 .sidebar {
@@ -483,7 +499,7 @@ body.dark .switch::before {
 
 .beranda .text {
     font-size: 24px;
-    font-weight: var(--font-semi-bold);
+    font-weight: var(--font-bold);
     color: var(--text-color-admin);
     padding: 40px 0 20px 0px;
 }
@@ -620,6 +636,15 @@ section {
     text-align: end;
 }
 
+.box-selectable {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    display: flex;
+    cursor: pointer;
+    text-align: end;
+}
+
 .text-card-filter {
     font-size: 10px;
     font-weight: var(--font-medium);
@@ -636,6 +661,24 @@ section {
     line-height: 1.5em;
     margin-top: 1em;
     box-shadow: 0px 3px 6px 0px #00000029;
+}
+
+.selectable-card {
+    background: var(--white);
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 1rem;
+    transition: all 0.3s ease;
+    line-height: 1.5em;
+    margin-top: 1em;
+    cursor: pointer;
+    box-shadow: 0px 3px 6px 0px #00000029;
+}
+
+.selectable-card.selected {
+    background: var(--Eggshell);
+    border-radius: 15px;
+    cursor: pointer;
 }
 
 .no-pembayaran {
@@ -786,44 +829,40 @@ section {
     position: relative;
     text-align: center;
     margin-right: 10px;
-    /* right: 10px; */
 }
 
 .card-color-rose {
     background-color: var(--Rose);
+    border: 1px solid var(--Rose);
     color: var(--milk);
-    border: none;
 }
 
 .card-color-rose:hover {
     background-color: var(--back-rose);
     color: var(--Rose);
-    border: 1px solid var(--Rose);
     font-weight: var(--font-semi-bold);
 }
 
 .card-color-leaf {
     background-color: var(--leaf);
+    border: 1px solid var(--leaf);
     color: var(--milk);
-    border: none;
 }
 
 .card-color-leaf:hover {
     background-color: var(--Eggshell);
-    border: 1px solid var(--first-color);
-    color: var(--first-color-alt);
     font-weight: var(--font-semi-bold);
+    color: var(--first-color-alt);
 }
 
 .card-color-Dandelion {
     background-color: var(--Dandelion);
+    border: 1px solid var(--Dandelion);
     color: var(--text-color-admin);
-    border: none;
 }
 
 .card-color-Dandelion:hover {
     background-color: var(--back-dandelion);
-    border: 1px solid var(--Dandelion);
     font-weight: var(--font-semi-bold);
 }
 
@@ -855,6 +894,15 @@ section {
 
     .display-mobile {
         display: table-cell;
+    }
+
+    .display-mobile h1 {
+        margin-top: 1rem;
+    }
+
+    .display-mobile p {
+        line-height: 2rem;
+        margin: 2rem;
     }
 
     .sidebar .menu {

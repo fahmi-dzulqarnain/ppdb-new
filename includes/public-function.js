@@ -1,6 +1,9 @@
 const mainURL = "https://103.181.183.19:3000/";
 const viewURL = "https://ppdb.alkahfi.or.id/";
 
+// const mainURL = "http://localhost:3000/";
+// const viewURL = "http://localhost/ppdb-versi-3/";
+
 function includeHTML(path, elementID) {
   const request = new XMLHttpRequest();
   const view = document.getElementById(elementID);

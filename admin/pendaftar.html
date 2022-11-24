@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="../main_css/root.css">
     <link rel="stylesheet" href="../main_css/material_design.css">
     <link rel="stylesheet" href="../main_css/modal.css">
-    <link rel="stylesheet" href="beranda_admin.css?v=2">
+    <link rel="stylesheet" href="beranda_admin.css?v=4">
 </head>
 
 <body>
@@ -65,31 +65,40 @@
                     <input id="dibayar" name="filters" value="Dibayar" onclick="setFilter(this)" type="radio">
                     <label for="dibayar">Dibayar</label>
                 </div>
-                <!-- <div class="selection">
-                    <input id="lulus_tahap_pertama" name="filters" type="radio">
-                    <label for="lulus_tahap_pertama">Lulus Tahap Pertama</label>
+                <div class="selection">
+                    <input id="lulus_tes_akademik" name="filters" value="Lulus Tes Akademik" onclick="setFilter(this)"
+                        type="radio">
+                    <label for="lulus_tes_akademik">Lulus Tes Akademik</label>
                 </div>
                 <div class="selection">
-                    <input id="lulus" name="filters" type="radio">
+                    <input id="lulus" name="filters" value="Lulus" onclick="setFilter(this)" type="radio">
                     <label for="lulus">Lulus</label>
                 </div>
                 <div class="selection">
-                    <input id="lulus_bersyarat" name="filters" type="radio">
+                    <input id="lulus_bersyarat" name="filters" value="Lulus Bersyarat" onclick="setFilter(this)"
+                        type="radio">
                     <label for="lulus_bersyarat">Lulus Bersyarat</label>
                 </div>
                 <div class="selection">
-                    <input id="cadangan" name="filters" type="radio">
+                    <input id="cadangan" name="filters" value="Cadangan" onclick="setFilter(this)" type="radio">
                     <label for="cadangan">Cadangan</label>
                 </div>
                 <div class="selection">
-                    <input id="belum_diterima" name="filters" type="radio">
+                    <input id="belum_diterima" name="filters" value="Belum Diterima" onclick="setFilter(this)"
+                        type="radio">
                     <label for="belum_diterima">Belum Diterima</label>
-                </div> -->
+                </div>
             </div>
 
+            <div id="status-buttons"></div>
             <div id="cards"></div>
             <div id="cards-2"></div>
             <div id="filtered-cards"></div>
+
+            <div class="loading-container">
+                <lottie-player id="loadingImage" class="loading-lottie" src="../assets/loading_animation.json"
+                    background="transparent" speed="1" loop autoplay></lottie-player>
+            </div>
 
             <div class="modal__container" id="modal-container">
                 <div class="modal__content" title="Close" style="margin-left: 120px">
@@ -128,9 +137,10 @@
     <script src="../includes/public-function.js?v=2"></script>
     <script src="../main_js/script.js"></script>
     <script src="../main_js/open_close_dialog.js"></script>
-    <script src="../main_js/components/admin-card.js?v=4"></script>
-    <script src="../main_js/admin_sidebar.js"></script>
+    <script src="../main_js/components/admin-card.js?v=6"></script>
+    <script src="../main_js/admin_sidebar.js?v=2"></script>
     <script src="../main_js/report.js?v=5"></script>
+    <script src="../main_js/components/status-buttons.js"></script>
     <script>
         const request = new XMLHttpRequest()
         const accessToken = localStorage.getItem('accessToken')
@@ -144,6 +154,7 @@
         request.onload = function () {
             const response = JSON.parse(request.responseText)
             const statusCode = response.statusCode
+            const loadingContainer = document.getElementsByClassName('loading-container')
 
             if (statusCode == 401) {
                 signOut()
@@ -160,6 +171,8 @@
                 generateCardMenungguPembayaran('cards', data)
                 generateInitialCard('cards-2', data)
             }
+
+            loadingContainer[0].style.display = 'none'
         }
 
         request.open('GET', `${mainURL}siswa/admin`)
@@ -175,9 +188,25 @@
                 showView('cards')
                 showView('cards-2')
                 hideView('filtered-cards')
+                hideView('status-buttons')
+            } else if (currentFilter == 'Dibayar') {
+                hideView('cards')
+                hideView('cards-2')
+                showView('filtered-cards')
+                showView('status-buttons')
+
+                if (data != null) {
+                    includeHTML('../assets/components/status-buttons.html', 'status-buttons')
+                    generateSelectableCard('filtered-cards', data, currentFilter)
+
+                    setTimeout(() => {
+                        activateStatusButtons()
+                    }, 1000);
+                }
             } else {
                 hideView('cards')
                 hideView('cards-2')
+                hideView('status-buttons')
                 showView('filtered-cards')
 
                 if (data != null)

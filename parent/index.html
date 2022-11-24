@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../main_css/text_style.css">
     <link rel="stylesheet" href="../main_css/img_upload.css">
     <link rel="stylesheet" href="../main_css/modal.css">
-    <link rel="stylesheet" href="status_pendaftaran.css">
+    <link rel="stylesheet" href="status_pendaftaran.css?v=2">
 </head>
 
 <body>
@@ -62,9 +62,9 @@
                                 </div>
                                 <div class="flex-row">
                                     <i class="fa-solid fa-money-bill-transfer parent-dashboard-icon"></i>
-                                    Nominal Transfer <p id="txtNominalPembayaran" class="tiny-margin-left"> Rp 0,00</p>
+                                    <p id="txtNominalPembayaran" class="tiny-margin-left">Nominal Transfer Rp 0,00</p>
                                 </div>
-                                <div class="flex-row">
+                                <div id="payment-section" class="flex-row">
                                     <img src="../logo/bank_bsi_logo.png" class="parent-dashboard-icon"
                                         alt="Bank Syariah Indonesia">
                                     <div class="flex-column">
@@ -360,7 +360,8 @@
                 unggahReceipt.addEventListener('click', () => uploadImage(idRegistrasi));
 
                 if (statusPendaftaran != "Menunggu Pembayaran" &&
-                    statusPendaftaran != "Bukti Bayar Ditolak") {
+                    statusPendaftaran != "Bukti Bayar Ditolak" &&
+                    statusPendaftaran != "Pendaftaran Batal") {
                     getUploadedImage(idRegistrasi)
                     hideView('containerCountdown')
                 }
@@ -368,6 +369,14 @@
                 if (statusPendaftaran != "Menunggu Pembayaran") {
                     showView('btnWAGroup')
                     setLink('btnWAGroup', localStorage.getItem('linkWAGroup'))
+                }
+
+                if (statusPendaftaran == "Pendaftaran Batal") {
+                    const message = `Masa unggah bukti pembayaran telah kadaluarsa, 
+                                    silakan mendaftar kembali. Apabila telah melakukan transfer, 
+                                    hubungi panitia di ${sekolah.kontak}`
+                    hideView('payment-section')
+                    attachToView('txtNominalPembayaran', message)
                 }
             }
         }
