@@ -105,6 +105,16 @@
                                 <input id="txtTanggalLahir" type="text" class="mdc-text-field__input" value="-"
                                     disabled>
                             </label>
+                            <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
+                                <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                                    <span class="mdc-notched-outline__leading"></span>
+                                    <span class="mdc-notched-outline__notch">
+                                        <span class="mdc-floating-label">NISN</span>
+                                    </span>
+                                    <span class="mdc-notched-outline__trailing"></span>
+                                </span>
+                                <input id="txtNISN" type="text" class="mdc-text-field__input" value="-" disabled>
+                            </label>
                         </div>
                         <div class="flex-column">
                             <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
@@ -230,7 +240,7 @@
     <script src="../main_js/script.js"></script>
     <script src="../main_js/open_close_dialog.js"></script>
     <script src="../main_js/admin_sidebar.js"></script>
-    <script src="../main_js/components/admin-card.js"></script>
+    <script src="../main_js/img_upload.js?v=2"></script>
     <script src="../main_js/report.js?v=5"></script>
     <script>
         const request = new XMLHttpRequest()
@@ -256,6 +266,7 @@
                 const statusPendaftaran = registrasi.status
                 const noPendaftaran = `${registrasi.noPendaftaran}`.padStart(3, "0")
                 const currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
+                const namaLengkap = siswa.namaLengkap
                 const tanggalLahirArray = siswa.tanggalLahir.split("-")
                 const bulanLahir = getMonthName(tanggalLahirArray[1])
                 const tempatTanggalLahir = `${siswa.tempatLahir}, ${tanggalLahirArray[0]} ${bulanLahir} ${tanggalLahirArray[2]}`
@@ -303,8 +314,9 @@
                 attachToView('txtNominalPembayaran', currency.format(registrasi.nominalTransfer))
                 attachToView('txtNoPendaftaran', noPendaftaran)
 
-                setInputValue('txtNamaLengkap', siswa.namaLengkap)
+                setInputValue('txtNamaLengkap', namaLengkap)
                 setInputValue('txtTanggalLahir', tempatTanggalLahir)
+                setInputValue('txtNISN', siswa.nisn)
                 setInputValue('txtAsalSekolah', siswa.asalSekolah)
                 setInputValue('txtPrestasi', siswa.prestasi)
                 setInputValue('txtRerataRapor', siswa.rerataRapor)

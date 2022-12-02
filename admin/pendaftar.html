@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="../main_css/root.css">
     <link rel="stylesheet" href="../main_css/material_design.css">
     <link rel="stylesheet" href="../main_css/modal.css">
-    <link rel="stylesheet" href="beranda_admin.css?v=4">
+    <link rel="stylesheet" href="beranda_admin.css?v=6">
 </head>
 
 <body>
@@ -100,6 +100,12 @@
                     background="transparent" speed="1" loop autoplay></lottie-player>
             </div>
 
+            <div id="noDataContainer" class="flex-column loading-container" style="display: none;">
+                <lottie-player id="noDataImage" src="https://assets7.lottiefiles.com/packages/lf20_chws1oam.json"
+                    background="transparent" speed="1" loop autoplay></lottie-player>
+                <h3>Belum ada data pada filter ini</h3>
+            </div>
+
             <div class="modal__container" id="modal-container">
                 <div class="modal__content" title="Close" style="margin-left: 120px">
                     <i class="bx bx-x modal__close close-modal"></i>
@@ -137,13 +143,14 @@
     <script src="../includes/public-function.js?v=2"></script>
     <script src="../main_js/script.js"></script>
     <script src="../main_js/open_close_dialog.js"></script>
-    <script src="../main_js/components/admin-card.js?v=6"></script>
+    <script src="../main_js/components/admin-card.js?v=10"></script>
     <script src="../main_js/admin_sidebar.js?v=2"></script>
     <script src="../main_js/report.js?v=5"></script>
     <script src="../main_js/components/status-buttons.js"></script>
     <script>
         const request = new XMLHttpRequest()
         const accessToken = localStorage.getItem('accessToken')
+        const noDataContainer = document.getElementById("noDataContainer")
 
         var data = null
 
@@ -180,6 +187,14 @@
         request.send()
 
         var currentFilter = 'semua'
+        const selectableStatus = [
+            "Dibayar",
+            "Lulus Tes Akademik",
+            "Lulus",
+            "Lulus Bersyarat",
+            "Cadangan",
+            "Belum Diterima"
+        ]
 
         function setFilter(myRadio) {
             currentFilter = myRadio.value
@@ -189,7 +204,7 @@
                 showView('cards-2')
                 hideView('filtered-cards')
                 hideView('status-buttons')
-            } else if (currentFilter == 'Dibayar') {
+            } else if (selectableStatus.includes(currentFilter)) {
                 hideView('cards')
                 hideView('cards-2')
                 showView('filtered-cards')
@@ -203,6 +218,14 @@
                         activateStatusButtons()
                     }, 1000);
                 }
+            } else if (currentFilter == 'Pendaftaran Batal') {
+                hideView('cards')
+                hideView('cards-2')
+                hideView('status-buttons')
+                showView('filtered-cards')
+
+                if (data != null)
+                    generateCancelledCard('filtered-cards', data, currentFilter)
             } else {
                 hideView('cards')
                 hideView('cards-2')

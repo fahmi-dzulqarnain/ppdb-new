@@ -873,7 +873,7 @@ th {
     }
 
     .timeline::before {
-        height: 89%;
+        height: 75%;
     }
 }
 

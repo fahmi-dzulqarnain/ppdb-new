@@ -209,7 +209,9 @@
             attachToView('biayaPendaftaran', "Pendaftaran: " + currency.format(jsonSekolah.biayaPendaftaran))
             attachToView('biayaAwal', "Awal Masuk: " + currency.format(jsonSekolah.biayaAwal))
             attachToView('biayaSPP', "SPP Bulanan: " + currency.format(jsonSekolah.biayaSPP))
-            addToView('kontakSekolah', kontak)
+            setTimeout(() => {
+                addToView('kontakSekolah', kontak)
+            }, 1000);
 
             setRowContent('assets/components/row-tipe-sekolah.html', jsonSekolah.tipeSekolah)
 

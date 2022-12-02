@@ -26,11 +26,146 @@
 
 <body>
     <div id="sidebar"></div>
-    <section class="beranda display-none" id="beranda">
-        <div class="kurung">
-            <div class="text" style="margin-left: 30px;">Pengaturan & Data Sekolah</div>
+    <section class="beranda display-none" style="margin-left: 2rem;" id="beranda">
+        <div class="text" style="margin-bottom: 1rem;">Pengaturan & Data Sekolah</div>
+
+        <div class="flex-row margin-mobile">
             <div>
-                <p>Akan Hadir!</p>
+                <h3 style="text-align: left; margin-bottom: 1rem;">Data Sekolah</h3>
+                <div class="flex-column content-right">
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
+                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label">Nama Sekolah</span>
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input id="txtNamaSekolah" type="text" class="mdc-text-field__input text-disabled" value="-"
+                            disabled>
+                    </label>
+
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin mdc-text-field--textarea"
+                        style="height: 9.2rem;">
+                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label">Alamat</span>
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <span class="mdc-text-field__resizer">
+                            <textarea id="txtAlamat" class="mdc-text-field__input" rows="8" cols="40" aria-label="Label"
+                                disabled>Ini adalah Alamat</textarea>
+                        </span>
+                    </label>
+                </div>
+
+                <h3 style="text-align: left; margin: 1rem 0;">Data Rekening</h3>
+                <div class="flex-column">
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
+                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label">Nama Rekening</span>
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input id="txtNamaRekening" type="text" class="mdc-text-field__input" value="-">
+                    </label>
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
+                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label">No. Rekening</span>
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input id="txtNoRekening" type="text" class="mdc-text-field__input" value="-">
+                    </label>
+
+                    <button id="btnSaveSettings" type="button" class="button-setujui"
+                        style="margin: 6rem 1rem; font-size: 1rem;" onclick="saveSettings()">
+                        Simpan Perubahan
+                    </button>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="margin-h3-orangtua" style="text-align: left;">Pengaturan Pendaftaran</h3>
+                <div class="flex-column content-right">
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
+                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label">Biaya Awal</span>
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input id="txtBiayaAwal" oninput="onInputNumberSeparator(this)" type="text"
+                            class="mdc-text-field__input" value="-">
+                    </label>
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
+                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label">Biaya SPP (Bulanan)</span>
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input id="txtBiayaSPP" oninput="onInputNumberSeparator(this)" type="text"
+                            class="mdc-text-field__input" value="-">
+                    </label>
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
+                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label">Biaya Pendaftaran</span>
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input id="txtBiayaPendaftaran" oninput="onInputNumberSeparator(this)" type="text"
+                            class="mdc-text-field__input" value="-">
+                    </label>
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
+                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label">Kontak Pendaftaran</span>
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input id="txtKontak" type="text" class="mdc-text-field__input" value="-">
+                    </label>
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin mdc-text-field--textarea"
+                        style="height: 9.2rem;">
+                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label">Link Grup WhatsApp</span>
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <span class="mdc-text-field__resizer">
+                            <textarea id="txtLinkGrupWA" class="mdc-text-field__input" rows="8" cols="40"
+                                aria-label="Label">https://chat.whatsapp.com/</textarea>
+                        </span>
+                    </label>
+                    <div class="mdc-form-field" style="margin: .5rem;">
+                        <div class="mdc-checkbox">
+                            <input type="checkbox" class="mdc-checkbox__native-control" id="checkboxRegistration" />
+                            <div class="mdc-checkbox__background">
+                                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                    <path class="mdc-checkbox__checkmark-path" fill="none"
+                                        d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                </svg>
+                                <div class="mdc-checkbox__mixedmark"></div>
+                            </div>
+                            <div class="mdc-checkbox__ripple"></div>
+                        </div>
+                        <label for="checkboxRegistration">Buka / Tutup Pendaftaran</label>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -62,14 +197,17 @@
     </section>
 
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <script src="../includes/public-function.js?v=2"></script>
+    <script src="../includes/public-function.js?v=5"></script>
     <script src="../main_js/script.js"></script>
     <script src="../main_js/open_close_dialog.js"></script>
     <script src="../main_js/admin_sidebar.js"></script>
     <script src="../main_js/report.js?v=9"></script>
+    <script src="../main_js/admin_settings.js"></script>
     <script>
         const request = new XMLHttpRequest()
         const accessToken = localStorage.getItem('accessToken')
+        const idSekolah = localStorage.getItem('idSekolah')
+        const query = `?id=${idSekolah}`
 
         if (accessToken == null) {
             signOut()
@@ -77,7 +215,7 @@
 
         request.onload = function () {
             const response = JSON.parse(request.responseText)
-            const statusCode = response.statusCode
+            const statusCode = this.status
 
             if (statusCode == 401) {
                 signOut()
@@ -89,16 +227,27 @@
                 attachToView('descriptionDialog', messages)
                 openDialog()
             } else {
-                const data = response.data
+                const checkboxRegistration = document.getElementById('checkboxRegistration')
+                const data = response
+                console.log(data)
 
-                attachToView('txtCountPendaftar', data.pendaftar)
-                attachToView('txtCountMenungguKonfirmasi', data.menungguKonfirmasi)
-                attachToView('txtCountDibayar', data.dibayar)
+                setInputValue('txtNamaSekolah', data.namaSekolah)
+                setInputValue('txtAlamat', data.alamat)
+                setInputValue('txtNamaRekening', data.namaRekening)
+                setInputValue('txtNoRekening', data.noRekening)
+                setInputValue('txtBiayaAwal', numberWithSeparators(data.biayaAwal))
+                setInputValue('txtBiayaSPP', numberWithSeparators(data.biayaSPP))
+                setInputValue('txtBiayaPendaftaran', numberWithSeparators(data.biayaPendaftaran))
+                setInputValue('txtKontak', data.kontak)
+                setInputValue('txtLinkGrupWA', data.linkWAGroup)
+
+                if (data.isRegistrationOpen) {
+                    checkboxRegistration.checked = true
+                }
             }
         }
 
-        request.open('GET', `${mainURL}registrasi/statusCount`)
-        request.setRequestHeader('Authorization', `Bearer ${accessToken}`)
+        request.open('GET', `${mainURL}sekolah/byID${query}`)
         request.send()
     </script>
 </body>

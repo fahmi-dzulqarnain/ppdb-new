@@ -10,6 +10,11 @@
     margin-top: .2rem;
 }
 
+.paragraph {
+    line-height: 1.7rem;
+    padding: 0 1.5rem;
+}
+
 .parent-dashboard-icon {
     width: 2.5em;
     text-align: center;

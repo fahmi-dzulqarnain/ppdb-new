@@ -43,6 +43,11 @@ function setInputValue(viewID, content) {
   view.value = content;
 }
 
+function getValueOfInput(id) {
+  const viewElement = document.getElementById(id)
+  return viewElement.value
+}
+
 function setToImage(viewID, content) {
   const view = document.getElementById(viewID);
   view.src = content;
@@ -78,25 +83,22 @@ function getMonthName(monthNumberString) {
   return arrayOfMonth[monthNumber];
 }
 
-var getParams = function (searchString) {
-  var parse = function (params, pairs) {
-    var pair = pairs[0];
-    var parts = pair.split("=");
-    var key = decodeURIComponent(parts[0]);
-    var value = decodeURIComponent(parts.slice(1).join("="));
+function numberWithSeparators(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
 
-    // Handle multiple parameters of the same name
-    if (typeof params[key] === "undefined") {
-      params[key] = value;
-    } else {
-      params[key] = [].concat(params[key], value);
-    }
+function onInputNumberSeparator(input) {
+  let nums = input.value.replace(/\./g, '')
 
-    return pairs.length == 1 ? params : parse(params, pairs.slice(1));
-  };
+  if (!nums || nums.endsWith('.')) return
+  
+  input.value = parseFloat(nums).toLocaleString("id-ID")
+}
 
-  // Get rid of leading ?
-  return searchString.length == 0
-    ? {}
-    : parse({}, searchString.substr(1).split("&"));
-};
+function convertToInt(number) {
+  if (isNaN(number)) {
+    return 0
+  }
+
+  return parseInt(number)
+}

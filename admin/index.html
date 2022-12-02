@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../main_css/root.css">
     <link rel="stylesheet" href="../main_css/material_design.css">
     <link rel="stylesheet" href="../main_css/modal.css">
-    <link rel="stylesheet" href="beranda_admin.css?v=4">
+    <link rel="stylesheet" href="beranda_admin.css?v=5">
 </head>
 
 <body>
@@ -30,7 +30,7 @@
         <div class="kurung">
             <div class="text" style="margin-left: 30px;">Beranda</div>
             <div>
-                <div class="flex-row padding-card-botton">
+                <div class="flex-row-wrap padding-card-botton">
                     <div class="card">
                         <div class="box">
                             <div id="txtCountPendaftar" class="text-number" style="margin-right: 2rem;">0</div>
@@ -56,6 +56,55 @@
                             <div class="text-card">
                                 <i class="fa-solid fa-triangle-exclamation" style="margin-bottom: 10px;"></i><br>
                                 Konfirmasi
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="box">
+                            <div id="txtCountLulusTes" class="text-number" style="margin-right: 2rem;">0
+                            </div>
+                            <div class="text-card">
+                                <i class="fa-solid fa-school-circle-check" style="margin-bottom: 10px;"></i><br>
+                                Lulus Tes
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="box">
+                            <div id="txtCountLulus" class="text-number" style="margin-right: 2rem;">0</div>
+                            <div class="text-card">
+                                <i class="fa-solid fa-building-circle-check" style="margin-bottom: 10px;"></i><br>Lulus
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-color-lulus">
+                        <div class="box">
+                            <div id="txtCountBersyarat" class="text-number"
+                                style="margin-right: 2rem;flex-wrap: initial;display: inherit;">0
+                            </div>
+                            <div class="text-card">
+                                <i class="fa-solid fa-envelope-circle-check"
+                                    style="margin-bottom: 10px;"></i><br>Bersyarat
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-color-perlu-aksi">
+                        <div class="box">
+                            <div id="txtCountCadangan" class="text-number" style="margin-right: 2rem;">0
+                            </div>
+                            <div class="text-card">
+                                <i class="fa-solid fa-school-circle-exclamation" style="margin-bottom: 10px;"></i><br>
+                                Cadangan
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card bg-red">
+                        <div class="box">
+                            <div id="txtCountBelumDiterima" class="text-number" style="margin-right: 2rem;">0
+                            </div>
+                            <div class="text-card">
+                                <i class="fa-solid fa-school-circle-xmark" style="margin-bottom: 10px;"></i><br>
+                                Blm Diterima
                             </div>
                         </div>
                     </div>
@@ -122,7 +171,11 @@
 
                 attachToView('txtCountPendaftar', data.pendaftar)
                 attachToView('txtCountMenungguKonfirmasi', data.menungguKonfirmasi)
-                attachToView('txtCountDibayar', data.dibayar)
+                attachToView('txtCountLulusTes', data.lulusTesAkademik)
+                attachToView('txtCountLulus', data.lulus)
+                attachToView('txtCountBersyarat', data.lulusBersyarat)
+                attachToView('txtCountCadangan', data.cadangan)
+                attachToView('txtCountBelumDiterima', data.belumDiterima)
             }
         }
 

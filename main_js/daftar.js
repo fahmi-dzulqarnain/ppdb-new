@@ -38,8 +38,6 @@ function daftar() {
         nisn
     })
 
-    console.log(JSON.parse(jsonBody))
-
     request.onload = function() {
         const response = JSON.parse(request.responseText)
         const statusCode = response.statusCode
@@ -47,7 +45,7 @@ function daftar() {
         if (statusCode != 200) {
             var title = response.error
             const messages = response.message
-            var message = messages
+            var message = ""
             
             if(title == "Bad Request") {
                 title = "Mohon Tinjau!"
@@ -55,7 +53,6 @@ function daftar() {
                 for (let i = 0; i < messages.length; i++) {
                     message += `${messages[i]}. `
                 }
-
             }
 
             attachToView('titleDialog', title)
@@ -69,9 +66,4 @@ function daftar() {
     request.open('POST', `${mainURL}auth/register`)
     request.setRequestHeader('Content-Type', 'application/json')
     request.send(jsonBody)
-}
-
-function getValueOfInput(id) {
-    const viewElement = document.getElementById(id)
-    return viewElement.value
 }

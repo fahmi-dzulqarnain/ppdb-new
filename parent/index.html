@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../main_css/text_style.css">
     <link rel="stylesheet" href="../main_css/img_upload.css">
     <link rel="stylesheet" href="../main_css/modal.css">
-    <link rel="stylesheet" href="status_pendaftaran.css?v=2">
+    <link rel="stylesheet" href="status_pendaftaran.css?v=6">
 </head>
 
 <body>
@@ -54,13 +54,17 @@
                             </div>
                             <br>
 
+                            <div class="parent-dashboard-content centerAlign">
+                                <p id="txtMessage" class="paragraph"></p>
+                            </div>
+
                             <div class="flex-column leftAlign parent-dashboard-content">
                                 <div class="flex-row" id="containerCountdown">
                                     <i class="fa-solid fa-hourglass-half parent-dashboard-icon"></i>
                                     <p id="countdownDisplay" style="text-align: left;"> Kadaluarsa dalam 0 Jam 0 Menit 0
                                         Detik</p>
                                 </div>
-                                <div class="flex-row">
+                                <div id="nominal-section" class="flex-row">
                                     <i class="fa-solid fa-money-bill-transfer parent-dashboard-icon"></i>
                                     <p id="txtNominalPembayaran" class="tiny-margin-left">Nominal Transfer Rp 0,00</p>
                                 </div>
@@ -85,7 +89,7 @@
                             </div>
                         </div>
                     </div>
-                    <form enctype="multipart/form-data" action="berita_.php" method="post"
+                    <form id="formReceipt" enctype="multipart/form-data" method="post"
                         class="medium-margin-vertical box">
 
                         <label for="main-image" id="custom-btn">
@@ -260,7 +264,7 @@
     </section>
 
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <script src="../includes/public-function.js?v=4"></script>
+    <script src="../includes/public-function.js?v=5"></script>
     <script src="../main_js/script.js"></script>
     <script src="../main_js/countdown.js"></script>
     <script src="../main_js/status_checker.js"></script>
@@ -268,7 +272,6 @@
     <script src="../main_js/open_close_dialog.js"></script>
     <script>
         const request = new XMLHttpRequest()
-        const parameters = getParams(location.search)
         const accessToken = localStorage.getItem('accessToken')
 
         if (accessToken == null) {
@@ -277,7 +280,7 @@
 
         request.onload = function () {
             const response = JSON.parse(request.responseText)
-            const status = response.statusCode
+            const status = this.status
 
             if (status != 200) {
                 signOut()
@@ -366,17 +369,77 @@
                     hideView('containerCountdown')
                 }
 
-                if (statusPendaftaran != "Menunggu Pembayaran") {
+                if (statusPendaftaran != "Menunggu Pembayaran" &&
+                    statusPendaftaran != "Pendaftaran Batal") {
                     showView('btnWAGroup')
                     setLink('btnWAGroup', localStorage.getItem('linkWAGroup'))
                 }
 
-                if (statusPendaftaran == "Pendaftaran Batal") {
-                    const message = `Masa unggah bukti pembayaran telah kadaluarsa, 
-                                    silakan mendaftar kembali. Apabila telah melakukan transfer, 
-                                    hubungi panitia di ${sekolah.kontak}`
-                    hideView('payment-section')
-                    attachToView('txtNominalPembayaran', message)
+                var message = ""
+
+                switch (statusPendaftaran) {
+                    case "Pendaftaran Batal":
+                        message = `Masa unggah bukti pembayaran telah kadaluarsa, 
+                                   silakan mendaftar kembali. Apabila telah melakukan transfer, 
+                                   hubungi panitia di ${sekolah.kontak}`
+                        hideView('payment-section')
+                        hideView('nominal-section')
+                        hideView('formReceipt')
+                        attachToView('txtMessage', message)
+                        break
+                    case "Dibayar":
+                        message = "Alhamdulillah! Pembayaran telah diterima, silakan untuk datang pada test yang akan dilaksanakan sesuai jadwal."
+                        hideView('payment-section')
+                        hideView('nominal-section')
+                        attachToView('txtMessage', message)
+                        break;
+                    case "Lulus":
+                        message = `Alhamdulillah! Ananda telah lulus dan dinyatakan 
+                                   diterima sebagai siswa di ${sekolah.namaSekolah}, 
+                                   jangan lupa untuk melakukan pendaftaran ulang sesuai jadwal. 
+                                   Hubungi Panitia Apabila Ada Pertanyaan di ${sekolah.kontak}.`
+                        hideView('payment-section')
+                        hideView('nominal-section')
+                        attachToView('txtMessage', message)
+                        break;
+                    case "Lulus Bersyarat":
+                        message = `Alhamdulillah! Ananda dinyatakan lulus bersyarat, 
+                                   artinya ada syarat yang harus dilakukan agar dapat 
+                                   diterima sepenuhnya di ${sekolah.namaSekolah}.
+                                       Hubungi Panitia Apabila Ada Pertanyaan di ${sekolah.kontak}.`
+                        hideView('payment-section')
+                        hideView('nominal-section')
+                        attachToView('txtMessage', message)
+                        break;
+                    case "Lulus Tes Akademik":
+                        message = `Alhamdulillah! Ananda lulus tes akademik, langkah 
+                                   selanjutnya yaitu mengunggah berkas kesehatan, ingatlah 
+                                   untuk selalu memantau status pendaftaran sesuai jadwal. 
+                                   Hubungi Panitia Apabila Ada Pertanyaan di ${sekolah.kontak}.`
+                        hideView('payment-section')
+                        hideView('nominal-section')
+                        attachToView('txtMessage', message)
+                        break;
+                    case "Cadangan":
+                        message = `Ananda dinyatakan sebagai cadangan, artinya Ananda memiliki 
+                                   nilai cukup dalam tes dan apabila ada yang membatalkan pendaftaran, 
+                                   akan dihubungi oleh pihak ${sekolah.namaSekolah}.
+                                   Hubungi Panitia Apabila Ada Pertanyaan di ${sekolah.kontak}.`
+                        hideView('payment-section')
+                        hideView('nominal-section')
+                        attachToView('txtMessage', message)
+                        break;
+                    case "Belum Diterima":
+                        message = `Mohon maaf untuk saat ini Ananda belum diterima di ${sekolah.namaSekolah} 
+                                   karena belum lulus test. Terima Kasih telah mendaftar, 
+                                   Semoga Allah mengganti dengan yang lebih baik.
+                                   Hubungi Panitia Apabila Ada Pertanyaan di ${sekolah.kontak}.`
+                        hideView('payment-section')
+                        hideView('nominal-section')
+                        attachToView('txtMessage', message)
+                        break;
+                    default:
+                        break
                 }
             }
         }

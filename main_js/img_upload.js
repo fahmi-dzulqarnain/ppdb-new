@@ -101,11 +101,13 @@ function getUploadedImage(idRegistrasi) {
       var imageUrl = urlCreator.createObjectURL(this.response)
       gambar.src = imageUrl
 
-      unggahReceipt.style.display = 'none'
       mainImage.disabled = true
-      // unggahReceipt.innerHTML = "Batal Unggah"
-      // unggahReceipt.style.backgroundColor = "#D5001A"
-      // unggahReceipt.addEventListener('click', () => cancelUpload(idRegistrasi))
+      if (typeof(unggahReceipt) != "undefined") {
+        unggahReceipt.style.display = 'none'
+        // unggahReceipt.innerHTML = "Batal Unggah"
+        // unggahReceipt.style.backgroundColor = "#D5001A"
+        // unggahReceipt.addEventListener('click', () => cancelUpload(idRegistrasi))
+      }
     }
   }
 

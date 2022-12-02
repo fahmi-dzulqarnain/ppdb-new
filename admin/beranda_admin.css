@@ -39,6 +39,18 @@
     justify-content: center;
 }
 
+#noDataImage {
+    width: 20%;
+    margin-bottom: 1.5rem;
+}
+
+#noDataContainer {
+    align-items: center;
+    text-align: center;
+    margin-top: 14vh;
+    transition: all .5s ease-in;
+}
+
 .server-solid {
     background-image: url('../assets/img/server-solid.svg');
     width: 5rem;
@@ -158,6 +170,10 @@ body.dark {
 
 .card-color-perlu-aksi {
     background-color: var(--Dandelion);
+}
+
+.bg-red {
+    background-color: var(--back-rose);
 }
 
 .card .box {
@@ -543,6 +559,12 @@ button {
     flex-direction: row;
 }
 
+.flex-row-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .flex-column {
     display: flex;
     flex-direction: column;
@@ -793,29 +815,29 @@ section {
     padding: 10px 36px;
     border-radius: 6px;
     background-color: var(--leaf);
+    border: 1px solid var(--leaf);
     color: var(--white);
+    font-weight: var(--font-medium);
 }
 
 .button-setujui:hover {
     background-color: var(--Eggshell);
-    border: 1px solid var(--first-color);
     color: var(--first-color-alt);
-    font-weight: var(--font-semi-bold);
 }
 
 .button-tolak {
     padding: 10px 36px;
     border-radius: 6px;
+    border: 1px solid var(--Rose);
     background-color: var(--Rose);
     color: var(--white);
     margin: 10px 0 0 0;
+    font-weight: var(--font-medium);
 }
 
 .button-tolak:hover {
     background-color: var(--back-rose);
     color: var(--Rose);
-    border: 1px solid var(--Rose);
-    font-weight: var(--font-semi-bold);
 }
 
 .card-dibayar {
