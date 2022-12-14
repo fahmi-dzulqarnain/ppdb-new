@@ -6,9 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PPDB Yayasan Islam Al Kahfi Batam, Fajar Ilahi, PPIT Imam Syafi'i">
-    <meta name="keywords" content="ppdb alkahfi, ppdb fajar ilahi, ppdb ppit imam syafii, ppdb, pendaftaran fajar ilahi">
+    <meta name="keywords"
+        content="ppdb alkahfi, ppdb fajar ilahi, ppdb ppit imam syafii, ppdb, pendaftaran fajar ilahi">
     <meta name="author" content="Fahmi Dzulqarnain">
-  
+
     <title>PPDB Yayasan Al Kahfi Batam</title>
     <link rel="shortcut icon" href="assets/img/Yayasan Islam Al Kahfi Batam@2x.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -52,23 +53,11 @@
                 <img src="logo/FI TK.png" alt="TKIT" class="modal__img icon" id="modal-img">
 
                 <h3 class="modal__title" id="modal-title">TKIT Fajar Ilahi</h3>
-                <p>Silakan Pilih Lokasi</p>
-                <div class="flex-row modal__description">
-                    <div class="flex-column col-2" id="first">
-                        <button class="button btn-batu-aji" id="modal-btn-1">
-                        </button>
-                    </div>
-                    <div class="flex-column col-2" id="second">
-                        <button class="button btn-bengkong" id="modal-btn-2">
-                        </button>
-                    </div>
-                    <div class="flex-column col-2" id="third">
-                        <button class="button btn-seibeduk" id="modal-btn-3">
-                        </button>
-                    </div>
+                <p style="margin-top: 1.5em;">Silakan Pilih Lokasi</p>
+                <div class="flex-column modal__description" id="modal-content">
                 </div>
 
-                <button class="modal__button-link close-modal">
+                <button type="button" class="modal__button-link close-modal">
                     Close
                 </button>
             </div>
@@ -81,22 +70,11 @@
     </footer>
 
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <script src="includes/public-function.js?v=3"></script>
+    <script src="includes/public-function.js?v=4"></script>
     <script src="main_js/open_close_dialog.js"></script>
-    <script src="main_js/components/grid-sekolah.js"></script>
+    <script src="main_js/components/grid-sekolah.js?v=5"></script>
     <script src="main_js/script.js"></script>
-    <script>
-        const request = new XMLHttpRequest()
-
-        request.onload = function () {
-            const response = JSON.parse(request.responseText.toString())
-
-            setGridSekolahContent('assets/components/grid-sekolah.html', response)
-        }
-
-        request.open('GET', `${mainURL}sekolah`)
-        request.send()
-    </script>
+    <script src="main_js/scripts/index.js"></script>
 </body>
 
 </html>

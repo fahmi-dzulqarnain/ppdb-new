@@ -174,62 +174,13 @@
 
     <div id="footer"></div>
 
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="includes/public-function.js?v=5"></script>
     <script src="main_js/script.js"></script>
     <script src="main_js/components/row-tipe-sekolah.js?v=2"></script>
     <script src="main_js/open_close_dialog.js"></script>
     <script src="main_js/auto_typed.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script>
-        includeHTML('includes/footer.html', 'footer')
-
-        const request = new XMLHttpRequest()
-        const idSekolah = localStorage.getItem('idSekolah')
-        const query = `?id=${idSekolah}`
-
-        request.onload = function () {
-            const jsonSekolah = JSON.parse(request.responseText.toString())
-            const currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
-            const containerTipeSekolah = document.getElementById('containerTipeSekolah')
-            const btnDaftar = document.getElementById('btnDaftar')
-            const btnLogin = document.getElementById('btnLogin')
-            const txtMessageDaftar = document.getElementById('txtMessageDaftar')
-
-            const namaSekolah = jsonSekolah.namaSekolah
-            const alamat = jsonSekolah.alamat
-            const logo = jsonSekolah.logo
-            const kontak = jsonSekolah.kontak
-            const isRegistrationOpen = jsonSekolah.isRegistrationOpen
-
-            setToImage('logo', logo)
-            setToImage('dialogLogo', logo)
-            attachToView('titleDialog', namaSekolah)
-            attachToView('namaSekolah', namaSekolah)
-            attachToView('alamat', alamat)
-            attachToView('biayaPendaftaran', "Pendaftaran: " + currency.format(jsonSekolah.biayaPendaftaran))
-            attachToView('biayaAwal', "Awal Masuk: " + currency.format(jsonSekolah.biayaAwal))
-            attachToView('biayaSPP', "SPP Bulanan: " + currency.format(jsonSekolah.biayaSPP))
-            setTimeout(() => {
-                addToView('kontakSekolah', kontak)
-            }, 1000);
-
-            setRowContent('assets/components/row-tipe-sekolah.html', jsonSekolah.tipeSekolah)
-
-            localStorage.setItem('namaSekolah', namaSekolah)
-            localStorage.setItem('alamat', alamat)
-            localStorage.setItem('logoSekolah', logo)
-            localStorage.setItem('linkWAGroup', jsonSekolah.linkWAGroup)
-
-            if (isRegistrationOpen) {
-                btnDaftar.style.display = 'flex'
-            }
-
-            btnLogin.href = `${viewURL}login`
-        }
-
-        request.open('GET', `${mainURL}sekolah/byID${query}`)
-        request.send()
-    </script>
+    <script src="main_js/scripts/main.js"></script>
 </body>
 
 </html>

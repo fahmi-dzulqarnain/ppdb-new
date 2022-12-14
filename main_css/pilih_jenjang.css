@@ -422,17 +422,6 @@ the website, in dark theme
     border: 2px solid var(--Gray);
 }
 
-.steps_card-number {
-    /* display: inline-block; */
-    /* background-color: var(--first-color-alt); */
-    /* color: #fff; */
-    /* padding: .5rem .74rem; */
-    /* border-radius: .25rem; */
-    /* font-size: var(--h2-font-size); */
-    /* margin-bottom: var(--mb-1-5); */
-    /* transition: .3s; */
-}
-
 .steps_card-title {
     font-size: var(--h3-font-size);
     margin-bottom: var(--mb-0-5)
