@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="../main_css/root.css">
     <link rel="stylesheet" href="../main_css/material_design.css">
-    <link rel="stylesheet" href="daftar.css">
+    <link rel="stylesheet" href="daftar.css?v=1">
 </head>
 
 <body>
@@ -95,7 +95,7 @@
                         <span class="mdc-notched-outline">
                             <span class="mdc-notched-outline__leading"></span>
                             <span class="mdc-notched-outline__notch">
-                                <span class="mdc-floating-label">No. HP Ayah</span>
+                                <span class="mdc-floating-label" id="labelHPAyah">No. HP Ayah</span>
                             </span>
                             <span class="mdc-notched-outline__trailing"></span>
                         </span>
@@ -109,7 +109,7 @@
                         <span class="mdc-notched-outline">
                             <span class="mdc-notched-outline__leading"></span>
                             <span class="mdc-notched-outline__notch">
-                                <span class="mdc-floating-label">No. HP Ibu</span>
+                                <span class="mdc-floating-label" id="labelHPIbu">No. HP Ibu</span>
                             </span>
                             <span class="mdc-notched-outline__trailing"></span>
                         </span>
@@ -151,68 +151,15 @@
                         </span>
                         <input id="txtNamaLengkap" type="text" class="mdc-text-field__input">
                     </label>
-                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin" id="labelAsalSekolah">
                         <span class="mdc-notched-outline">
                             <span class="mdc-notched-outline__leading"></span>
                             <span class="mdc-notched-outline__notch">
-                                <span class="mdc-floating-label">Asal Sekolah</span>
+                                <span class="mdc-floating-label" id="asalSekolah">Asal Sekolah</span>
                             </span>
                             <span class="mdc-notched-outline__trailing"></span>
                         </span>
                         <input id="txtAsalSekolah" type="text" class="mdc-text-field__input">
-                    </label>
-                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
-                        <span class="mdc-notched-outline">
-                            <span class="mdc-notched-outline__leading"></span>
-                            <span class="mdc-notched-outline__notch">
-                                <span class="mdc-floating-label">Rerata Raport</span>
-                            </span>
-                            <span class="mdc-notched-outline__trailing"></span>
-                        </span>
-                        <input id="txtRerataRapor" type="text" class="mdc-text-field__input">
-                    </label>
-                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
-                        <span class="mdc-notched-outline">
-                            <span class="mdc-notched-outline__leading"></span>
-                            <span class="mdc-notched-outline__notch">
-                                <span class="mdc-floating-label">NISN</span>
-                            </span>
-                            <span class="mdc-notched-outline__trailing"></span>
-                        </span>
-                        <input id="txtNISN" type="text" class="mdc-text-field__input">
-                    </label>
-                    <div class="mdc-text-field-helper-line">
-                        <div class="mdc-text-field-helper-text" aria-hidden="true">
-                            Opsional
-                        </div>
-                    </div>
-                    <div class="flex-row" style="margin: 0 16px;">
-                        <div class="mdc-checkbox">
-                            <input type="checkbox" class="mdc-checkbox__native-control" id="checkboxNISN" />
-                            <div class="mdc-checkbox__background">
-                                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                                    <path class="mdc-checkbox__checkmark-path" fill="none"
-                                        d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                                </svg>
-                                <div class="mdc-checkbox__mixedmark"></div>
-                            </div>
-                            <div class="mdc-checkbox__ripple"></div>
-                        </div>
-                        <label for="checkboxNISN" style="margin: auto 0;">Atur NISN sebagai username</label>
-                    </div>
-
-                </div>
-
-                <div class="flex-column">
-                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
-                        <span class="mdc-notched-outline">
-                            <span class="mdc-notched-outline__leading"></span>
-                            <span class="mdc-notched-outline__notch">
-                                <span class="mdc-floating-label">Prestasi</span>
-                            </span>
-                            <span class="mdc-notched-outline__trailing"></span>
-                        </span>
-                        <input id="txtPrestasi" type="text" class="mdc-text-field__input">
                     </label>
                     <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
                         <span class="mdc-notched-outline">
@@ -238,6 +185,69 @@
                         <div class="mdc-text-field-helper-text" aria-hidden="true">
                             Format: 13-01-2010
                         </div>
+                    </div>
+
+                </div>
+
+                <div class="flex-column">
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin">
+                        <span class="mdc-notched-outline">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label">Prestasi</span>
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input id="txtPrestasi" type="text" class="mdc-text-field__input">
+                    </label>
+                    <div class="mdc-text-field-helper-line">
+                        <div class="mdc-text-field-helper-text" aria-hidden="true">
+                            Opsional
+                        </div>
+                    </div>
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin" id="labelRerataRapor">
+                        <span class="mdc-notched-outline">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label">Rerata Raport</span>
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input id="txtRerataRapor" type="text" class="mdc-text-field__input">
+                    </label>
+                    <div class="mdc-text-field-helper-line">
+                        <div class="mdc-text-field-helper-text" aria-hidden="true">
+                            Opsional
+                        </div>
+                    </div>
+                    <label class="mdc-text-field mdc-text-field--outlined text-field-margin" id="fieldNISN">
+                        <span class="mdc-notched-outline">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label" id="labelNISN">NISN</span>
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input id="txtNISN" type="text" class="mdc-text-field__input">
+                    </label>
+                    <div class="mdc-text-field-helper-line">
+                        <div class="mdc-text-field-helper-text" aria-hidden="true">
+                            Opsional
+                        </div>
+                    </div>
+                    <div class="flex-row" style="margin: 0 16px;" id="chkBoxNISN">
+                        <div class="mdc-checkbox">
+                            <input type="checkbox" class="mdc-checkbox__native-control" id="checkboxNISN" />
+                            <div class="mdc-checkbox__background">
+                                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                    <path class="mdc-checkbox__checkmark-path" fill="none"
+                                        d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                </svg>
+                                <div class="mdc-checkbox__mixedmark"></div>
+                            </div>
+                            <div class="mdc-checkbox__ripple"></div>
+                        </div>
+                        <label for="checkboxNISN" style="margin: auto 0;">Atur NISN sebagai username</label>
                     </div>
                 </div>
             </div>
@@ -272,30 +282,7 @@
     <script src="../main_js/open_close_dialog.js"></script>
     <script src="../main_js/script.js"></script>
     <script src="../main_js/daftar.js?v=10"></script>
-    <script>
-        const request = new XMLHttpRequest()
-        const idSekolah = localStorage.getItem('idSekolah')
-        const query = `?id=${idSekolah}`
-
-        request.onload = function () {
-            const jsonSekolah = JSON.parse(request.responseText.toString())
-
-            const namaSekolah = jsonSekolah.namaSekolah
-            const alamat = jsonSekolah.alamat
-            const logo = jsonSekolah.logo
-
-            localStorage.setItem('namaSekolah', namaSekolah)
-            localStorage.setItem('alamat', alamat)
-            localStorage.setItem('logoSekolah', logo)
-
-            setToImage('imgLogoSekolah', jsonSekolah.logo)
-            attachToView('txtNamaSekolah', namaSekolah)
-            attachToView('txtAlamatSekolah', alamat)
-        }
-
-        request.open('GET', `${mainURL}sekolah/byID${query}`)
-        request.send()
-    </script>
+    <script src="../main_js/scripts/register.js"></script>
 </body>
 
 </html>

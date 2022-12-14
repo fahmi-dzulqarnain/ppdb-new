@@ -264,7 +264,7 @@
                 const registrasi = siswa.idRegistrasi
                 const idRegistrasi = registrasi.id
                 const statusPendaftaran = registrasi.status
-                const noPendaftaran = `${registrasi.noPendaftaran}`.padStart(3, "0")
+                const noPendaftaran = `${registrasi.noPendaftaran}`.padStart(4, "0")
                 const currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' });
                 const namaLengkap = siswa.namaLengkap
                 const tanggalLahirArray = siswa.tanggalLahir.split("-")

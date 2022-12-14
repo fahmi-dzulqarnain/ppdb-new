@@ -723,23 +723,18 @@ th {
     }
 
     .side_logo {
-        width: 90px;
+        width: 80px;
     }
 
     .mobile-size-font-logo-h3 {
         font-size: 1.2em;
+        text-align: center;
     }
 
     .mobile-size-font-logo-p {
         font-size: 1em;
-    }
-
-    .mobile-size-font-logo-h3 {
         text-align: center;
-    }
-
-    .mobile-size-font-logo-p {
-        text-align: center;
+        min-width: 200px;
     }
 
     .header-bar-properti {

@@ -4,6 +4,8 @@ const request = new XMLHttpRequest()
 const idSekolah = localStorage.getItem("idSekolah")
 const query = `?id=${idSekolah}`
 
+request.open("GET", `${mainURL}sekolah/byID${query}`)
+request.send()
 request.onload = function () {
 	const jsonSekolah = JSON.parse(request.responseText.toString())
 	const currency = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" })
@@ -47,5 +49,15 @@ request.onload = function () {
 	btnLogin.href = `${viewURL}login`
 }
 
-request.open("GET", `${mainURL}sekolah/byID${query}`)
-request.send()
+const timelineRequest = new XMLHttpRequest()
+const timelineQuery = `?idSekolah=${idSekolah}`
+
+timelineRequest.open("GET", `${mainURL}sekolah/liniMasa${timelineQuery}`)
+timelineRequest.send()
+timelineRequest.onload = function () {
+	if (this.status == 200) {
+		const jsonData = JSON.parse(this.responseText.toString())
+
+		setTimelines("assets/components/item-timeline.html", jsonData)
+	}
+}
