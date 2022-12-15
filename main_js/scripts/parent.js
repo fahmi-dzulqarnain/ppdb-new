@@ -18,9 +18,9 @@ request.onload = function () {
 		const registrasi = siswa.idRegistrasi
 		const idRegistrasi = registrasi.id
 		const noPendaftaran =
-			`${sekolah.idSekolah}`.padStart(4, "0") +
+			`${sekolah.idSekolah}`.padStart(3, "0") +
 			"-" +
-			`${registrasi.noPendaftaran}`.padStart(3, "0")
+			`${registrasi.noPendaftaran}`.padStart(4, "0")
 		const deadlineBayar = registrasi.deadlineBayar
 		const statusPendaftaran = registrasi.status
 		const isExpired =

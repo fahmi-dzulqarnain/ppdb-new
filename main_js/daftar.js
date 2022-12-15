@@ -9,11 +9,11 @@ function daftar() {
 	var rerataRapor = 0
 	var username = hpAyah
 
-	if (isUseNISN && nisn !== null) {
+	if (isUseNISN && nisn !== null && nisn != "") {
 		username = nisn
 	}
 
-	if (!isNaN(rerataRaporString)) {
+	if (!isNaN(rerataRaporString) && rerataRaporString != "") {
 		rerataRapor = parseInt(rerataRaporString)
 	}
 
@@ -53,6 +53,8 @@ function daftar() {
 				for (let i = 0; i < messages.length; i++) {
 					message += `${messages[i]}. `
 				}
+			} else {
+				message = messages
 			}
 
 			attachToView("titleDialog", title)
