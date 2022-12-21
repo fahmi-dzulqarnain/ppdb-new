@@ -29,8 +29,8 @@
             <div class="header-bar-properti">
                 <img id="imgLogo" src="../assets/img/PPIT SMP@2x.png" alt="al-kahfi-batam.png" class="side_logo">
                 <div>
-                    <h3 id="namaSekolah" class="mobile-size-font-logo-h3">SMPIT Imam Syafii</h3>
-                    <p id="alamat" class="mobile-size-font-logo-p">Jl. Hang Lekiu, Sambau, Nongsa</p>
+                    <h3 id="namaSekolah" class="mobile-size-font-logo-h3">Memuat...</h3>
+                    <p id="alamat" class="mobile-size-font-logo-p">Memuat...</p>
                 </div>
             </div>
             <div class="text-2">Masuk Akun</div>
@@ -41,7 +41,7 @@
                     <label
                         class="mdc-text-field mdc-text-field--filled mdc-text-field--with-leading-icon text-field-margin">
                         <span class="mdc-text-field__ripple"></span>
-                        <span class="mdc-floating-label">No HP Ayahanda atau NISN</span>
+                        <span class="mdc-floating-label" id="labelUsername">No HP Ayahanda atau NISN</span>
                         <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0"
                             role="button">phone</i>
                         <input class="mdc-text-field__input" type="text" id="txtUsername">
@@ -111,6 +111,10 @@
         attachToView('namaSekolah', namaSekolah)
         attachToView('alamat', alamat)
         setToImage('imgLogo', logoSekolah)
+
+        if (namaSekolah.toLowerCase().includes("khadijah")) {
+            attachToView("labelUsername", "No HP Ayah / No HP Pribadi")
+        }
 
         function signIn() {
             const request = new XMLHttpRequest()

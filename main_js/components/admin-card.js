@@ -37,6 +37,8 @@ function generateCardMenungguPembayaran(viewID, data) {
 				}
 			}
 
+			hideOrShowNoDataView(indexRow)
+
 			for (let i = 0; i < data.length; i++) {
 				const tipeSekolah = data[i].tipeSekolah
 				const siswaData = data[i].siswa
@@ -100,6 +102,7 @@ function generateInitialCard(viewID, data) {
 		if (this.status == 200) {
 			const rowView = request.responseText
 			const currency = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" })
+			const deadlineRegistrations = []
 
 			const txtNoPendaftaran = document.getElementsByName("txtNoPendaftaranInitial")
 			const txtNamaSiswa = document.getElementsByName("txtNamaSiswaInitial")
@@ -125,6 +128,8 @@ function generateInitialCard(viewID, data) {
 				}
 			}
 
+			hideOrShowNoDataView(indexRow)
+
 			for (let i = 0; i < data.length; i++) {
 				const tipeSekolah = data[i].tipeSekolah
 				const siswaData = data[i].siswa
@@ -134,6 +139,10 @@ function generateInitialCard(viewID, data) {
 					const registrasi = siswaData[index].idRegistrasi
 					const orangTua = siswaData[index].idOrangTua
 					const status = registrasi.status
+
+					if (status == "Menunggu Pembayaran") {
+						deadlineRegistrations.push(registrasi)
+					}
 
 					if (status != "Menunggu Konfirmasi") {
 						const noPendaftaran = `${registrasi.noPendaftaran}`.padStart(4, "0")
@@ -159,6 +168,8 @@ function generateInitialCard(viewID, data) {
 					}
 				}
 			}
+
+			checkExpiredStatusFromAdmin(deadlineRegistrations)
 		}
 	}
 

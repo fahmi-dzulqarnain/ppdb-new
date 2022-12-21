@@ -30,30 +30,31 @@ function setGridSekolahContent(path, jsonData) {
 					requestButton.onload = function () {
 						if (requestButton.status == 200) {
 							const buttonView = requestButton.responseText
-
-							for (let index = 0; index < detail.length; index++) {
-								modalContent.innerHTML += buttonView
-							}
-
-							const buttonLocation = document.getElementsByName("btn-location")
-
-							for (let index = 0; index < detail.length; index++) {
-								const selectedDetail = detail[index]
-								const idSekolah = selectedDetail.idSekolah
-
-								buttonLocation[index].onclick = function () {
-									localStorage.setItem("idSekolah", idSekolah)
-									location.href = "main.html"
-								}
-							}
-
+    
 							buttonSekolah[i].onclick = function () {
 								setToImage("modal-img", logo)
 								modalTitle.innerHTML = namaSekolah
-
+                                modalContent.innerHTML = ""
+                                
+    							for (let index = 0; index < detail.length; index++) {
+    								modalContent.innerHTML += buttonView
+    							}
+    
+    							const buttonLocation = document.getElementsByName("btn-location")
+    
 								for (let index = 0; index < detail.length; index++) {
 									buttonLocation[index].innerHTML = detail[index].alamat
 								}
+
+    							for (let index = 0; index < detail.length; index++) {
+    								const selectedDetail = detail[index]
+    								const idSekolah = selectedDetail.idSekolah
+    
+    								buttonLocation[index].onclick = function () {
+    									localStorage.setItem("idSekolah", idSekolah)
+    									location.href = "main.html"
+    								}
+    							}
 
 								openDialog()
 							}

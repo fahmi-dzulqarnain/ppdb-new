@@ -27,7 +27,7 @@ request.onload = function () {
 	attachToView("alamat", alamat)
 	attachToView(
 		"biayaPendaftaran",
-		"Pendaftaran: " + currency.format(jsonSekolah.biayaPendaftaran)
+		"Pendaftaran: 220.000" //+ currency.format(jsonSekolah.biayaPendaftaran)
 	)
 	attachToView("biayaAwal", "Awal Masuk: " + currency.format(jsonSekolah.biayaAwal))
 	attachToView("biayaSPP", "SPP Bulanan: " + currency.format(jsonSekolah.biayaSPP))

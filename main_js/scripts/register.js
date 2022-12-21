@@ -9,7 +9,7 @@ request.onload = function () {
 	const lowerCasedNamaSekolah = namaSekolah.toLowerCase()
 	const alamat = jsonSekolah.alamat
 	const logo = jsonSekolah.logo
-
+    
 	localStorage.setItem("namaSekolah", namaSekolah)
 	localStorage.setItem("alamat", alamat)
 	localStorage.setItem("logoSekolah", logo)
@@ -28,11 +28,23 @@ request.onload = function () {
 		hideView("chkBoxNISN")
 		hideView("labelRerataRapor")
 	} else if (lowerCasedNamaSekolah.includes("khadijah")) {
-		attachToView("labelHPAyah", "No HP Pribadi")
-		attachToView("labelHPIbu", "No HP Orang Tua")
-		attachToView("asalSekolah", "Asal Sekolah / Institusi (Opsional)")
-		hideView("fieldNISN")
-		hideView("chkBoxNISN")
+    	const idTipeSekolah = localStorage.getItem("idTipeSekolah")
+    	const tipeSekolah = jsonSekolah.tipeSekolah
+    	let namaTipeSekolah = ""
+	    
+	    for (var i = 0; i < tipeSekolah.length; i++){
+            if (tipeSekolah[i].id == idTipeSekolah){
+                namaTipeSekolah = tipeSekolah[i].namaTipe
+            }
+        }
+	    
+	    if (namaTipeSekolah.includes("Tarbiyah")) {
+	        attachToView("labelHPAyah", "No HP Pribadi")
+    		attachToView("labelHPIbu", "No HP Orang Tua")
+    		attachToView("asalSekolah", "Asal Sekolah / Institusi (Opsional)")
+    		hideView("fieldNISN")
+    		hideView("chkBoxNISN")
+	    }
 	}
 }
 
