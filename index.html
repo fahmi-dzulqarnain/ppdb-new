@@ -16,9 +16,9 @@
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="main_css/root.css">
@@ -41,6 +41,33 @@
                 </p>
             </div>
         </section>
+
+        <div class="loading-container">
+
+            <lottie-player 
+                id="loadingImage" 
+                class="loading-lottie" 
+                src="https://assets8.lottiefiles.com/packages/lf20_dkz94xcg.json"
+                background="transparent" 
+                speed="1" loop autoplay
+                style="max-width: 20%; max-height: 10%; margin: auto;"></lottie-player>
+
+            <div 
+                id="errorImage"
+                class="flex-column centerAlign"
+                style="max-width: 50%; max-height: 10%; margin: auto;">
+
+                <lottie-player 
+                    class="loading-lottie" 
+                    src="assets/cant_connect_to_server.json"
+                    background="transparent" 
+                    speed="1" loop autoplay
+                    style="max-width: 80%; margin: auto;"></lottie-player>
+
+                <h3>Tidak Dapat Terhubung Ke Server</h3>
+                <p class="small-margin-top">Mohon hubungi panitia PPDB untuk melaporkan masalah ini</p>
+            </div>
+        </div>
 
         <section class="steps section container flex-row" style="margin-bottom: 10rem;">
             <div id="gridSekolah" class="steps_container grid"></div>
@@ -66,7 +93,7 @@
     </main>
 
     <footer class="footer section">
-        <p class="footer_copy">Yayasan Islam Al Kahfi Batam &#169; Mid Cores 2022</p>
+        <p class="footer_copy">Yayasan Islam Al Kahfi Batam &#169; Mid Cores 2023</p>
     </footer>
 
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>

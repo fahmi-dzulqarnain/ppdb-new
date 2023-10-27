@@ -3,7 +3,9 @@ function setGridSekolahContent(path, jsonData) {
 	const container = document.getElementById("gridSekolah")
 
 	request.onload = function () {
-		if (this.status == 200) {
+		var statusCode = this.status
+
+		if (statusCode == 200) {
 			const rowView = request.responseText
 
 			for (let i = 0; i < jsonData.length; i++) {
