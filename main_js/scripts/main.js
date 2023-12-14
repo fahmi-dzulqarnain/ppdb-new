@@ -47,6 +47,10 @@ request.onload = function () {
 	}
 
 	btnLogin.href = `${viewURL}login`
+
+	if (namaSekolah.includes('TK') || namaSekolah.includes('SD')) {
+	    hideView("syaratAlatTulis")
+	}
 }
 
 const timelineRequest = new XMLHttpRequest()
