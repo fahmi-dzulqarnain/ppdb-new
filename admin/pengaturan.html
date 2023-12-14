@@ -165,7 +165,7 @@
                         <label for="checkboxRegistration">Buka / Tutup Pendaftaran</label>
                     </div>
 
-                    <div class="mdc-form-field" style="margin: .5rem;">
+                    <div class="mdc-form-field" style="margin-left: .5rem;">
                         <div class="mdc-checkbox">
                             <input type="checkbox" class="mdc-checkbox__native-control" id="checkboxShown" />
                             <div class="mdc-checkbox__background">
@@ -216,54 +216,7 @@
     <script src="../main_js/open_close_dialog.js"></script>
     <script src="../main_js/admin_sidebar.js"></script>
     <script src="../main_js/report.js?v=9"></script>
-    <script src="../main_js/admin_settings.js?v=2"></script>
-    <script>
-        const request = new XMLHttpRequest()
-        const accessToken = localStorage.getItem('accessToken')
-        const idSekolah = localStorage.getItem('idSekolah')
-        const query = `?id=${idSekolah}`
-
-        if (accessToken == null) {
-            signOut()
-        }
-
-        request.onload = function () {
-            const response = JSON.parse(request.responseText)
-            const statusCode = this.status
-
-            if (statusCode == 401) {
-                signOut()
-            } else if (statusCode != 200) {
-                const title = response.error
-                const messages = response.message
-
-                attachToView('titleDialog', title)
-                attachToView('descriptionDialog', messages)
-                openDialog()
-            } else {
-                const checkboxRegistration = document.getElementById('checkboxRegistration')
-                const data = response
-                console.log(data)
-
-                setInputValue('txtNamaSekolah', data.namaSekolah)
-                setInputValue('txtAlamat', data.alamat)
-                setInputValue('txtNamaRekening', data.namaRekening)
-                setInputValue('txtNoRekening', data.noRekening)
-                setInputValue('txtBiayaAwal', numberWithSeparators(data.biayaAwal))
-                setInputValue('txtBiayaSPP', numberWithSeparators(data.biayaSPP))
-                setInputValue('txtBiayaPendaftaran', numberWithSeparators(data.biayaPendaftaran))
-                setInputValue('txtKontak', data.kontak)
-                setInputValue('txtLinkGrupWA', data.linkWAGroup)
-
-                if (data.isRegistrationOpen) {
-                    checkboxRegistration.checked = true
-                }
-            }
-        }
-
-        request.open('GET', `${mainURL}sekolah/byID${query}`)
-        request.send()
-    </script>
+    <script src="../main_js/admin_settings.js?v=3"></script>
 </body>
 
 </html>
