@@ -10,7 +10,9 @@ function saveSettings() {
     const kontak = getValueOfInput('txtKontak')
     const linkWAGroup = getValueOfInput('txtLinkGrupWA')
     const checkboxRegistration = document.getElementById('checkboxRegistration')
+    const checkboxShown = document.getElementById('checkboxShown')
     const isRegistrationOpen = checkboxRegistration.checked
+    const isShowOnTheWeb = checkboxShown.checked
     
     const jsonBody = JSON.stringify({
         namaRekening,
@@ -19,6 +21,7 @@ function saveSettings() {
         biayaSPP,
         biayaPendaftaran,
         isRegistrationOpen,
+        isShowOnTheWeb,
         kontak,
         linkWAGroup
     })

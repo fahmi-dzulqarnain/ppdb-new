@@ -164,6 +164,21 @@
                         </div>
                         <label for="checkboxRegistration">Buka / Tutup Pendaftaran</label>
                     </div>
+
+                    <div class="mdc-form-field" style="margin: .5rem;">
+                        <div class="mdc-checkbox">
+                            <input type="checkbox" class="mdc-checkbox__native-control" id="checkboxShown" />
+                            <div class="mdc-checkbox__background">
+                                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                    <path class="mdc-checkbox__checkmark-path" fill="none"
+                                        d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                </svg>
+                                <div class="mdc-checkbox__mixedmark"></div>
+                            </div>
+                            <div class="mdc-checkbox__ripple"></div>
+                        </div>
+                        <label for="checkboxShown">Tampilkan / Sembunyikan Sekolah</label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -201,7 +216,7 @@
     <script src="../main_js/open_close_dialog.js"></script>
     <script src="../main_js/admin_sidebar.js"></script>
     <script src="../main_js/report.js?v=9"></script>
-    <script src="../main_js/admin_settings.js"></script>
+    <script src="../main_js/admin_settings.js?v=2"></script>
     <script>
         const request = new XMLHttpRequest()
         const accessToken = localStorage.getItem('accessToken')

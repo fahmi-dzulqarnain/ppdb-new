@@ -1,4 +1,4 @@
-const mainURL = "https://103.181.183.19:3000/"
+const mainURL = "https://backend-ppdb.com:3000/"
 const viewURL = "https://ppdb.alkahfi.or.id/"
 
 // const mainURL = "http://localhost:3000/"
