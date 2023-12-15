@@ -19,14 +19,15 @@ request.onload = function () {
 	attachToView("txtAlamatSekolah", alamat)
 
 	if (lowerCasedNamaSekolah.includes("tk")) {
-		attachToView("labelNISN", "Nama Panggilan")
-		hideView("chkBoxNISN")
+		attachToView("labelPrestasi", "Nama Panggilan")
+		attachToView("labelNISN", "NIK")
+		attachToView("checkboxNISNLabel", "Atur NIK sebagai username")
 		hideView("labelAsalSekolah")
-		hideView("labelRerataRapor")
+		hideView("fieldRerataRapor")
 	} else if (lowerCasedNamaSekolah.includes("sd")) {
-		hideView("fieldNISN")
-		hideView("chkBoxNISN")
-		hideView("labelRerataRapor")
+		attachToView("labelNISN", "NIK")
+		attachToView("checkboxNISNLabel", "Atur NIK sebagai username")
+		hideView("fieldRerataRapor")
 	} else if (lowerCasedNamaSekolah.includes("khadijah")) {
     	const idTipeSekolah = localStorage.getItem("idTipeSekolah")
     	const tipeSekolah = jsonSekolah.tipeSekolah
