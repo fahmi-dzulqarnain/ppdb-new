@@ -51,6 +51,10 @@ request.onload = function () {
 	if (namaSekolah.includes('TK') || namaSekolah.includes('SD')) {
 	    hideView("syaratAlatTulis")
 	}
+
+	if (!namaSekolah.includes('Imam Syafii')) {
+	    hideView("syaratSuratKesehatan")
+	}
 }
 
 const timelineRequest = new XMLHttpRequest()
