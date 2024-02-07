@@ -1,7 +1,7 @@
 const request = new XMLHttpRequest()
 const accessToken = localStorage.getItem("accessToken")
 
-if (accessToken == null) {
+if (accessToken === null) {
 	signOut()
 }
 
@@ -107,7 +107,7 @@ request.onload = function () {
 			statusPendaftaran != "Pendaftaran Batal"
 		) {
 			showView("btnWAGroup")
-			setLink("btnWAGroup", localStorage.getItem("linkWAGroup"))
+			setLink("btnWAGroup", sekolah.linkWAGroup)
 		}
 
 		var message = ""
