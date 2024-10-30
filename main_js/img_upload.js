@@ -34,8 +34,14 @@ function uploadImage(idRegistrasi) {
   const file = mainImage.files[0];
   const query = `?id=${idRegistrasi}`
 
-  var formData = new FormData()
-  formData.append("receipt", file)
+  compressImage(file, 0.7, 800, (compressedFile) => {
+    var formData = new FormData()
+    formData.append("receipt", compressedFile)
+
+    request.open('POST', `${mainURL}registrasi/receipt${query}`)
+    request.setRequestHeader('Authorization', `Bearer ${accessToken}`)
+    request.send(formData);
+  });
 
   request.onload = function() {
     const response = JSON.parse(request.responseText)
@@ -55,10 +61,6 @@ function uploadImage(idRegistrasi) {
       changeStatus('Menunggu Konfirmasi', idRegistrasi)
     }
   }
-
-  request.open('POST', `${mainURL}registrasi/receipt${query}`)
-  request.setRequestHeader('Authorization', `Bearer ${accessToken}`)
-  request.send(formData);
 }
 
 function cancelUpload(idRegistrasi) {
@@ -115,4 +117,42 @@ function getUploadedImage(idRegistrasi) {
   request.responseType = "blob"
   request.setRequestHeader('Authorization', `Bearer ${accessToken}`)
   request.send();
+}
+
+function compressImage(file, quality, maxWidth, callback) {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+
+  reader.onload = function(event) {
+      const img = new Image();
+      img.src = event.target.result;
+
+      img.onload = function() {
+          // Set the canvas dimensions
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+
+          // Set the new width and height
+          const scale = maxWidth / img.width;
+          canvas.width = maxWidth;
+          canvas.height = img.height * scale;
+
+          // Draw the image onto the canvas
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          // Compress the image
+          canvas.toBlob(
+              (blob) => {
+                  const compressedFile = new File(
+                    [blob],
+                    `compressed_${file.name}`,
+                    { type: 'image/jpeg', lastModified: Date.now() }
+                  );
+                  callback(compressedFile);
+              },
+              'image/jpeg',  // output format
+              quality         // compression quality
+          );
+      };
+  };
 }

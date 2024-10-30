@@ -26,7 +26,7 @@ function generateCardMenungguPembayaran(viewID, data) {
 
 				for (let index = 0; index < siswaData.length; index++) {
 					const siswa = siswaData[index]
-					const registrasi = siswaData[index].idRegistrasi
+					const registrasi = siswa.idRegistrasi
 					const status = registrasi.status
 
 					if (status == "Menunggu Konfirmasi") {
@@ -45,13 +45,13 @@ function generateCardMenungguPembayaran(viewID, data) {
 
 				for (let index = 0; index < siswaData.length; index++) {
 					const siswa = siswaData[index]
-					const registrasi = siswaData[index].idRegistrasi
-					const orangTua = siswaData[index].idOrangTua
+					const registrasi = siswa.idRegistrasi
+					const orangTua = siswa.idOrangTua
 					const status = registrasi.status
+					const idRegistrasi = registrasi.id
 
 					if (status == "Menunggu Konfirmasi") {
 						const noPendaftaran = `${registrasi.noPendaftaran}`.padStart(4, "0")
-						const idRegistrasi = registrasi.id
 
 						indexRow--
 
