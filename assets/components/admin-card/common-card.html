@@ -12,13 +12,16 @@
                 Tipe Sekolah
             </p>
         </div>
-        <div class="flex-row gravity-end" style="margin-right: 12rem;">
-            <div name="btnDetailSiswaInitial" class="card-bukti-bayar">
-                <i class="fa-solid fa-user-graduate"></i>
-                <p style="font-size: 16px; display: contents;">Detail</p>
+        <div class="button-konfirmasi flex-column gravity-end" style="margin-right: 12rem;">
+            <div class="flex-row" style="justify-content: space-between; min-width: 160px;">
+                <button name="btnDetailSiswaInitial" type="button" class="button-setujui"><i class="fa-solid fa-user-graduate"></i> Detail</button>
+                <a name="btnSendWAInitial" href="#" class="card-wa-konfirmasi"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
-            <a name="btnSendWAInitial" href="#" class="card-wa-konfirmasi"><i class="fa-brands fa-whatsapp"></i></a>
+            <button name="btnSetujuiForce" type="button" class="button-tolak" style="display: none;">
+                <i class="fa-solid fa-triangle-exclamation"></i> Langsung Setujui
+            </button>
         </div>
+        
         <div class="no-pendaftaran gravity-end" style="margin: 2rem;">
             Nominal Bayar
             <p name="txtNominalBayarInitial" style="font-size: 20px; font-weight: var(--font-bold); margin-top: 5px;">

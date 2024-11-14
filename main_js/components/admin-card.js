@@ -110,6 +110,7 @@ function generateInitialCard(viewID, data) {
 			const txtNominalBayar = document.getElementsByName("txtNominalBayarInitial")
 			const btnDetail = document.getElementsByName("btnDetailSiswaInitial")
 			const btnSendWA = document.getElementsByName("btnSendWAInitial")
+			const btnSetujuiForce = document.getElementsByName("btnSetujuiForce")
 			var indexRow = 0
 
 			for (let i = 0; i < data.length; i++) {
@@ -117,7 +118,7 @@ function generateInitialCard(viewID, data) {
 
 				for (let index = 0; index < siswaData.length; index++) {
 					const siswa = siswaData[index]
-					const registrasi = siswaData[index].idRegistrasi
+					const registrasi = siswa.idRegistrasi
 					const status = registrasi.status
 
 					if (status != "Menunggu Konfirmasi") {
@@ -142,6 +143,10 @@ function generateInitialCard(viewID, data) {
 
 					if (status == "Menunggu Pembayaran") {
 						deadlineRegistrations.push(registrasi)
+						btnSetujuiForce[indexRow - 1].style.display = "block"
+						btnSetujuiForce[indexRow - 1].onclick = function () {
+							changeStatus("Dibayar", registrasi.id)
+						}
 					}
 
 					if (status != "Menunggu Konfirmasi") {
@@ -173,7 +178,7 @@ function generateInitialCard(viewID, data) {
 		}
 	}
 
-	request.open("GET", "../assets/components/admin-card/common-card.html")
+	request.open("GET", "../assets/components/admin-card/common-card.html?v=2")
 	request.send()
 }
 

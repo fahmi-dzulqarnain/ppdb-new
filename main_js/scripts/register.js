@@ -21,8 +21,8 @@ request.onload = function () {
 	if (lowerCasedNamaSekolah.includes("tk")) {
 		attachToView("labelPrestasi", "Nama Panggilan")
 		attachToView("labelNISN", "NIK")
+		attachToView("asalSekolah", "Jenis Kelamin")
 		attachToView("checkboxNISNLabel", "Atur NIK sebagai username")
-		hideView("labelAsalSekolah")
 		hideView("fieldRerataRapor")
 	} else if (lowerCasedNamaSekolah.includes("sd")) {
 		attachToView("labelNISN", "NIK")
